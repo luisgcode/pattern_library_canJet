@@ -1,26 +1,26 @@
+## 📜 User Interface project 1 - Fanshawe College📜
+
+## Group members:
+
 # Luis Guaiquirian
 
-## 📜 xxxxxxxxxxx 📜
+# Edgar Gomez
+
+# Jose Prado
+
+# German Sanchez
+
+# Ramses vargas
 
 Project description
 
 ## 👨‍💻 Used Technologies 👨‍💻
 
-| Technology | Description                                                                          |
-| ---------- | ------------------------------------------------------------------------------------ |
-| HTML       | Basic structure.                                                                     |
-| CSS        | Style and animations.                                                                |
-| SCSS       | To compile all the CSS style, I did use some variables, utilities and mixins from it |
-| JavaScript | All the interaction, mainly used in the testimonial section.                         |
-
-## 🎨 Color Palette 🎨
-
-| Color                         | Description                  |
-| ----------------------------- | ---------------------------- |
-| Light mode Background #ffffff | Mainly Background            |
-| Light mode Text #1f2428       | Regular text                 |
-| Light mode Headers #321a7f    | Titles and important text    |
-| Light mode Details #5d5fef    | Details around the portfolio |
+| Technology | Description                                                  |
+| ---------- | ------------------------------------------------------------ |
+| HTML       | Basic structure.                                             |
+| CSS        | Style                                                        |
+| JavaScript | All the interaction, mainly used in the testimonial section. |
 
 ## 🤗 Social Network 🤗
 

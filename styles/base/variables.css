@@ -1,13 +1,24 @@
-/* :root {
-  --bg-color: #ffffff;
-  --primary-color: #0d1f2d;
-  --primary-color-light: rgba(42, 37, 32, 0.707);
-  --secondary-color: #4088bf;
-  --details-color: #ffdc00;
-  --borders-color: rgba(128, 128, 128, 0.391);
+:root {
+  /* Brand Colors */
+  --brand: #ed1c24;
+  --brand-dark: #a31418;
+  --brand-light: #ff4d52;
 
-  --primary-text: clamp(2.5rem, 5vw, 3.5rem);
-  --secondary-text: clamp(2rem, 5vw, 2.3rem);
-  --tertiary-text: clamp(1.6rem, 5vw, 1.8rem);
-  --regular-text: clamp(1.4rem, 2vw, 1.6rem);
-} */
+  /* Functional Colors */
+  --func-success: #5cb85c; /* Success */
+  --func-warning: #f0ad4e; /* Warning */
+  --func-info: #5bc0de; /* Infomation */
+  --func-error: #d9534f; /* Error */
+
+  /* Accent Colors */
+  --accent-primary: #1c24ed;
+  --accent-secondary: #22ed1c;
+  --accent-tertiary: #52ff4d;
+  --accent-quaternary: #4d52ff;
+
+  /* Neutral Colors */
+  --neutral-dark: #1c1f2c;
+  --neutral-medium: #2d2d39;
+  --neutral-light: #a0a0a0;
+  --bg-color: #fafafa;
+}

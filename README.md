@@ -16,11 +16,11 @@ Project description
 
 ## 👨‍💻 Used Technologies 👨‍💻
 
-| Technology | Description                                                  |
-| ---------- | ------------------------------------------------------------ |
-| HTML       | Basic structure.                                             |
-| CSS        | Style                                                        |
-| JavaScript | All the interaction, mainly used in the testimonial section. |
+| Technology | Description      |
+| ---------- | ---------------- |
+| HTML       | Basic structure. |
+| CSS        | Style            |
+| JavaScript | Interaction      |
 
 ## 🤗 Social Network 🤗
 

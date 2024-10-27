@@ -2,17 +2,15 @@
 @import url(base/utilities.css);
 @import url(base/variables.css);
 
-@import url(components/animations.css);
 @import url(components/buttons.css);
-@import url(components/slider.css);
+@import url(components/colors.css);
+@import url(components/components.css);
+@import url(components/layout.css);
+@import url(components/typography.css);
+@import url(components/visualization.css);
 
-@import url(layout/aside.css);
 @import url(layout/footer.css);
 @import url(layout/header.css);
-
-@import url(pages/home.css);
-@import url(pages/contact.css);
-@import url(pages/about.css);
 
 /* Reset values */
 * {

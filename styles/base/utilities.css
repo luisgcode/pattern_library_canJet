@@ -1,52 +1,40 @@
-.uti-padding {
-  padding: 4rem 6rem;
-}
-
-.uti-margin {
-  margin: 4rem 6rem;
-}
-
 .wrapper {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid red;
+  display: flex;
+
+  aside {
+    border: 3px solid purple;
+  }
+
+  section {
+    border: 3px solid red;
+  }
+}
+
+.uti_padding {
+  padding: 2rem 5rem;
 }
 
 /* Until 1280 */
 @media screen and (max-width: 1280px) {
-  .uti-padding {
+  .uti_padding {
     padding: 2rem 3rem;
-  }
-  .uti-margin {
-    margin: 4rem 5rem;
-  }
-
-  .box {
-    border: 1px solid black;
   }
 }
 
 /* Until 768 */
 @media screen and (max-width: 768px) {
-  .uti-margin {
-    margin: 3rem 4rem;
-  }
-  .box {
-    border: 1px solid red;
+  .uti_padding {
+    padding: 2rem 2rem;
   }
 }
 
 /* Until 601 */
 @media screen and (max-width: 601px) {
-  .uti-padding {
-    padding: 2rem;
-  }
-
-  .uti-margin {
-    margin: 2rem;
-  }
-
-  .box {
-    border: 1px solid pink;
+  .uti_padding {
+    padding: 1rem 2rem;
   }
 }

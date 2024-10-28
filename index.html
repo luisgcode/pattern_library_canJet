@@ -8,7 +8,7 @@
 
     <meta name="author" content="Luis Guaiquirian" />
 
-    <!-NORMALIZE-->
+    <!--NORMALIZE -->
     <link rel="stylesheet" href="styles/normalize.css" />
 
     <!--CSS-->
@@ -24,6 +24,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
 
@@ -56,31 +62,16 @@
   </head>
   <body>
     <header>
-      <nav>
+      <div class="header-wrapp">
         <div class="logo">
           <img
             src="https://luisgcode.github.io/pattern_library_canJet/assets/images/logos/logo.png"
             alt="Company logo"
           />
         </div>
-        <p class="page-title">Pattern Library</p>
-      </nav>
-      <div class="hero-section">
-        <div class="hero-container-wrapp">
-          <h1>Can Jet Pattern Library</h1>
-          <p>
-            Pattern Library that will be used to build the
-            <b> Can Jet </b>Website.
-          </p>
-        </div>
-      </div>
-    </header>
 
-    <div class="wrapper">
-      <aside>
-        <div class="foundations">
-          <p class="aside-title">Foundations</p>
-          <ul>
+        <nav>
+          <ul class="nav-links">
             <li>
               <a href="#colors">Colors</a>
             </li>
@@ -93,256 +84,252 @@
             <li>
               <a href="#visualization">Data visualization</a>
             </li>
-          </ul>
-        </div>
-        <hr />
-        <div class="components">
-          <p class="aside-title">Components</p>
-          <ul>
             <li>
-              <a href="#colors">Buttons</a>
-            </li>
-            <li>
-              <a href="#colors">component 3</a>
-            </li>
-            <li>
-              <a href="#colors">component 4</a>
-            </li>
-            <li>
-              <a href="#colors">component 5</a>
-            </li>
-            <li>
-              <a href="#colors">component 6</a>
+              <a href="#components">Components</a>
             </li>
           </ul>
-        </div>
-      </aside>
-      <main>
-        <section id="colors" class="colors-section section_padding">
-          <h2 class="section_title">Colors</h2>
+        </nav>
+      </div>
+    </header>
 
-          <div class="colors-container">
-            <h4>Brand colors</h4>
-
-            <div class="colors-row">
-              <div class="box">
-                <div class="color brand">#ed1c24</div>
-                <p>Red (Pigment)</p>
-              </div>
-              <div class="box">
-                <div class="color brand-light">#ff4d52</div>
-                <p>Orange-Red (Crayola)</p>
-              </div>
-              <div class="box">
-                <div class="color brand-dark">#a31418</div>
-                <p>Blood (Animal)</p>
-              </div>
-            </div>
-          </div>
-          <div class="colors-container">
-            <h4>Functional colors</h4>
-            <div class="colors-row">
-              <div class="box">
-                <div class="color success"></div>
-                <p>Apple</p>
-              </div>
-              <div class="box">
-                <div class="color warning"></div>
-                <p>Maximum Yellow Red</p>
-              </div>
-              <div class="box">
-                <div class="color info"></div>
-                <p>Sea Serpent</p>
-              </div>
-              <div class="box">
-                <div class="color error"></div>
-                <p>Jelly Bean</p>
-              </div>
-            </div>
-          </div>
-          <div class="colors-container">
-            <h4>Accent Colors</h4>
-            <div class="colors-row">
-              <div class="box">
-                <div class="color acce-primary"></div>
-                <p>Bluebonnet</p>
-              </div>
-              <div class="box">
-                <div class="color acce-secondary"></div>
-                <p>Neon Green</p>
-              </div>
-              <div class="box">
-                <div class="color acce-tertiary"></div>
-                <p>Screamin' Green</p>
-              </div>
-              <div class="box">
-                <div class="color acce-quaternary"></div>
-                <p>Ultramarine Blue</p>
-              </div>
-            </div>
-          </div>
-          <div class="colors-container">
-            <h4>Neutral Colors</h4>
-            <div class="colors-row">
-              <div class="box">
-                <div class="color neu-dark"></div>
-                <p>Dark Gunmetal</p>
-              </div>
-              <div class="box">
-                <div class="color neu-medium"></div>
-                <p>Gunmetal</p>
-              </div>
-              <div class="box">
-                <div class="color neu-light"></div>
-                <p>Quick Silver</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="layout" class="layout section_padding">
-          <h2 class="section_title">Layout</h2>
-        </section>
-        <section id="typography" class="typography section_padding">
-          <h2 class="section_title">Typography</h2>
-        </section>
-        <section class="data-visualization section_padding" id="visualization">
-          <h2 class="section_title">Data visualization</h2>
-
-          <div class="graph-container">
-            <h4>Line Chart</h4>
-            <p>
-              Used to display data points connected by straight lines. It's
-              commonly used to show trends over time, making it ideal for
-              visualizing how variables change across a continuous interval
-              (such as days, months, or years).
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/line.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Line Chart Stacked</h4>
-            <p>
-              Variation of a line chart where multiple data series are layered
-              on top of each other, rather than overlapping.
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/line_stacked.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Bar Chart</h4>
-            <p>
-              Uses rectangular bars to represent data values. The length or
-              height of each bar corresponds to the value it represents. Bar
-              charts are useful for comparing quantities across different
-              categories and are typically used when the data is categorical
-              (like types, groups, or classifications) rather than continuous.
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Bar Chart Stacked</h4>
-            <p>
-              Variation of a bar chart where multiple data series are stacked on
-              top of each other in a single bar, rather than being placed
-              side-by-side
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar_stacked.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Bar Chart Horizontal</h4>
-            <p>
-              Bar chart where the bars extend horizontally from the y-axis
-              instead of vertically from the x-axis. Each bar's length
-              represents the value of the data it corresponds to, making it easy
-              to compare values across categories.
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar_horizontal.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Area Chart</h4>
-            <p>
-              Type of chart similar to a line chart but with the area below the
-              line filled with color or shading. This makes it useful for
-              visualizing cumulative values over time or across categories, as
-              well as seeing how quantities change.
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/area.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Area Chart Stacked</h4>
-            <p>
-              Variation of an area chart where multiple data series are stacked
-              on top of each other, with each series represented by a shaded
-              area. Instead of overlapping, each layer stacks on top of the
-              previous one, showing the cumulative total of all series and how
-              individual segments contribute to this total over time
-            </p>
-            <img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/area_stacked.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Scatter Plot</h4>
-            <p>
-              Type of chart that displays data as individual points on a
-              two-dimensional grid. It’s used to visualize the relationship
-              between two variables, with one variable plotted along the x-axis
-              and the other on the y-axis. Each data point represents a unique
-              observation in the dataset.
-            </p>
-            <img alt="graph xx" /><img
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/scatter.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Pie Chart</h4>
-            <p>
-              Circular statistical graphic divided into slices to illustrate the
-              numerical proportions of a whole. Each slice of the pie represents
-              a category's contribution to the total, making it easy to
-              visualize relative sizes.
-            </p>
-            <img
-              style="max-width: 400px"
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/pie_chart.png"
-              alt="graph xx"
-            />
-          </div>
-          <div class="graph-container">
-            <h4>Donut Chart</h4>
-            <p>
-              Is a variation of a pie chart with a hole in the center,
-              resembling a donut. It is used to display data in a circular
-              format, showing the relative proportions of a whole, similar to a
-              pie chart.
-            </p>
-            <img
-              style="max-width: 400px"
-              src="https://luisgcode.github.io/pattern_library_canJet/assets/images/donut.png"
-              alt="graph xx"
-            />
-          </div>
-        </section>
-      </main>
+    <div class="hero section_format">
+      <div class="hero-content">
+        <h1>Design System</h1>
+        <p>
+          All the style guidelines that will be used to build the
+          <b> Can Jet </b>Website.
+        </p>
+      </div>
+      <div class="hero-illustration">
+        <img
+          src="/assets/images/undraw_color_palette_re_dwy7.svg"
+          alt=" illustration"
+        />
+      </div>
     </div>
+
+    <section id="colors" class="colors-section section_format">
+      <h2 class="section_title">Colors</h2>
+
+      <div class="colors-container">
+        <h4>Brand colors</h4>
+
+        <div class="colors-row">
+          <div class="box">
+            <div class="color brand">#ed1c24</div>
+            <p>Red (Pigment)</p>
+          </div>
+          <div class="box">
+            <div class="color brand-light">#ff4d52</div>
+            <p>Orange-Red (Crayola)</p>
+          </div>
+          <div class="box">
+            <div class="color brand-dark">#a31418</div>
+            <p>Blood (Animal)</p>
+          </div>
+        </div>
+      </div>
+      <div class="colors-container">
+        <h4>Functional colors</h4>
+        <div class="colors-row">
+          <div class="box">
+            <div class="color success" id="success">#5cb85c</div>
+            <p>Apple</p>
+          </div>
+          <div class="box">
+            <div class="color warning">#f0ad4e</div>
+            <p>Maximum Yellow Red</p>
+          </div>
+          <div class="box">
+            <div class="color info">#5bc0de</div>
+            <p>Sea Serpent</p>
+          </div>
+          <div class="box">
+            <div class="color error">#d9534f</div>
+            <p>Jelly Bean</p>
+          </div>
+        </div>
+      </div>
+      <div class="colors-container">
+        <h4>Accent Colors</h4>
+        <div class="colors-row">
+          <div class="box">
+            <div class="color acce-primary">#1c24ed</div>
+            <p>Bluebonnet</p>
+          </div>
+          <div class="box">
+            <div class="color acce-secondary">#22ed1c</div>
+            <p>Neon Green</p>
+          </div>
+          <div class="box">
+            <div class="color acce-tertiary">#52ff4d</div>
+            <p>Screamin' Green</p>
+          </div>
+          <div class="box">
+            <div class="color acce-quaternary">#4d52ff</div>
+            <p>Ultramarine Blue</p>
+          </div>
+        </div>
+      </div>
+      <div class="colors-container">
+        <h4>Neutral Colors</h4>
+        <div class="colors-row">
+          <div class="box">
+            <div class="color neu-dark">#1c1f2c</div>
+            <p>Dark Gunmetal</p>
+          </div>
+          <div class="box">
+            <div class="color neu-medium">#2d2d39</div>
+            <p>Gunmetal</p>
+          </div>
+          <div class="box">
+            <div class="color neu-light">#a0a0a0</div>
+            <p>Quick Silver</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="layout" class="layout-section section_format">
+      <h2 class="section_title">Layout</h2>
+    </section>
+    <section id="typography" class="typography-section section_format">
+      <h2 class="section_title">Typography</h2>
+    </section>
+    <section id="visualization" class="data-visualization section_format">
+      <h2 class="section_title">Data visualization</h2>
+
+      <div class="graph-container">
+        <h4>Line Chart</h4>
+        <p>
+          Used to display data points connected by straight lines. It's commonly
+          used to show trends over time, making it ideal for visualizing how
+          variables change across a continuous interval (such as days, months,
+          or years).
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/line.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Line Chart Stacked</h4>
+        <p>
+          Variation of a line chart where multiple data series are layered on
+          top of each other, rather than overlapping.
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/line_stacked.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Bar Chart</h4>
+        <p>
+          Uses rectangular bars to represent data values. The length or height
+          of each bar corresponds to the value it represents. Bar charts are
+          useful for comparing quantities across different categories and are
+          typically used when the data is categorical (like types, groups, or
+          classifications) rather than continuous.
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Bar Chart Stacked</h4>
+        <p>
+          Variation of a bar chart where multiple data series are stacked on top
+          of each other in a single bar, rather than being placed side-by-side
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar_stacked.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Bar Chart Horizontal</h4>
+        <p>
+          Bar chart where the bars extend horizontally from the y-axis instead
+          of vertically from the x-axis. Each bar's length represents the value
+          of the data it corresponds to, making it easy to compare values across
+          categories.
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/bar_horizontal.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Area Chart</h4>
+        <p>
+          Type of chart similar to a line chart but with the area below the line
+          filled with color or shading. This makes it useful for visualizing
+          cumulative values over time or across categories, as well as seeing
+          how quantities change.
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/area.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Area Chart Stacked</h4>
+        <p>
+          Variation of an area chart where multiple data series are stacked on
+          top of each other, with each series represented by a shaded area.
+          Instead of overlapping, each layer stacks on top of the previous one,
+          showing the cumulative total of all series and how individual segments
+          contribute to this total over time
+        </p>
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/area_stacked.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Scatter Plot</h4>
+        <p>
+          Type of chart that displays data as individual points on a
+          two-dimensional grid. It’s used to visualize the relationship between
+          two variables, with one variable plotted along the x-axis and the
+          other on the y-axis. Each data point represents a unique observation
+          in the dataset.
+        </p>
+        <img alt="graph xx" /><img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/scatter.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Pie Chart</h4>
+        <p>
+          Circular statistical graphic divided into slices to illustrate the
+          numerical proportions of a whole. Each slice of the pie represents a
+          category's contribution to the total, making it easy to visualize
+          relative sizes.
+        </p>
+        <img
+          style="max-width: 400px"
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/pie_chart.png"
+          alt="graph xx"
+        />
+      </div>
+      <div class="graph-container">
+        <h4>Donut Chart</h4>
+        <p>
+          Is a variation of a pie chart with a hole in the center, resembling a
+          donut. It is used to display data in a circular format, showing the
+          relative proportions of a whole, similar to a pie chart.
+        </p>
+        <img
+          style="max-width: 400px"
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/donut.png"
+          alt="graph xx"
+        />
+      </div>
+    </section>
+
     <footer>
       <p>Made with 💗 By: &nbsp;</p>
       <div class="group">

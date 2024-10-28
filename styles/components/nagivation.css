@@ -1,0 +1,18 @@
+nav {
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  li a {
+    border-bottom: 3px solid transparent;
+  }
+
+  li a:hover {
+    border-bottom: 3px solid var(--brand);
+    transition: all 0.3s ease;
+  }
+}

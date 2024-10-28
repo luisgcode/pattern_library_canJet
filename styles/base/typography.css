@@ -34,24 +34,24 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
   font-style: normal;
+  font-family: "Montserrat", sans-serif;
 }
 
 h1 {
-  font-size: 4.5rem;
+  font-size: 7rem;
+  font-family: "Allura", cursive;
 }
 
 h2 {
-  font-size: 3.7rem;
+  font-size: 4rem;
 }
 
 h3 {
-  font-size: 3.3rem;
-  font-weight: normal;
+  font-size: 3.5rem;
 }
 
 h4 {
-  font-size: 2.7rem;
+  font-size: 2.2rem;
   font-weight: normal;
 }

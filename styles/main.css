@@ -5,11 +5,12 @@
 @import url(components/buttons.css);
 @import url(components/colors.css);
 @import url(components/components.css);
+@import url(components/hero.css);
 @import url(components/layout.css);
 @import url(components/typography.css);
 @import url(components/visualization.css);
+@import url(components/nagivation.css);
 
-@import url(layout/aside.css);
 @import url(layout/footer.css);
 @import url(layout/header.css);
 

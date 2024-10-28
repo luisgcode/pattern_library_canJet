@@ -1,6 +1,13 @@
 .hero {
-  min-height: 400px;
+  height: 400px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 15rem;
+  .hero-content {
+  }
+
+  .hero-illustration img {
+    width: 300px;
+  }
 }

@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  flex-direction: column;
+
+  nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    border-bottom: 1px solid gray;
+    padding: 1rem 3rem;
+
+    .logo img {
+      width: 30px;
+      cursor: pointer;
+    }
+
+    p {
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+}
+
+.hero-section {
+  width: 100%;
+  min-height: 300px;
+  background: #f9afb16d;
+
+  .hero-container-wrapp {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 300px;
+    gap: 2rem;
+  }
+}

@@ -2,12 +2,10 @@
   height: 400px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 15rem;
-  .hero-content {
-  }
+  justify-content: center;
+  gap: 10rem;
 
   .hero-illustration img {
-    width: 300px;
+    width: 350px;
   }
 }

@@ -7,7 +7,7 @@
 
 .colors-row {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   margin: 4rem 0;
 }
 
@@ -15,13 +15,42 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  text-transform: uppercase;
+
+  p {
+    width: 10ch;
+  }
 
   .color {
-    width: 90px;
-    height: 50px;
+    width: 110px;
+    height: 60px;
   }
 }
 
 .brand {
   background: var(--brand);
+}
+
+.brand-light {
+  background: var(--brand-light);
+}
+
+.brand-dark {
+  background: var(--brand-dark);
+}
+
+.success {
+  background: var(--func-success);
+}
+
+.warning {
+  background: var(--func-warning);
+}
+
+.info {
+  background: var(--func-info);
+}
+
+.error {
+  background: var(--func-error);
 }

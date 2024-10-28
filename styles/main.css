@@ -9,6 +9,7 @@
 @import url(components/typography.css);
 @import url(components/visualization.css);
 
+@import url(layout/aside.css);
 @import url(layout/footer.css);
 @import url(layout/header.css);
 

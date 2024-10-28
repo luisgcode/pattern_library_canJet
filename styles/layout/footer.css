@@ -1,0 +1,18 @@
+footer {
+  margin: 3rem 0 0 0;
+  width: 100%;
+  background: #1c1f2c;
+  color: var(--bg-color);
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.group {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-direction: column;
+}

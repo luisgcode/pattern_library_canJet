@@ -2,6 +2,7 @@ aside {
   display: flex;
   flex-direction: column;
   min-width: 220px;
+  padding-top: 3rem;
   gap: 4rem;
 
   a {

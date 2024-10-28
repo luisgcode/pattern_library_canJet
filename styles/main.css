@@ -21,6 +21,10 @@
   scroll-behavior: smooth;
 }
 
+body {
+  background: #fafafa;
+}
+
 img,
 picture,
 svg,

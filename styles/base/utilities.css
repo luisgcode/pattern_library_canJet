@@ -3,29 +3,15 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
+  padding: 0 2rem;
 }
 
-.uti_padding {
-  padding: 1rem 4rem;
+.section_title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid gray;
+  margin-bottom: 5rem;
 }
 
-/* Until 1280 */
-@media screen and (max-width: 1280px) {
-  .uti_padding {
-    padding: 2rem 3rem;
-  }
-}
-
-/* Until 768 */
-@media screen and (max-width: 768px) {
-  .uti_padding {
-    padding: 2rem 2rem;
-  }
-}
-
-/* Until 601 */
-@media screen and (max-width: 601px) {
-  .uti_padding {
-    padding: 1rem 2rem;
-  }
+.section_padding {
+  padding-bottom: 5rem;
 }

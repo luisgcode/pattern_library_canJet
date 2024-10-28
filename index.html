@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
-    <title>Can Jet - Pattern Library</title>
+    <title>Can Jet Pattern Library</title>
 
     <meta name="author" content="Luis Guaiquirian" />
 
-    <!-- NORMALIZE-->
+    <!-NORMALIZE-->
     <link rel="stylesheet" href="styles/normalize.css" />
 
     <!--CSS-->
@@ -117,11 +117,49 @@
           </ul>
         </div>
       </aside>
-      <main class="uti_padding">
-        <section class="data-visualization" id="visualization">
-          <h2>Data visualization</h2>
+      <main>
+        <section id="colors" class="colors-section section_padding">
+          <h2 class="section_title">Colors</h2>
+
+          <div class="colors-container">
+            <h4>Brand colors</h4>
+
+            <div class="colors-row">
+              <div class="box">
+                <div class="color brand"></div>
+                <p>Brand color</p>
+              </div>
+              <div class="box">
+                <div class="color brand-light"></div>
+                <p>Brand color lighter</p>
+              </div>
+              <div class="box">
+                <div class="color brand-dark"></div>
+                <p>Brand color darker</p>
+              </div>
+            </div>
+          </div>
+          <div class="colors-container">
+            <h4>Functional colors</h4>
+          </div>
+          <div class="colors-container">
+            <h4>Accent Colors</h4>
+          </div>
+          <div class="colors-container">
+            <h4>Neutral Colors</h4>
+          </div>
+        </section>
+        <section id="layout" class="layout section_padding">
+          <h2 class="section_title">Layout</h2>
+        </section>
+        <section id="typography" class="typography section_padding">
+          <h2 class="section_title">Typography</h2>
+        </section>
+        <section class="data-visualization section_padding" id="visualization">
+          <h2 class="section_title">Data visualization</h2>
+
           <div class="graph-container">
-            <h4>- Line Chart</h4>
+            <h4>Line Chart</h4>
             <p>
               Used to display data points connected by straight lines. It's
               commonly used to show trends over time, making it ideal for
@@ -134,7 +172,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Line Chart Stacked</h4>
+            <h4>Line Chart Stacked</h4>
             <p>
               Variation of a line chart where multiple data series are layered
               on top of each other, rather than overlapping.
@@ -145,7 +183,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Bar Chart</h4>
+            <h4>Bar Chart</h4>
             <p>
               Uses rectangular bars to represent data values. The length or
               height of each bar corresponds to the value it represents. Bar
@@ -159,7 +197,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Bar Chart Stacked</h4>
+            <h4>Bar Chart Stacked</h4>
             <p>
               Variation of a bar chart where multiple data series are stacked on
               top of each other in a single bar, rather than being placed
@@ -171,7 +209,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Bar Chart Horizontal</h4>
+            <h4>Bar Chart Horizontal</h4>
             <p>
               Bar chart where the bars extend horizontally from the y-axis
               instead of vertically from the x-axis. Each bar's length
@@ -184,7 +222,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Area Chart</h4>
+            <h4>Area Chart</h4>
             <p>
               Type of chart similar to a line chart but with the area below the
               line filled with color or shading. This makes it useful for
@@ -197,7 +235,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Area Chart Stacked</h4>
+            <h4>Area Chart Stacked</h4>
             <p>
               Variation of an area chart where multiple data series are stacked
               on top of each other, with each series represented by a shaded
@@ -211,7 +249,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Scatter Plot</h4>
+            <h4>Scatter Plot</h4>
             <p>
               Type of chart that displays data as individual points on a
               two-dimensional grid. It’s used to visualize the relationship
@@ -225,7 +263,7 @@
             />
           </div>
           <div class="graph-container">
-            <h4>- Pie Chart</h4>
+            <h4>Pie Chart</h4>
             <p>
               Circular statistical graphic divided into slices to illustrate the
               numerical proportions of a whole. Each slice of the pie represents

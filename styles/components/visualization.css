@@ -1,21 +1,16 @@
 .data-visualization {
   width: 100%;
-  padding-left: 5rem;
 
   .graph-container {
-    margin: 10rem 0;
-
-    h4 {
-    }
-
+    margin-bottom: 10rem;
     img {
       max-width: 800px;
     }
 
     p {
-      margin-bottom: 4rem;
       width: 85ch;
       line-height: 1.6;
+      margin-bottom: 2rem;
     }
   }
 }

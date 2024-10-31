@@ -12,7 +12,7 @@ const data = [
   { date: new Date(2024, 1, 1), value: 2500 },
   { date: new Date(2024, 2, 1), value: 2000 },
   { date: new Date(2024, 3, 1), value: 2100 },
-  { date: new Date(2024, 4, 1), value: 6100 },
+  { date: new Date(2024, 4, 1), value: 5100 },
 ];
 
 // Crear escalas
@@ -27,14 +27,42 @@ const y = d3
   .nice()
   .range([baseHeight - margin.bottom, margin.top]);
 
-// Generador de la línea
-const line = d3
-  .line()
-  .x((d) => x(d.date))
-  .y((d) => y(d.value));
-
 // Seleccionar el SVG
 const svg = d3.select("#line-chart");
+
+// Agregar la cuadrícula de fondo
+const makeGrid = (scale, orientation) => {
+  const grid = svg.append("g").attr("class", "grid");
+  const ticks = scale.ticks(); // Obtiene los ticks de la escala
+
+  if (orientation === "horizontal") {
+    ticks.forEach((tick) => {
+      grid
+        .append("line")
+        .attr("x1", margin.left) // Comienza desde el margen izquierdo
+        .attr("x2", baseWidth - margin.right) // Termina en el margen derecho
+        .attr("y1", y(tick)) // Usa la escala Y para la posición vertical
+        .attr("y2", y(tick))
+        .attr("stroke", "#e0e0e0") // Color de la línea de cuadrícula
+        .attr("stroke-dasharray", "2,2"); // Línea discontinua
+    });
+  } else {
+    ticks.forEach((tick) => {
+      grid
+        .append("line")
+        .attr("x1", x(tick)) // Usa la escala X para la posición horizontal
+        .attr("x2", x(tick))
+        .attr("y1", margin.top) // Comienza desde el margen superior
+        .attr("y2", baseHeight - margin.bottom) // Termina en el margen inferior
+        .attr("stroke", "#e0e0e0") // Color de la línea de cuadrícula
+        .attr("stroke-dasharray", "2,2"); // Línea discontinua
+    });
+  }
+};
+
+// Crear cuadrícula horizontal y vertical
+makeGrid(y, "horizontal");
+makeGrid(x, "vertical");
 
 // Eje X
 svg
@@ -53,6 +81,12 @@ svg
   .append("g")
   .attr("transform", `translate(${margin.left},0)`)
   .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(",.0f"))); // Formato de números
+
+// Generador de la línea
+const line = d3
+  .line()
+  .x((d) => x(d.date))
+  .y((d) => y(d.value));
 
 // Dibujar la línea
 svg
@@ -83,6 +117,7 @@ tooltipGroup
   .append("text")
   .attr("text-anchor", "middle") // Alinear el texto en el medio
   .attr("font-size", "12px")
+  .attr("font-weight", "bold") // Añadir esta línea para hacer el texto en negrita
   .attr("fill", "#fff") // Color del texto
   .attr("dy", "2em") // Desplazamiento vertical del texto
   .attr("x", 50) // Centrar el texto horizontalmente dentro del rectángulo
@@ -97,9 +132,8 @@ svg
   .attr("class", "dot")
   .attr("cx", (d) => x(d.date))
   .attr("cy", (d) => y(d.value))
-  .attr("r", 4)
+  .attr("r", 6)
   .attr("fill", "#4d52ff")
-
   .on("mouseover", function (event, d) {
     tooltipGroup.transition().duration(200).style("opacity", 1);
 
@@ -111,4 +145,7 @@ svg
 
     // Actualiza el texto del tooltip para mostrar solo el valor Y
     tooltipGroup.select("text").text(`${d.value.toLocaleString()}`); // Muestra el valor Y formateado
+  })
+  .on("mouseout", function () {
+    tooltipGroup.transition().duration(200).style("opacity", 0);
   });

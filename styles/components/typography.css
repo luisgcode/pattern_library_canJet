@@ -8,17 +8,68 @@
   margin: 10rem 0;
 }
 
-.fake-allura {
-  font-family: "Allura", cursive;
+.intro .allura {
   font-size: 7rem;
+  font-family: "Allura", cursive;
+  font-weight: bold;
 }
 
-.fake-monserrat {
+.intro .monserrat {
   font-family: "Montserrat", sans-serif;
-  font-size: 5rem;
+  font-size: 4rem;
+  font-weight: bold;
 }
 
-.fake-open {
-  font-family: "Open Sans", sans-serif;
-  font-size: 3rem;
+.type-chart {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.type-chart-row {
+  display: flex;
+  padding: 2rem 0;
+  align-items: center;
+
+  .headingOne {
+    font-size: 7rem;
+    font-family: "Allura", cursive;
+    font-weight: bold;
+  }
+
+  .headingTwo {
+    font-family: "Montserrat", sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  .headingThree {
+    font-family: "Montserrat", sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+
+  .headingFour {
+    font-family: "Montserrat", sans-serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+
+  .headingFive {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+
+  .buttons {
+    font-weight: bold;
+  }
+
+  .type-chart-row-title {
+    width: 50%;
+  }
+
+  .type-chart-row-size {
+    width: 25%;
+  }
 }

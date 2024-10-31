@@ -2,12 +2,6 @@ html {
   font-size: 62.5%;
 }
 
-body {
-  font-family: "Open Sans", sans-serif;
-  font-style: normal;
-  font-size: 1.6rem;
-}
-
 p {
   margin: 0;
   padding: 0;
@@ -28,23 +22,29 @@ a {
   font-weight: bold;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+body {
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
-  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
 }
 
 h1 {
   font-size: 7rem;
   font-family: "Allura", cursive;
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
 }
 
 h2 {
   font-size: 4rem;
+  font-weight: bold;
 }
 
 h3 {
@@ -54,4 +54,8 @@ h3 {
 h4 {
   font-size: 2.2rem;
   font-weight: normal;
+}
+
+h5 {
+  font-size: 1.4rem;
 }

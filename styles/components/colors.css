@@ -7,6 +7,7 @@
 
 .colors-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 3rem;
   margin: 1rem 0;
 }

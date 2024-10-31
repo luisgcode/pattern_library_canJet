@@ -14,3 +14,12 @@
     }
   }
 }
+
+/* Details of Scatter Plot */
+.circle {
+  fill: #ff4d52; /* Color de los círculos */
+}
+.axis-label {
+  font-size: 14px;
+  font-weight: bold;
+}

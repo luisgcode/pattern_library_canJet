@@ -8,6 +8,9 @@
 
     <meta name="author" content="Luis Guaiquirian" />
 
+    <!-- D3js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
     <!--NORMALIZE -->
     <link rel="stylesheet" href="styles/normalize.css" />
 
@@ -245,6 +248,7 @@
     <section id="visualization" class="data-visualization section_format">
       <h2 class="section_title">Data visualization</h2>
 
+      <!-- Line chart -->
       <div class="graph-container">
         <h4>Line Chart</h4>
         <p>
@@ -253,10 +257,12 @@
           variables change across a continuous interval (such as days, months,
           or years).
         </p>
-        <img
-          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/line.png"
-          alt="graph xx"
-        />
+        <svg
+          id="line-chart"
+          viewBox="0 0 750 400"
+          preserveAspectRatio="xMinYMin meet"
+        ></svg>
+        <div class="tooltip" id="tooltip"></div>
       </div>
       <div class="graph-container">
         <h4>Line Chart Stacked</h4>

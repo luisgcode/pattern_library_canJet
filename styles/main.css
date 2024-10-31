@@ -11,6 +11,8 @@
 @import url(components/visualization.css);
 @import url(components/nagivation.css);
 
+@import url(components/charts/line_chart.css);
+
 @import url(layout/footer.css);
 @import url(layout/header.css);
 
@@ -28,10 +30,14 @@ body {
 
 img,
 picture,
-svg,
 video,
 canvas {
   max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 750px;
   height: auto;
 }
 

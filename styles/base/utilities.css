@@ -1,1 +1,13 @@
- 
+.container_utility {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1280px;
+  padding: 5rem 0;
+}
+
+.section_title_utility {
+}
+
+.sub_section_title_utility {
+  background: red;
+}

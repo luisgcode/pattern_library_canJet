@@ -1,28 +1,21 @@
-.colors-section {
-  .colors-container {
-    margin: 2rem 0;
-    padding: 2rem 0;
-  }
+/* Main block color section */
+.colors-wrapp {
 }
 
-.colors-row {
+.colors-block-row {
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
-  margin: 1rem 0;
 }
 
-.box {
+/* Each individual box */
+.color-box {
   display: flex;
   align-items: center;
   gap: 1rem;
   text-transform: uppercase;
 
-  p {
-    width: 10ch;
-  }
-
-  .color {
+  .color-sample {
     width: 110px;
     height: 60px;
     display: flex;
@@ -31,8 +24,13 @@
     font-weight: bold;
     justify-content: center;
   }
+
+  .color-name {
+    width: 10ch;
+  }
 }
 
+/* Inserting each box the color it needs */
 .brand {
   background: var(--brand);
 }

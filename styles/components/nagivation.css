@@ -15,11 +15,46 @@
 }
 
 @media screen and (max-width: 700px) {
-  .logo {
-    width: 100%;
-  }
-
   nav {
     display: none;
+  }
+}
+
+/* MOBILE */
+.mobile-nav {
+  display: none; /* Ocultar menú móvil por defecto */
+  position: absolute;
+  padding: 2rem;
+  background-color: white; /* Cambia según tu diseño */
+  right: 0;
+  top: 65px; /* Ajusta según la altura de tu cabecera */
+  right: 70px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  ul li {
+    margin: 2rem 0;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 3rem;
+  color: var(--brand);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 699px) {
+  .nav-links {
+    display: none; /* Ocultar menú normal en móviles */
+  }
+
+  .menu-toggle {
+    display: block; /* Mostrar botón de menú */
+  }
+
+  .mobile-nav.active {
+    display: block; /* Mostrar menú móvil cuando está activo */
   }
 }

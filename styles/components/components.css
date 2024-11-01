@@ -3,7 +3,8 @@
 }
 
 .code {
-  width: 80%;
+  width: 90%;
+  max-width: 850px;
   margin-top: 2rem;
   border: 1px solid #a0a0a0;
   padding: 2rem 3rem;
@@ -12,130 +13,66 @@
   overflow: auto;
 }
 
-/* COPONENT 1 - INPUT */
-.label {
-  display: block;
-  line-height: 1.5;
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 0.5rem;
-  color: #1c1f2c;
+/* COMPONENT 1 - BOOKING */
+.flight-booking {
+  border: 1px solid #a0a0a0;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.input-container {
-  margin-top: 0.5rem;
-  max-width: 270px;
-  padding: 0.5rem;
-}
-
-.input-field {
-  display: block;
-  width: 100%;
-  border-radius: 0.375rem;
-  border: 0;
-  padding: 0.375rem 0.75rem;
-  color: #1c1f2c;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  outline: 1px solid #a0a0a0;
-  line-height: 1.5;
-  font-size: 16px;
-}
-
-.input-field:focus {
-  outline: 2px inset var(--brand);
-}
-
-/* COMPONENT 2 - GROUP BUTTON */
-.button-group {
-  display: inline-flex;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  isolation: isolate;
-}
-
-.button-group button {
-  position: relative;
-  display: inline-flex;
-  cursor: pointer;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-  font-size: 20px;
+/* Title style */
+.booking-title {
+  font-size: 24px;
   font-weight: 600;
-  color: #1c1f2c;
-  background-color: #ffffff;
-  border: 1px solid #a0a0a0;
-  outline: 1px solid inset #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.button-group button:hover {
-  border-color: #a31418;
+/* Style for form groups */
+.form-group {
+  margin-bottom: 1.5rem;
 }
 
-.button-group button:focus {
-  z-index: 10;
+/* Label style */
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 0.5rem;
 }
 
-.button-left {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+/* Input and select styles */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.button-middle {
-  margin-left: -1px;
+/* Button style */
+.btn-submit {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--brand); /* Bootstrap primary color */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.button-right {
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
-  margin-left: -1px;
-}
-
-/* COMPONENT 3 - NAVIGATION */
-.button-group-navigation {
-  display: inline-flex;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  isolation: isolate;
-}
-
-.button-group-navigation button {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.5rem;
-  color: #a0a0a0;
-  background-color: #ffffff;
-  border: 1px solid #a0a0a0;
-  outline: 1px solid inset #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-}
-
-.button-group-navigation button:hover {
-  border-color: #a31418;
-}
-
-.button-group-navigation button:focus {
-  z-index: 10;
-}
-
-.button-left-navigation {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
-}
-
-.button-right-navigation {
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
-  margin-left: -1px;
-}
-
-.icon {
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
-/* COMPONENT 4 - PRIMARY BUTTONS */
+/* COMPONENT 2 - BUTTONS */
 .button-xs {
   padding: 0.25rem 0.5rem;
   font-size: 12px;
@@ -211,94 +148,40 @@
   background-color: #ff4d52;
 }
 
-/* COMPONENT 5 - SECONDARY BUTTONS */
-
-.button-secondary-xs {
-  padding: 0.25rem 0.5rem;
-  font-size: 12px;
-  background-color: white;
-  color: #1f2937;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
-}
-
-.button-secondary-xs:hover {
-  border-color: #a31418;
-}
-
-.button-secondary-sm {
-  padding: 0.25rem 0.5rem;
+/* COMPONENT 3 - INPUT */
+.label {
+  display: block;
+  line-height: 1.5;
+  font-weight: 500;
   font-size: 16px;
-  background-color: white;
-  color: #1f2937;
-  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1c1f2c;
+}
+
+.input-container {
+  margin-top: 0.5rem;
+  max-width: 270px;
+  padding: 0.5rem;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
   border-radius: 0.375rem;
+  border: 0;
+  padding: 0.375rem 0.75rem;
+  color: #1c1f2c;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
+  outline: 1px solid #a0a0a0;
+  line-height: 1.5;
+  font-size: 16px;
 }
 
-.button-secondary-sm:hover {
-  border-color: #a31418;
+.input-field:focus {
+  outline: 2px inset var(--brand);
 }
 
-.button-secondary-md {
-  padding: 0.375rem 0.625rem;
-  font-size: 20px;
-  background-color: white;
-  color: #1f2937;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
-}
-
-.button-secondary-md:hover {
-  border-color: #a31418;
-}
-
-.button-secondary-lg {
-  padding: 0.5rem 0.75rem;
-  font-size: 24px;
-  background-color: white;
-  color: #1f2937;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
-}
-
-.button-secondary-lg:hover {
-  border-color: #a31418;
-}
-
-.button-secondary-xl {
-  padding: 0.625rem 0.875rem;
-  font-size: 28px;
-  background-color: white;
-  color: #1f2937;
-  font-weight: 600;
-  border-radius: 0.375rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border: 1px solid #a0a0a0;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
-}
-
-.button-secondary-xl:hover {
-  border-color: #a31418;
-}
-
-/* COMPONENT 6 - TEXTAREA */
+/* COMPONENT 4 - TEXTAREA */
 .label-textarea {
   display: block;
   font-size: 16px;
@@ -307,9 +190,9 @@
 }
 
 .textarea {
-  display: block;
   font-size: 16px;
-  width: 70%;
+  width: 80%;
+  max-width: 850px;
   border-radius: 0.375rem;
   border: 0;
   padding: 0.375rem;
@@ -317,7 +200,7 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   border: 1px solid #a0a0a0;
   outline: none;
-  resize: none;
+
   font-family: "OpenSans", sans-serif;
 }
 
@@ -325,25 +208,29 @@
   outline: 2px inset #a31418;
 }
 
-/* COMPONENT 7 - LIST */
+/* COMPONENT 5 - LIST */
 .fieldset {
   border: 1px solid #a0a0a0;
   padding: 1rem;
-  width: 69%;
+  width: 80%;
+  max-width: 850px;
 }
 
-.members-list {
+/* Contenedor de la lista de la tripulación */
+.crew-list {
   margin-top: 1rem;
 }
 
-.member-item {
+/* Cada ítem de la tripulación */
+.crew-item {
   display: flex;
-  align-items: start;
+  align-items: center; /* Alinear verticalmente al centro */
   padding: 1rem 0;
   border-bottom: 1px solid #a0a0a0;
   justify-content: space-between;
 }
 
+/* Estilo para la etiqueta del miembro de la tripulación */
 .label-fieldset {
   display: block;
   min-width: 0;
@@ -353,21 +240,79 @@
   color: #1f2937;
 }
 
+/* Estilo para el checkbox */
 .checkbox-fieldset {
   height: 1rem;
   width: 1rem;
   border-radius: 0.25rem;
   border: 1px solid #a0a0a0;
-  appearance: none;
+  appearance: none; /* Quitar estilo por defecto del checkbox */
   background-color: #fff;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
+/* Estilo cuando el checkbox está seleccionado */
 .checkbox-fieldset:checked {
-  background-color: #ed1c24;
+  background-color: #ed1c24; /* Color de fondo al marcar */
 }
 
+/* Estilo cuando el checkbox tiene el foco */
 .checkbox-fieldset:focus {
-  outline: 2px solid #a31418;
+  outline: 2px solid #a31418; /* Contorno al enfocar */
+}
+
+/* Compoonent 6 booking card */
+.flight-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.airline-name {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.flight-number {
+  font-size: 1em;
+  color: #555;
+}
+
+.flight-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.departure,
+.arrival {
+  text-align: left;
+}
+
+.location {
+  font-weight: bold;
+}
+
+.time {
+  display: block;
+  color: #777;
+}
+
+.duration {
+  font-size: 0.9em;
+  color: #777;
+}
+
+.book-button {
+  background-color: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1em;
 }

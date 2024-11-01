@@ -552,7 +552,171 @@
     <section id="components" class="components-section container_utility">
       <h2 class="section_title_utility">Components</h2>
 
-      <!-- ^ Component 1 Inputs -->
+      <!-- ^ Component 1 Booking  -->
+      <div class="components-block">
+        <h4 class="sub_section_title_utility">- Booking Block</h4>
+        <div class="flight-booking">
+          <form class="booking-form">
+            <div class="form-group">
+              <label for="departure" class="form-label">Departure City:</label>
+              <input
+                type="text"
+                id="departure"
+                name="departure"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="arrival" class="form-label">Arrival City:</label>
+              <input
+                type="text"
+                id="arrival"
+                name="arrival"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="date" class="form-label">Travel Date:</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                class="form-input"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="passengers" class="form-label"
+                >Number of Passengers:</label
+              >
+              <select
+                id="passengers"
+                name="passengers"
+                class="form-select"
+                required
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-submit">Search Flights</button>
+          </form>
+        </div>
+        <div class="code">
+          <pre><code>
+&lt;form class="booking-form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="departure" class="form-label"&gt;Departure City:&lt;/label&gt;
+    &lt;input
+      type="text"
+      id="departure"
+      name="departure"
+      class="form-input"
+      required/&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="arrival" class="form-label"&gt;Arrival City:&lt;/label&gt;
+    &lt;input
+      type="text"
+      id="arrival"
+      name="arrival"
+      class="form-input"
+      required/&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="date" class="form-label"&gt;Travel Date:&lt;/label&gt;
+    &lt;input
+      type="date"
+      id="date"
+      name="date"
+      class="form-input"
+      required/&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="passengers" class="form-label"&gt;Number of Passengers:&lt;/label&gt;
+    &lt;select
+      id="passengers"
+      name="passengers"
+      class="form-select"
+      required&gt;
+      &lt;option value="1"&gt;1&lt;/option&gt;
+      &lt;option value="2"&gt;2&lt;/option&gt;
+      &lt;option value="3"&gt;3&lt;/option&gt;
+      &lt;option value="4"&gt;4&lt;/option&gt;
+      &lt;option value="5"&gt;5&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="btn-submit"&gt;Search Flights&lt;/button&gt;
+&lt;/form&gt;
+          </code></pre>
+        </div>
+      </div>
+
+      <!-- ^ Component 2 Buttons -->
+      <div class="components-block">
+        <h4 class="sub_section_title_utility">- Buttons</h4>
+        <button type="button" class="button-xs">Button text</button>
+        <button type="button" class="button-sm">Button text</button>
+        <button type="button" class="button-md">Button text</button>
+        <button type="button" class="button-lg">Button text</button>
+        <button type="button" class="button-xl">Button text</button>
+        <div class="code">
+          <pre><code>
+&lt;button type="button" class="button-xs"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-sm"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-md"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-lg"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-xl"&gt;Button text&lt;/button&gt;
+      
+      </code></pre>
+        </div>
+      </div>
+
+      <!-- ^ Component 3 booking card -->
+      <div class="components-block">
+        <h4 class="sub_section_title_utility">- Booking Card</h4>
+        <div class="flight-card">
+          <p class="flight-number">Flight No: AB123</p>
+          <div class="flight-info">
+            <div class="departure">
+              <span class="location">New York (JFK)</span>
+              <span class="time">10:00 AM</span>
+            </div>
+            <div class="arrival">
+              <span class="location">Los Angeles (LAX)</span>
+              <span class="time">1:00 PM</span>
+            </div>
+          </div>
+          <p class="duration">Duration: 6h</p>
+          <button class="book-button">Book Now</button>
+        </div>
+        <div class="code">
+          <pre><code>
+&lt;div class=&quot;flight-card&quot;&gt;
+    &lt;p class=&quot;flight-number&quot;&gt;Flight No: AB123&lt;/p&gt;
+    &lt;div class=&quot;flight-info&quot;&gt;
+        &lt;div class=&quot;departure&quot;&gt;
+            &lt;span class=&quot;location&quot;&gt;New York (JFK)&lt;/span&gt;
+            &lt;span class=&quot;time&quot;&gt;10:00 AM&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;arrival&quot;&gt;
+            &lt;span class=&quot;location&quot;&gt;Los Angeles (LAX)&lt;/span&gt;
+            &lt;span class=&quot;time&quot;&gt;1:00 PM&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=&quot;duration&quot;&gt;Duration: 6h&lt;/p&gt;
+    &lt;button class=&quot;book-button&quot;&gt;Book Now&lt;/button&gt;
+&lt;/div&gt;
+          </code></pre>
+        </div>
+      </div>
+
+      <!-- ^ Component 4 Inputs -->
       <div class="components-block">
         <h4 class="sub_section_title_utility">- Inputs</h4>
         <div class="input-container">
@@ -573,39 +737,20 @@
         <div class="code">
           <pre><code>
 &lt;div class="input-container"&gt;
-&lt;label for="email" class="label"&gt;Email&lt;/label&gt;
-  &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
+ &lt;label for="email" class="label"&gt;Email&lt;/label&gt;
+ &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
 &lt;/div&gt;
     
       
 &lt;div class="input-container"&gt;
-&lt;label for="email" class="label"&gt;Email&lt;/label&gt;
-  &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
+ &lt;label for="email" class="label"&gt;Email&lt;/label&gt;
+ &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
 &lt;/div&gt;
               </code></pre>
         </div>
       </div>
-      <!-- ^ Component 2 Buttons -->
-      <div class="components-block">
-        <h4 class="sub_section_title_utility">- Buttons</h4>
-        <button type="button" class="button-xs">Button text</button>
-        <button type="button" class="button-sm">Button text</button>
-        <button type="button" class="button-md">Button text</button>
-        <button type="button" class="button-lg">Button text</button>
-        <button type="button" class="button-xl">Button text</button>
-        <div class="code">
-          <pre><code>
-&lt;button type="button" class="button-xs"&gt;Button text&lt;/button&gt;
-&lt;button type="button" class="button-sm"&gt;Button text&lt;/button&gt;
-&lt;button type="button" class="button-md"&gt;Button text&lt;/button&gt;
-&lt;button type="button" class="button-lg"&gt;Button text&lt;/button&gt;
-&lt;button type="button" class="button-xl"&gt;Button text&lt;/button&gt;
 
-</code></pre>
-        </div>
-      </div>
-
-      <!-- ^ Component 6 TextArea-->
+      <!-- ^ Component 5 TextArea-->
       <div class="components-block">
         <h4 class="sub_section_title_utility">- Text Area</h4>
         <div>
@@ -622,156 +767,58 @@
         <div class="code">
           <pre><code>
 &lt;div&gt;
-&lt;label for="comment" class="label-textarea"&gt;Add your comment&lt;/label&gt; 
-&lt;textarea rows="4" name="comment" id="comment" class="textarea"&gt;&lt;/textarea&gt;
+ &lt;label for="comment" class="label-textarea"&gt;Add your comment&lt;/label&gt; 
+ &lt;textarea rows="4" name="comment" id="comment" class="textarea"&gt;&lt;/textarea&gt;
 &lt;/div&gt;
         </code></pre>
         </div>
       </div>
 
-      <!-- ^ Component 3 -->
-      <div class="components-block">
-        <h4 class="sub_section_title_utility">- Navigation</h4>
-        <span class="button-group-navigation">
-          <button type="button" class="button-left-navigation">
-            <svg
-              class="icon"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </button>
-          <button type="button" class="button-right-navigation">
-            <svg
-              class="icon"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </button>
-        </span>
-        <div class="code">
-          &lt;span class="button-group-navigation"&gt; &lt;button type="button"
-          class="button-left-navigation"&gt; &lt;svg class="icon" viewBox="0 0
-          20 20" fill="currentColor" aria-hidden="true"&gt; &lt;path
-          fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72
-          3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1
-          0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /&gt;
-          &lt;/svg&gt; &lt;/button&gt; &lt;button type="button"
-          class="button-right-navigation"&gt; &lt;svg class="icon" viewBox="0 0
-          20 20" fill="currentColor" aria-hidden="true"&gt; &lt;path
-          fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75
-          0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22
-          6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /&gt; &lt;/svg&gt;
-          &lt;/button&gt; &lt;/span&gt;
-        </div>
-      </div>
-
-      <!-- ^ Component 5 -->
-      <div class="components-block">
-        <h4 class="sub_section_title_utility">- Secondary Buttons</h4>
-        <button type="button" class="button-secondary-xs">Button text</button>
-        <button type="button" class="button-secondary-sm">Button text</button>
-        <button type="button" class="button-secondary-md">Button text</button>
-        <button type="button" class="button-secondary-lg">Button text</button>
-        <button type="button" class="button-secondary-xl">Button text</button>
-        <div class="code">
-          &lt;button type="button" class="button-secondary-xs"&gt;Button
-          text&lt;/button&gt; &lt;button type="button"
-          class="button-secondary-sm"&gt;Button text&lt;/button&gt; &lt;button
-          type="button" class="button-secondary-md"&gt;Button
-          text&lt;/button&gt; &lt;button type="button"
-          class="button-secondary-lg"&gt;Button text&lt;/button&gt; &lt;button
-          type="button" class="button-secondary-xl"&gt;Button
-          text&lt;/button&gt;
-        </div>
-      </div>
-
-      <!-- ^ Component 7 -->
+      <!-- ^ Component  6 Lists -->
       <div class="components-block">
         <h4 class="sub_section_title_utility">- Lists</h4>
         <fieldset class="fieldset">
-          <div class="members-list">
-            <div class="member-item">
-              <div class="member-label">
-                <label for="person-1" class="label-fieldset"
-                  >Annette Black</label
+          <div class="crew-list">
+            <div class="crew-item">
+              <div class="crew-label">
+                <label for="crew-1" class="label-fieldset"
+                  >Captain John Smith</label
                 >
               </div>
-              <div class="member-checkbox">
+              <div class="crew-checkbox">
                 <input
-                  id="person-1"
-                  name="person-1"
+                  id="crew-1"
+                  name="crew-1"
                   type="checkbox"
                   class="checkbox-fieldset"
                 />
               </div>
             </div>
-            <div class="member-item">
-              <div class="member-label">
-                <label for="person-2" class="label-fieldset">Cody Fisher</label>
+            <div class="crew-item">
+              <div class="crew-label">
+                <label for="crew-2" class="label-fieldset"
+                  >First Officer Emily Davis</label
+                >
               </div>
-              <div class="member-checkbox">
+              <div class="crew-checkbox">
                 <input
-                  id="person-2"
-                  name="person-2"
+                  id="crew-2"
+                  name="crew-2"
                   type="checkbox"
                   class="checkbox-fieldset"
                 />
               </div>
             </div>
-            <div class="member-item">
-              <div class="member-label">
-                <label for="person-3" class="label-fieldset"
-                  >Courtney Henry</label
+            <div class="crew-item">
+              <div class="crew-label">
+                <label for="crew-3" class="label-fieldset"
+                  >Flight Attendant Mike Johnson</label
                 >
               </div>
-              <div class="member-checkbox">
+              <div class="crew-checkbox">
                 <input
-                  id="person-3"
-                  name="person-3"
-                  type="checkbox"
-                  class="checkbox-fieldset"
-                />
-              </div>
-            </div>
-            <div class="member-item">
-              <div class="member-label">
-                <label for="person-4" class="label-fieldset"
-                  >Kathryn Murphy</label
-                >
-              </div>
-              <div class="member-checkbox">
-                <input
-                  id="person-4"
-                  name="person-4"
-                  type="checkbox"
-                  class="checkbox-fieldset"
-                />
-              </div>
-            </div>
-            <div class="member-item">
-              <div class="member-label">
-                <label for="person-5" class="label-fieldset"
-                  >Theresa Webb</label
-                >
-              </div>
-              <div class="member-checkbox">
-                <input
-                  id="person-5"
-                  name="person-5"
+                  id="crew-3"
+                  name="crew-3"
                   type="checkbox"
                   class="checkbox-fieldset"
                 />
@@ -780,53 +827,37 @@
           </div>
         </fieldset>
         <div class="code">
-          &lt;fieldset class="fieldset"&gt; &lt;div class="members-list"&gt;
-          &lt;div class="member-item"&gt; &lt;div class="member-label"&gt;
-          &lt;label for="person-1" class="label-fieldset"&gt;Annette
-          Black&lt;/label&gt; &lt;/div&gt; &lt;div class="member-checkbox"&gt;
-          &lt;input id="person-1" name="person-1" type="checkbox"
-          class="checkbox-fieldset"/&gt; &lt;/div&gt; &lt;/div&gt; &lt;div
-          class="member-item"&gt; &lt;div class="member-label"&gt; &lt;label
-          for="person-2" class="label-fieldset"&gt;Cody Fisher&lt;/label&gt;
-          &lt;/div&gt; &lt;div class="member-checkbox"&gt; &lt;input
-          id="person-2" name="person-2" type="checkbox"
-          class="checkbox-fieldset"/&gt; &lt;/div&gt; &lt;/div&gt; &lt;div
-          class="member-item"&gt; &lt;div class="member-label"&gt;
-          &nbsp;&nbsp;&nbsp;&lt;label for="person-3"
-          class="label-fieldset"&gt;Courtney Henry&lt;/label&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-checkbox"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
-          id="person-3" name="person-3" type="checkbox"
-          class="checkbox-fieldset"/&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-item"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-label"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
-          for="person-4" class="label-fieldset"&gt;Kathryn Murphy&lt;/label&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-checkbox"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
-          id="person-4" name="person-4" type="checkbox"
-          class="checkbox-fieldset"/&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-item"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-label"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
-          for="person-5" class="label-fieldset"&gt;Theresa Webb&lt;/label&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
-          class="member-checkbox"&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
-          id="person-5" name="person-5" type="checkbox"
-          class="checkbox-fieldset"/&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&lt;/div&gt;
-          &lt;/fieldset&gt;
+          <pre><code>
+&lt;div class="crew-list"&gt; 
+  &lt;div class="crew-item"&gt;
+    &lt;div class="crew-label"&gt;
+      &lt;label for="crew-1" class="label-fieldset"&gt;Captain John Smith&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="crew-checkbox"&gt;
+      &lt;input id="crew-1" name="crew-1" type="checkbox" class="checkbox-fieldset"/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="crew-item"&gt;
+    &lt;div class="crew-label"&gt;
+     &lt;label for="crew-2" class="label-fieldset"&gt;First Officer Emily Davis&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="crew-checkbox"&gt;
+     &lt;input id="crew-2" name="crew-2" type="checkbox" class="checkbox-fieldset"/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="crew-item"&gt;
+    &lt;div class="crew-label"&gt;
+      &lt;label for="crew-3" class="label-fieldset"&gt;Flight Attendant Mike Johnson&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="crew-checkbox"&gt;
+      &lt;input id="crew-3" name="crew-3" type="checkbox" class="checkbox-fieldset"/&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+ 
+            </code></pre>
         </div>
       </div>
     </section>

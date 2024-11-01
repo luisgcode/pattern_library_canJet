@@ -23,6 +23,7 @@
 
 /* typescale section */
 .typography-block-typescale {
+  margin-bottom: 5rem;
   .typescale-chart {
     max-width: 800px;
   }

@@ -5,6 +5,7 @@
 .colors-block-row {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 5rem;
   gap: 3rem;
 }
 

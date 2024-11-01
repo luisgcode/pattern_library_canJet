@@ -1,5 +1,9 @@
 .components-block {
   margin: 1rem 0 7rem 0;
+
+  p {
+    margin-bottom: 2rem;
+  }
 }
 
 .code {

@@ -17,6 +17,10 @@ p + p {
   margin-bottom: 2rem;
 }
 
+p {
+  max-width: 90ch;
+}
+
 a {
   text-decoration: none;
   color: var(--neutral-dark);

@@ -1,15 +1,5 @@
 .data-wrapp {
   width: 100%;
-
-  .graph-container {
-    img {
-      max-width: 800px;
-    }
-
-    p {
-      width: 85ch;
-    }
-  }
 }
 
 /* Details of Scatter Plot */

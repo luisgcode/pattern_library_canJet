@@ -1,0 +1,25 @@
+/* main block of laout */
+.layout-wrapp {
+}
+
+.grid-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+.grid-layout-row {
+  display: flex;
+  justify-content: space-around;
+  background: #bcdba8;
+  padding: 1rem 1.2rem;
+  gap: 2rem;
+}
+
+.block-layout {
+  padding: 1rem;
+  background: #d8eacc;
+  width: 100%;
+  text-align: center;
+}

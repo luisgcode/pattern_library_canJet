@@ -2,17 +2,21 @@
   width: 100%;
 }
 
+.graph-container {
+  margin: 3rem 0 5rem 0;
+}
+
 /* ? Details of Scatter Plot */
 .circle {
   fill: #ff4d52; /* Color de los círculos */
 }
+
 .axis-label {
   font-size: 14px;
   font-weight: bold;
 }
 
 /* ? Details of line chart stacked */
-
 @media (max-width: 780px) {
   .graph-box {
     max-width: 100%; /* Make it full width on smaller screens */

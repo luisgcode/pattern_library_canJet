@@ -3,9 +3,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10rem;
+  gap: 5rem;
+  padding: 0 2rem;
 
   .hero-illustration img {
     width: 350px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .hero-content {
+    order: 2;
+  }
+
+  .hero-illustration img {
+    height: 200px;
   }
 }

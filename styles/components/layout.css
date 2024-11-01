@@ -2,11 +2,11 @@
 .layout-wrapp {
 }
 
+/* Layout */
 .grid-layout {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
-  margin-top: 3rem;
+  margin: 3rem 0;
 }
 
 .grid-layout-row {
@@ -15,6 +15,7 @@
   background: #bcdba8;
   padding: 1rem 1.2rem;
   gap: 2rem;
+  margin: 1rem 0;
 }
 
 .block-layout {
@@ -22,4 +23,24 @@
   background: #d8eacc;
   width: 100%;
   text-align: center;
+}
+
+/* Breakpoints */
+.breakpoints-table {
+  width: 800px;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.breakpoints-table thead {
+  background: #bcdba8;
+}
+
+.breakpoints-table thead th {
+  padding: 1rem 0.5rem; /* Aplicar padding directamente a <th> */
+}
+
+td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.345);
 }

@@ -6,14 +6,14 @@
 .typography-block-intro {
   .heading-one-allura {
     font-weight: bold;
-    font-size: 7rem;
+    font-size: clamp(5rem, 10vw, 7rem);
     font-family: "Allura", cursive;
   }
 
   .heading-two-monserrat {
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
-    font-size: 4rem;
+    font-size: clamp(3rem, 5vw, 4rem);
   }
 
   .regular-one-open {
@@ -35,26 +35,26 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.345);
 
     .headingOne {
-      font-size: 7rem;
+      font-size: clamp(5rem, 10vw, 7rem);
       font-family: "Allura", cursive;
       font-weight: bold;
     }
 
     .headingTwo {
       font-family: "Montserrat", sans-serif;
-      font-size: 4rem;
+      font-size: clamp(3rem, 5vw, 4rem);
       font-weight: bold;
     }
 
     .headingThree {
       font-family: "Montserrat", sans-serif;
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: bold;
     }
 
     .headingFour {
       font-family: "Montserrat", sans-serif;
-      font-size: 2.2rem;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
       font-weight: bold;
     }
 
@@ -86,4 +86,10 @@
 
 /* paragraphs section */
 .typography-block-paragraphs {
+}
+
+@media screen and (max-width: 500px) {
+  .type-chart-row {
+    font-size: 1.3rem;
+  }
 }

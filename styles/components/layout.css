@@ -25,11 +25,17 @@
   text-align: center;
 }
 
-/* Breakpoints */
+/* Contenedor para la tabla */
+.table-responsive {
+  overflow-x: auto; /* Permitir desplazamiento horizontal */
+  margin-top: 3rem; /* Espacio en la parte superior */
+}
+
 .breakpoints-table {
-  width: 800px;
-  margin-top: 3rem;
+  width: 100%; /* Cambia a 100% para que ocupe todo el ancho disponible */
+  max-width: 800px; /* Mantén el ancho máximo */
   text-align: left;
+  border-collapse: collapse; /* Opcional: colapsar bordes */
 }
 
 .breakpoints-table thead {
@@ -43,4 +49,13 @@
 td {
   padding: 1rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.345);
+}
+
+/* Estilos adicionales para responsividad */
+@media (max-width: 600px) {
+  .breakpoints-table {
+    display: block;
+    overflow-x: auto;
+    font-size: 1.2rem;
+  }
 }

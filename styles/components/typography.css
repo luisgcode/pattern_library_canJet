@@ -1,68 +1,88 @@
+/* Main block color section */
 .typography-wrapp {
 }
 
-.intro .allura {
-  font-size: 7rem;
-  font-family: "Allura", cursive;
-  font-weight: bold;
-}
-
-.intro .monserrat {
-  font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
-  font-weight: bold;
-}
-
-.type-chart {
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-}
-
-.type-chart-row {
-  display: flex;
-  padding: 2rem 0;
-  align-items: center;
-
-  .headingOne {
+/* Intro section */
+.typography-block-intro {
+  .heading-one-allura {
+    font-weight: bold;
     font-size: 7rem;
     font-family: "Allura", cursive;
-    font-weight: bold;
   }
 
-  .headingTwo {
+  .heading-two-monserrat {
+    font-weight: bold;
     font-family: "Montserrat", sans-serif;
     font-size: 4rem;
-    font-weight: bold;
   }
 
-  .headingThree {
-    font-family: "Montserrat", sans-serif;
-    font-size: 3.5rem;
-    font-weight: bold;
+  .regular-one-open {
+    font-size: 2.5rem;
+  }
+}
+
+/* typescale section */
+.typography-block-typescale {
+  .typescale-chart {
+    max-width: 800px;
   }
 
-  .headingFour {
-    font-family: "Montserrat", sans-serif;
-    font-size: 2.2rem;
-    font-weight: bold;
-  }
+  .type-chart-row {
+    display: flex;
+    padding: 2rem 0;
+    align-items: center;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.345);
 
-  .headingFive {
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.4rem;
-    font-weight: bold;
-  }
+    .headingOne {
+      font-size: 7rem;
+      font-family: "Allura", cursive;
+      font-weight: bold;
+    }
 
-  .buttons {
-    font-weight: bold;
-  }
+    .headingTwo {
+      font-family: "Montserrat", sans-serif;
+      font-size: 4rem;
+      font-weight: bold;
+    }
 
-  .type-chart-row-title {
-    width: 50%;
-  }
+    .headingThree {
+      font-family: "Montserrat", sans-serif;
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
 
-  .type-chart-row-size {
-    width: 25%;
+    .headingFour {
+      font-family: "Montserrat", sans-serif;
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+
+    .headingFive {
+      font-family: "Montserrat", sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .buttons {
+      font-weight: bold;
+    }
+
+    .type-chart-row-name {
+      margin: 0;
+    }
+
+    .type-chart-row-title {
+      width: 50%;
+      margin: 0;
+    }
+
+    .type-chart-row-size {
+      width: 25%;
+      margin: 0;
+    }
   }
+}
+
+/* paragraphs section */
+.typography-block-paragraphs {
 }

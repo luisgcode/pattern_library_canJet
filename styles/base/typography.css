@@ -9,8 +9,12 @@ h3,
 h4,
 p {
   margin: 0;
-  line-height: 1;
+  line-height: 1.8;
   padding: 0;
+}
+
+p + p {
+  margin-bottom: 2rem;
 }
 
 a {

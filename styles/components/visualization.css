@@ -2,15 +2,12 @@
   width: 100%;
 
   .graph-container {
-    margin-bottom: 10rem;
     img {
       max-width: 800px;
     }
 
     p {
       width: 85ch;
-      line-height: 1.6;
-      margin-bottom: 2rem;
     }
   }
 }
@@ -22,8 +19,4 @@
 .axis-label {
   font-size: 14px;
   font-weight: bold;
-}
-
-.graph-box {
-  margin-top: 3rem;
 }

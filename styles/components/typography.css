@@ -90,6 +90,10 @@
 
 @media screen and (max-width: 500px) {
   .type-chart-row {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  .type-chart-row-size,
+  .type-chart-row-name {
+    text-align: center;
   }
 }

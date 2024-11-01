@@ -551,23 +551,283 @@
 
     <section id="components" class="components-section container_utility">
       <h2 class="section_title_utility">Components</h2>
+
+      <!-- ^ Component 1 Inputs -->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 1</h4>
+        <h4 class="sub_section_title_utility">- Inputs</h4>
+        <div class="input-container">
+          <label for="name" class="label">First Name</label>
+          <input type="text" name="fName" id="fName" class="input-field" />
+        </div>
+        <div class="input-container">
+          <label for="email" class="label">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="input-field"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div class="code">
+          <pre><code>
+&lt;div class="input-container"&gt;
+&lt;label for="email" class="label"&gt;Email&lt;/label&gt;
+  &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
+&lt;/div&gt;
+    
+      
+&lt;div class="input-container"&gt;
+&lt;label for="email" class="label"&gt;Email&lt;/label&gt;
+  &lt;input type="email" name="email" id="email" class="input-field" placeholder="you@example.com" /&gt; 
+&lt;/div&gt;
+              </code></pre>
+        </div>
       </div>
+      <!-- ^ Component 2 Buttons -->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 2</h4>
+        <h4 class="sub_section_title_utility">- Buttons</h4>
+        <button type="button" class="button-xs">Button text</button>
+        <button type="button" class="button-sm">Button text</button>
+        <button type="button" class="button-md">Button text</button>
+        <button type="button" class="button-lg">Button text</button>
+        <button type="button" class="button-xl">Button text</button>
+        <div class="code">
+          <pre><code>
+&lt;button type="button" class="button-xs"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-sm"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-md"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-lg"&gt;Button text&lt;/button&gt;
+&lt;button type="button" class="button-xl"&gt;Button text&lt;/button&gt;
+
+</code></pre>
+        </div>
       </div>
+
+      <!-- ^ Component 6 TextArea-->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 3</h4>
+        <h4 class="sub_section_title_utility">- Text Area</h4>
+        <div>
+          <label for="comment" class="label-textarea">Add your comment</label>
+          <div class="mt-2">
+            <textarea
+              rows="4"
+              name="comment"
+              id="comment"
+              class="textarea"
+            ></textarea>
+          </div>
+        </div>
+        <div class="code">
+          <pre><code>
+&lt;div&gt;
+&lt;label for="comment" class="label-textarea"&gt;Add your comment&lt;/label&gt; 
+&lt;textarea rows="4" name="comment" id="comment" class="textarea"&gt;&lt;/textarea&gt;
+&lt;/div&gt;
+        </code></pre>
+        </div>
       </div>
+
+      <!-- ^ Component 3 -->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 4</h4>
+        <h4 class="sub_section_title_utility">- Navigation</h4>
+        <span class="button-group-navigation">
+          <button type="button" class="button-left-navigation">
+            <svg
+              class="icon"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72 3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1 0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <button type="button" class="button-right-navigation">
+            <svg
+              class="icon"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </span>
+        <div class="code">
+          &lt;span class="button-group-navigation"&gt; &lt;button type="button"
+          class="button-left-navigation"&gt; &lt;svg class="icon" viewBox="0 0
+          20 20" fill="currentColor" aria-hidden="true"&gt; &lt;path
+          fill-rule="evenodd" d="M11.78 5.22a.75.75 0 0 1 0 1.06L8.06 10l3.72
+          3.72a.75.75 0 1 1-1.06 1.06l-4.25-4.25a.75.75 0 0 1
+          0-1.06l4.25-4.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" /&gt;
+          &lt;/svg&gt; &lt;/button&gt; &lt;button type="button"
+          class="button-right-navigation"&gt; &lt;svg class="icon" viewBox="0 0
+          20 20" fill="currentColor" aria-hidden="true"&gt; &lt;path
+          fill-rule="evenodd" d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75
+          0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22
+          6.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" /&gt; &lt;/svg&gt;
+          &lt;/button&gt; &lt;/span&gt;
+        </div>
       </div>
+
+      <!-- ^ Component 5 -->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 5</h4>
+        <h4 class="sub_section_title_utility">- Secondary Buttons</h4>
+        <button type="button" class="button-secondary-xs">Button text</button>
+        <button type="button" class="button-secondary-sm">Button text</button>
+        <button type="button" class="button-secondary-md">Button text</button>
+        <button type="button" class="button-secondary-lg">Button text</button>
+        <button type="button" class="button-secondary-xl">Button text</button>
+        <div class="code">
+          &lt;button type="button" class="button-secondary-xs"&gt;Button
+          text&lt;/button&gt; &lt;button type="button"
+          class="button-secondary-sm"&gt;Button text&lt;/button&gt; &lt;button
+          type="button" class="button-secondary-md"&gt;Button
+          text&lt;/button&gt; &lt;button type="button"
+          class="button-secondary-lg"&gt;Button text&lt;/button&gt; &lt;button
+          type="button" class="button-secondary-xl"&gt;Button
+          text&lt;/button&gt;
+        </div>
       </div>
+
+      <!-- ^ Component 7 -->
       <div class="components-block">
-        <h4 class="sub_section_title_utility">- Component 6</h4>
+        <h4 class="sub_section_title_utility">- Lists</h4>
+        <fieldset class="fieldset">
+          <div class="members-list">
+            <div class="member-item">
+              <div class="member-label">
+                <label for="person-1" class="label-fieldset"
+                  >Annette Black</label
+                >
+              </div>
+              <div class="member-checkbox">
+                <input
+                  id="person-1"
+                  name="person-1"
+                  type="checkbox"
+                  class="checkbox-fieldset"
+                />
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-label">
+                <label for="person-2" class="label-fieldset">Cody Fisher</label>
+              </div>
+              <div class="member-checkbox">
+                <input
+                  id="person-2"
+                  name="person-2"
+                  type="checkbox"
+                  class="checkbox-fieldset"
+                />
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-label">
+                <label for="person-3" class="label-fieldset"
+                  >Courtney Henry</label
+                >
+              </div>
+              <div class="member-checkbox">
+                <input
+                  id="person-3"
+                  name="person-3"
+                  type="checkbox"
+                  class="checkbox-fieldset"
+                />
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-label">
+                <label for="person-4" class="label-fieldset"
+                  >Kathryn Murphy</label
+                >
+              </div>
+              <div class="member-checkbox">
+                <input
+                  id="person-4"
+                  name="person-4"
+                  type="checkbox"
+                  class="checkbox-fieldset"
+                />
+              </div>
+            </div>
+            <div class="member-item">
+              <div class="member-label">
+                <label for="person-5" class="label-fieldset"
+                  >Theresa Webb</label
+                >
+              </div>
+              <div class="member-checkbox">
+                <input
+                  id="person-5"
+                  name="person-5"
+                  type="checkbox"
+                  class="checkbox-fieldset"
+                />
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div class="code">
+          &lt;fieldset class="fieldset"&gt; &lt;div class="members-list"&gt;
+          &lt;div class="member-item"&gt; &lt;div class="member-label"&gt;
+          &lt;label for="person-1" class="label-fieldset"&gt;Annette
+          Black&lt;/label&gt; &lt;/div&gt; &lt;div class="member-checkbox"&gt;
+          &lt;input id="person-1" name="person-1" type="checkbox"
+          class="checkbox-fieldset"/&gt; &lt;/div&gt; &lt;/div&gt; &lt;div
+          class="member-item"&gt; &lt;div class="member-label"&gt; &lt;label
+          for="person-2" class="label-fieldset"&gt;Cody Fisher&lt;/label&gt;
+          &lt;/div&gt; &lt;div class="member-checkbox"&gt; &lt;input
+          id="person-2" name="person-2" type="checkbox"
+          class="checkbox-fieldset"/&gt; &lt;/div&gt; &lt;/div&gt; &lt;div
+          class="member-item"&gt; &lt;div class="member-label"&gt;
+          &nbsp;&nbsp;&nbsp;&lt;label for="person-3"
+          class="label-fieldset"&gt;Courtney Henry&lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-checkbox"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+          id="person-3" name="person-3" type="checkbox"
+          class="checkbox-fieldset"/&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-item"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-label"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+          for="person-4" class="label-fieldset"&gt;Kathryn Murphy&lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-checkbox"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+          id="person-4" name="person-4" type="checkbox"
+          class="checkbox-fieldset"/&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-item"&gt; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-label"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label
+          for="person-5" class="label-fieldset"&gt;Theresa Webb&lt;/label&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div
+          class="member-checkbox"&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input
+          id="person-5" name="person-5" type="checkbox"
+          class="checkbox-fieldset"/&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; &nbsp;&nbsp;&lt;/div&gt;
+          &lt;/fieldset&gt;
+        </div>
       </div>
     </section>
 

@@ -58,3 +58,10 @@
     display: block; /* Mostrar menú móvil cuando está activo */
   }
 }
+
+.btn-dashboard {
+  background: var(--brand);
+  padding: 0.3rem 0.5rem;
+  color: white;
+  border-radius: 3px;
+}

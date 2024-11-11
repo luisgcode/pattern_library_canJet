@@ -58,7 +58,7 @@ const progressGauge = svgGauge
   .append("path")
   .datum({ endAngle: scaleGauge(0) }) // Comienza desde 0
   .attr("d", valueArcGauge)
-  .attr("fill", "#4CAF50");
+  .attr("fill", "#ff4d52");
 
 // Configuración de la aguja
 const needleGauge = svgGauge

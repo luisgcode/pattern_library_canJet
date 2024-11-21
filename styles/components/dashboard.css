@@ -2,24 +2,58 @@
   flex-wrap: wrap;
   display: flex;
   gap: 2rem;
+  max-width: 100%;
+  margin: 0.5rem 0;
+  padding: 1rem 0;
 }
 
-.dashboard-chart {
+.dashboard-chart-box {
   overflow: hidden;
-  width: 280px;
-  height: 200px;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 2rem 1rem;
+  background: white;
+}
+
+/* each chart */
+/* 
+
+.dashboard-chart-large {
+  overflow: hidden;
+  width: 880px;
+  max-width: 99%;
   padding: 2rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background: white;
+  margin: 1rem 0;
 }
 
+.dashboard-chart-medium {
+  overflow: hidden;
+  width: 430px;
+  max-width: 99%;
+  padding: 2rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: white;
+  margin: 1rem 0;
+
+  .graph-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+} */
+/* 
 #sales-container {
   height: 200px;
 }
 
 #circular-gauge-chart {
-  height: 200px; /* Ajusta según sea necesario */
-}
+  height: 200px;  
+} */

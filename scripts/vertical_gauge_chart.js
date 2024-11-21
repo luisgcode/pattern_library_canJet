@@ -5,8 +5,8 @@ let salesForecastValue = 50; // Porcentaje de ventas actuales con respecto al ob
 let forecastValue = 200000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesValue = (salesForecastValue / 100) * forecastValue; // Calcula el monto actual de ventas basándose en el porcentaje
 
-const widthValue = 200; // Ancho del gráfico
-const heightValue = 100; // Alto del gráfico
+const widthValue = 250; // Ancho del gráfico
+const heightValue = 60; // Alto del gráfico
 
 // Seleccionar el contenedor HTML donde se agregará el gráfico y el título
 const containerValue = d3.select("#vertical-gauge-chart");
@@ -32,7 +32,7 @@ svgValue
   .attr("x", 50)
   .attr("y", heightValue / 2 - 20)
   .attr("width", widthValue - 100) // Ancho de la barra con espacio para el borde
-  .attr("height", 40)
+  .attr("height", 20)
   .attr("fill", "none") // No tiene color de fondo
   .attr("stroke", "#d0d0d0") // Color del borde
   .attr("stroke-width", 1); // Grosor del borde
@@ -43,14 +43,14 @@ const progressBar = svgValue
   .attr("x", 50)
   .attr("y", heightValue / 2 - 20) // Posicionando verticalmente en el centro
   .attr("width", 0) // Ancho inicial en 0, será actualizado más tarde
-  .attr("height", 40)
+  .attr("height", 20)
   .attr("fill", "#ff4d52");
 
 // Texto con el porcentaje
 const percentageTextValue = svgValue
   .append("text")
   .attr("x", widthValue / 2)
-  .attr("y", heightValue / 2 + 6)
+  .attr("y", heightValue / 2 + -4)
   .attr("text-anchor", "middle")
   .style("font-size", "16px")
   .style("fill", "#333")

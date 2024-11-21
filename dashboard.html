@@ -109,10 +109,66 @@
     <section class="data-wrapp container_utility">
       <h2 class="section_title_utility">Dashboard</h2>
       <div class="dashboard-ui">
+        <!-- ^ the 3 charts on top -->
         <div class="dasboard-ui-row">
-          <div class="dashboard-chart" id="gauge-chart"></div>
-          <div class="dashboard-chart" id="circular-gauge-chart"></div>
-          <div class="dashboard-chart" id="vertical-gauge-chart"></div>
+          <!-- & Chart number 1 -->
+          <div class="dashboard-chart-box">
+            <div id="gauge-chart"></div>
+          </div>
+          <!-- & Chart number 2 -->
+          <div class="dashboard-chart-box">
+            <div id="circular-gauge-chart"></div>
+          </div>
+          <!-- & Chart number 3 -->
+          <div class="dashboard-chart-box">
+            <div id="vertical-gauge-chart"></div>
+          </div>
+        </div>
+        <!-- ^ large hero chart -->
+        <div class="dasboard-ui-row">
+          <div class="dashboard-chart-large">
+            <h5 class="tertiary_heading_utility">Monthly Data</h5>
+            <!-- Dropdown for selecting dataset -->
+            <select id="data-selector" class="data-dropdown">
+              <option value="passengers">Number of passengers</option>
+              <option value="revenue">Revenue</option>
+            </select>
+            <!-- Chart SVG -->
+            <svg
+              id="line-chart"
+              class="graph-box"
+              viewBox="0 0 750 400"
+              preserveAspectRatio="xMinYMin meet"
+            ></svg>
+            <div class="tooltip" id="tooltip"></div>
+          </div>
+        </div>
+        <!-- ^ Medium hero chart -->
+        <div class="dasboard-ui-row">
+          <div class="dashboard-chart-medium">
+            <!-------------------------- Pie Chart  -->
+            <div class="graph-container">
+              <h5 class="tertiary_heading_utility">Passengers by Class</h5>
+              <svg
+                id="pie-chart"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+            </div>
+          </div>
+          <div class="dashboard-chart-medium">
+            <!-------------------------- Donut Chart -->
+            <div class="graph-container">
+              <h5 class="tertiary_heading_utility">Passengers by Class</h5>
+              <svg
+                id="donut-chart"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -132,5 +188,8 @@
     <script src="scripts/gauge_chart.js"></script>
     <script src="scripts/circular_gauge_chart.js"></script>
     <script src="scripts/vertical_gauge_chart.js"></script>
+    <script src="scripts/line_chart2.js"></script>
+    <script src="scripts/pie_chart2.js"></script>
+    <script src="scripts/donut_chart2.js"></script>
   </body>
 </html>

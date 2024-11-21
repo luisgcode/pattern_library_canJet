@@ -5,9 +5,13 @@ let salesForecastGauge = 50; // Porcentaje de ventas actuales con respecto al ob
 let forecastGauge = 4000000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesGauge = (salesForecastGauge / 100) * forecastGauge; // Calcula el monto actual de ventas basándose en el porcentaje
 
-const widthGauge = 200; // Ancho del gráfico en píxeles
-const heightGauge = 240; // Alto del gráfico en píxeles
-const radiusGauge = Math.min(widthGauge, heightGauge) / 2 - 10; // Define el radio del gráfico, ajustado para que quepa en el SVG
+const widthGauge = 250; // Ancho del gráfico en píxeles
+const heightGauge = 150; // Alto del gráfico en píxeles
+const radiusGauge = Math.min(widthGauge, heightGauge) / 2; // Define el radio base del gráfico
+
+// Aumentar el grosor del arco ajustando los radios
+const innerRadius = radiusGauge - 20; // Radio interno (más pequeño)
+const outerRadius = radiusGauge; // Radio externo (más grande)
 
 // Seleccionar el contenedor HTML donde se agregará el gráfico y el título
 const containerGauge = d3.select("#gauge-chart");
@@ -25,7 +29,7 @@ const svgGauge = containerGauge
   .attr("width", widthGauge)
   .attr("height", heightGauge)
   .style("display", "block")
-  .style("margin", "0 auto")
+  .style("margin", "10px 0 0 0 ")
   .append("g")
   .attr("transform", `translate(${widthGauge / 2}, ${heightGauge / 2})`);
 
@@ -38,8 +42,8 @@ const scaleGauge = d3
 // Configuración del arco de fondo
 const backgroundArcGauge = d3
   .arc()
-  .innerRadius(radiusGauge - 20)
-  .outerRadius(radiusGauge)
+  .innerRadius(innerRadius) // Usar nuevo radio interno
+  .outerRadius(outerRadius) // Usar nuevo radio externo
   .startAngle(-Math.PI / 2)
   .endAngle(Math.PI / 2);
 
@@ -49,8 +53,8 @@ svgGauge.append("path").attr("d", backgroundArcGauge).attr("fill", "#e6e6e6");
 // Configuración del arco de valor actual (progreso)
 const valueArcGauge = d3
   .arc()
-  .innerRadius(radiusGauge - 20)
-  .outerRadius(radiusGauge)
+  .innerRadius(innerRadius) // Usar nuevo radio interno
+  .outerRadius(outerRadius) // Usar nuevo radio externo
   .startAngle(-Math.PI / 2);
 
 // Arco que representa el valor actual (progreso)
@@ -66,7 +70,7 @@ const needleGauge = svgGauge
   .attr("x1", 0)
   .attr("y1", 0)
   .attr("x2", 0)
-  .attr("y2", -radiusGauge + 25) // Use radiusGauge here
+  .attr("y2", -innerRadius) // Extiende la aguja solo hasta el radio interno
   .attr("stroke", "red")
   .attr("stroke-width", 3);
 
@@ -90,7 +94,6 @@ let lastAngleGauge = scaleGauge(salesForecastGauge);
 
 // Función para actualizar el gráfico
 function updateGaugeChart(salesForecastGauge, forecastGauge) {
-  // Calcular el nuevo porcentaje y el monto de ventas actual
   const newSalesGauge = (salesForecastGauge / 100) * forecastGauge;
   const newAngleGauge = scaleGauge(salesForecastGauge);
 
@@ -102,9 +105,9 @@ function updateGaugeChart(salesForecastGauge, forecastGauge) {
   // Actualizar el arco de progreso con animación
   progressGauge
     .transition()
-    .duration(2000) // Duración de la animación
+    .duration(2000)
     .attrTween("d", function (d) {
-      const interpolate = d3.interpolate(d.endAngle, newAngleGauge); // Interpolación de la transición
+      const interpolate = d3.interpolate(d.endAngle, newAngleGauge);
       return function (t) {
         d.endAngle = interpolate(t);
         return valueArcGauge(d);
@@ -116,11 +119,11 @@ function updateGaugeChart(salesForecastGauge, forecastGauge) {
     .transition()
     .duration(2000)
     .attrTween("transform", function () {
-      const interpolate = d3.interpolate(lastAngleGauge, newAngleGauge); // Interpolación de la aguja
-      lastAngleGauge = newAngleGauge; // Actualiza el último ángulo después de la transición
+      const interpolate = d3.interpolate(lastAngleGauge, newAngleGauge);
+      lastAngleGauge = newAngleGauge;
       return function (t) {
         const angle = interpolate(t);
-        return `rotate(${angle * (180 / Math.PI)})`; // Ajuste a grados
+        return `rotate(${angle * (180 / Math.PI)})`;
       };
     });
 
@@ -129,5 +132,5 @@ function updateGaugeChart(salesForecastGauge, forecastGauge) {
   salesTextGauge.text(`$${newSalesGauge.toLocaleString("en-CA")} CAD`);
 }
 
-// Inicializar el gráfico con los valores iniciales con animación en la primera carga
+// Inicializar el gráfico con los valores iniciales
 updateGaugeChart(salesForecastGauge, forecastGauge);

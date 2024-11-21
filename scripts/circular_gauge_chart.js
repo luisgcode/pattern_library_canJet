@@ -5,7 +5,7 @@ let salesForecastCircular = 70; // Porcentaje de ventas actuales con respecto al
 let forecastCircular = 1000000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesCircular = (salesForecastCircular / 100) * forecastCircular; // Calcula el monto actual de ventas basándose en el porcentaje
 
-const widthCircularGauge = 150; // Ancho del gráfico en píxeles
+const widthCircularGauge = 250; // Ancho del gráfico en píxeles
 const heightCircularGauge = 150; // Alto del gráfico en píxeles
 const radiusCircularGauge =
   Math.min(widthCircularGauge, heightCircularGauge) / 2 - 10; // Define el radio del gráfico, ajustado para que quepa en el SVG

@@ -1,7 +1,7 @@
 "use strict";
 
 // Variables del gráfico
-let salesForecastValue = 50; // Porcentaje de ventas actuales con respecto al objetivo
+let salesForecastValue = 45.6; // Porcentaje de ventas actuales con respecto al objetivo
 let forecastValue = 200000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesValue = (salesForecastValue / 100) * forecastValue; // Calcula el monto actual de ventas basándose en el porcentaje
 
@@ -60,7 +60,7 @@ const percentageTextValue = svgValue
 const salesTextValue = svgValue
   .append("text")
   .attr("x", widthValue / 2)
-  .attr("y", heightValue / 2 + 45) // Aumentar el valor de Y para agregar espacio
+  .attr("y", heightValue / 2 + 25) // Aumentar el valor de Y para agregar espacio
   .attr("text-anchor", "middle")
   .style("font-size", "16px")
   .style("fill", "#555")

@@ -1,12 +1,12 @@
 "use strict";
 
 // Variables del gráfico
-let salesForecastGauge = 50; // Porcentaje de ventas actuales con respecto al objetivo
+let salesForecastGauge = 70; // Porcentaje de ventas actuales con respecto al objetivo
 let forecastGauge = 4000000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesGauge = (salesForecastGauge / 100) * forecastGauge; // Calcula el monto actual de ventas basándose en el porcentaje
 
 const widthGauge = 250; // Ancho del gráfico en píxeles
-const heightGauge = 150; // Alto del gráfico en píxeles
+const heightGauge = 210; // Alto del gráfico en píxeles
 const radiusGauge = Math.min(widthGauge, heightGauge) / 2; // Define el radio base del gráfico
 
 // Aumentar el grosor del arco ajustando los radios
@@ -72,7 +72,7 @@ const needleGauge = svgGauge
   .attr("x2", 0)
   .attr("y2", -innerRadius) // Extiende la aguja solo hasta el radio interno
   .attr("stroke", "red")
-  .attr("stroke-width", 3);
+  .attr("stroke-width", 2);
 
 // Agregar etiquetas de porcentaje y ventas actuales
 const percentageTextGauge = svgGauge

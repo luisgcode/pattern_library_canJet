@@ -4,7 +4,7 @@
   gap: 2rem;
   max-width: 100%;
   margin: 0.5rem 0;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .dashboard-chart-box {
@@ -15,45 +15,13 @@
   background: white;
 }
 
-/* each chart */
-/* 
-
-.dashboard-chart-large {
-  overflow: hidden;
-  width: 880px;
-  max-width: 99%;
-  padding: 2rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: white;
-  margin: 1rem 0;
-}
-
-.dashboard-chart-medium {
-  overflow: hidden;
-  width: 430px;
-  max-width: 99%;
-  padding: 2rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: white;
-  margin: 1rem 0;
-
-  .graph-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-} */
-/* 
-#sales-container {
+/* just for small charts */
+.small {
   height: 200px;
 }
 
-#circular-gauge-chart {
-  height: 200px;  
-} */
+/* just for large charts */
+.large {
+  width: 100%;
+  max-width: 850px;
+}

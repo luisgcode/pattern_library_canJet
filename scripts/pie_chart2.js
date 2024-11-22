@@ -1,5 +1,7 @@
 "use strict";
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// ^ PIE CHART
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PIE CHART
+
 // Datos del gráfico
 const dataPieChart = [
   { category: "Economy", value: 30 },
@@ -11,26 +13,35 @@ const dataPieChart = [
 const colorsPieChart = ["#5bc0de", "#ff4d52", "#4d52ff"]; // Azul, Rojo, Azul oscuro
 
 // Dimensiones y radio del gráfico
-const widthPieChart = 400;
+const widthPieChart = 700; // Incrementar para espacio adicional
 const heightPieChart = 400;
 const radiusPieChart = Math.min(widthPieChart, heightPieChart) / 2;
 
-// Seleccionar el SVG y agregar un grupo
+// Seleccionar el SVG y agregar un grupo principal
 const svgPieChart = d3
   .select("#pie-chart")
+  .append("svg")
+  .attr("width", widthPieChart)
+  .attr("height", heightPieChart);
+
+// Crear un grupo para el gráfico de pastel
+const chartGroup = svgPieChart
   .append("g")
-  .attr("transform", `translate(${widthPieChart / 2}, ${heightPieChart / 2})`); // Centrar el gráfico
+  .attr(
+    "transform",
+    `translate(${radiusPieChart + 170}, ${heightPieChart / 2})`
+  ); // Centrar el gráfico
 
 // Crear el generador de segmentos
-const pie = d3.pie().value((d) => d.value); // Usar el valor para el pie chart
+const pie = d3.pie().value((d) => d.value);
 
 const arc = d3
   .arc()
   .innerRadius(0) // Para gráfico de pastel, el radio interno es 0
-  .outerRadius(radiusPieChart);
+  .outerRadius(radiusPieChart - 20); // Ajustar el radio para que haya espacio
 
-// Dibujar segmentos
-const arcs = svgPieChart
+// Dibujar segmentos con animación
+const arcs = chartGroup
   .selectAll("arc")
   .data(pie(dataPieChart))
   .enter()
@@ -39,19 +50,29 @@ const arcs = svgPieChart
 
 arcs
   .append("path")
-  .attr("d", arc)
-  .attr("fill", (d, i) => colorsPieChart[i]); // Asignar color a cada sección
+  .attr("fill", (d, i) => colorsPieChart[i]) // Asignar color a cada sección
+  .attr("d", arc) // Dibujar arco
+  .each(function (d) {
+    this._current = { startAngle: 0, endAngle: 0 }; // Estado inicial
+  })
+  .transition() // Aplicar animación
+  .duration(1000) // Duración de 1 segundo
+  .attrTween("d", function (d) {
+    const interpolate = d3.interpolate(this._current, d); // Interpolar ángulos
+    this._current = interpolate(1); // Actualizar estado
+    return function (t) {
+      return arc(interpolate(t)); // Animar arco
+    };
+  });
 
-// Leyenda
-const legendPieChart = svgPieChart
+// Crear un grupo separado para la leyenda
+const legendGroup = svgPieChart
   .append("g")
-  .attr(
-    "transform",
-    `translate(${radiusPieChart - 20}, ${-radiusPieChart + 10})`
-  ); // Ajustar posición de la leyenda
+  .attr("transform", `translate(${radiusPieChart * 2 + 180}, 20)`); // Posición de la leyenda a la derecha
 
+// Crear las leyendas
 dataPieChart.forEach((d, i) => {
-  const legendRow = legendPieChart
+  const legendRow = legendGroup
     .append("g")
     .attr("transform", `translate(0, ${i * 25})`); // Espacio entre cada leyenda
 
@@ -63,8 +84,8 @@ dataPieChart.forEach((d, i) => {
 
   legendRow
     .append("text")
-    .attr("x", 20)
-    .attr("y", 15) // Ajustar posición del texto
+    .attr("x", 25)
+    .attr("y", 14) // Ajustar posición del texto
     .text(d.category)
     .attr("class", "legendPieChart");
 });

@@ -25,3 +25,10 @@
   width: 100%;
   max-width: 850px;
 }
+
+/* just for medium charts */
+.medium {
+  width: 100%;
+  max-width: 415px;
+  display: flex;
+}

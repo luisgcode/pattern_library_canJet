@@ -2,8 +2,8 @@
 
 // Configuración del gráfico
 const dataHorizontalBarChart = [
-  { flightType: "Internacional", passengers: 200 },
-  { flightType: "Doméstico", passengers: 150 },
+  { flightType: "International", passengers: 200 },
+  { flightType: "Domestic", passengers: 150 },
   { flightType: "Charter", passengers: 275 },
 ];
 

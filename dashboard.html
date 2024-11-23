@@ -105,85 +105,90 @@
       </div>
     </header>
 
-    <!-- * ------------------- Dashboard section ------------------- -->
-    <section class="data-wrapp container_utility">
-      <h2 class="section_title_utility">Dashboard</h2>
-      <div class="dashboard-ui">
-        <!-- ^ the 3 charts on top -->
-        <div class="dasboard-ui-row">
-          <!-- & Chart number 1 -->
-          <div class="dashboard-chart-box small">
-            <div id="gauge-chart"></div>
+    <main>
+      <!-- * ------------------- Dashboard section ------------------- -->
+      <section class="data-wrapp container_utility">
+        <h2 class="section_title_utility">Dashboard</h2>
+        <div class="dashboard-ui">
+          <!-- ^ the 3 charts on top -->
+          <div class="dasboard-ui-row">
+            <!-- & Chart number 1 -->
+            <div class="dashboard-chart-box small">
+              <div id="gauge-chart"></div>
+            </div>
+            <!-- & Chart number 2 -->
+            <div class="dashboard-chart-box small">
+              <div id="circular-gauge-chart"></div>
+            </div>
+            <!-- & Chart number 3 -->
+            <div class="dashboard-chart-box small">
+              <div id="vertical-gauge-chart"></div>
+            </div>
           </div>
-          <!-- & Chart number 2 -->
-          <div class="dashboard-chart-box small">
-            <div id="circular-gauge-chart"></div>
+          <!-- ^ large hero chart -->
+          <div class="dasboard-ui-row">
+            <div class="dashboard-chart-box large">
+              <!-- Dropdown for selecting dataset -->
+              <select id="data-selector" class="data-dropdown">
+                <option value="passengers">Number of passengers</option>
+                <option value="revenue">Revenue</option>
+              </select>
+              <!-- Chart SVG -->
+              <svg
+                id="line-chart"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+              <div class="tooltip" id="tooltip"></div>
+            </div>
           </div>
-          <!-- & Chart number 3 -->
-          <div class="dashboard-chart-box small">
-            <div id="vertical-gauge-chart"></div>
+          <!-- ^ Medium hero chart -->
+          <div class="dasboard-ui-row">
+            <div class="dashboard-chart-box medium">
+              <svg
+                id="pie-chart"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+            </div>
+            <div class="dashboard-chart-box medium">
+              <svg
+                id="donut-chart"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+            </div>
           </div>
-        </div>
-        <!-- ^ large hero chart -->
-        <div class="dasboard-ui-row">
-          <div class="dashboard-chart-box large">
-            <!-- Dropdown for selecting dataset -->
-            <select id="data-selector" class="data-dropdown">
-              <option value="passengers">Number of passengers</option>
-              <option value="revenue">Revenue</option>
-            </select>
-            <!-- Chart SVG -->
-            <svg
-              id="line-chart"
-              class="graph-box"
-              viewBox="0 0 750 400"
-              preserveAspectRatio="xMinYMin meet"
-            ></svg>
-            <div class="tooltip" id="tooltip"></div>
-          </div>
-        </div>
-        <!-- ^ Medium hero chart -->
-        <div class="dasboard-ui-row">
-          <div class="dashboard-chart-box medium">
-            <svg
-              id="pie-chart"
-              class="graph-box"
-              viewBox="0 0 750 400"
-              preserveAspectRatio="xMinYMin meet"
-            ></svg>
-          </div>
-          <div class="dashboard-chart-box medium">
-            <svg
-              id="donut-chart"
-              class="graph-box"
-              viewBox="0 0 750 400"
-              preserveAspectRatio="xMinYMin meet"
-            ></svg>
-          </div>
-        </div>
-        <!-- ^ large hero chart -->
-        <div class="dasboard-ui-row" style="position: relative">
-          <div class="dashboard-chart-box large">
-            <svg
-              id="bar-chart-horizontal"
-              class="graph-box"
-              viewBox="0 0 750 400"
-              preserveAspectRatio="xMinYMin meet"
-            ></svg>
-          </div>
+          <!-- ^ large hero chart -->
+          <div class="dasboard-ui-row" style="position: relative">
+            <div class="dashboard-chart-box large">
+              <svg
+                id="bar-chart-horizontal"
+                class="graph-box"
+                viewBox="0 0 750 400"
+                preserveAspectRatio="xMinYMin meet"
+              ></svg>
+            </div>
 
-          <!-- Dropdown para seleccionar el color -->
-          <div class="dropdown" id="color-dropdown">
-            <button class="dropdown-toggle">Seleccionar color</button>
-            <div class="dropdown-menu">
-              <button class="dropdown-item" data-color="#4d52ff">Azul</button>
-              <button class="dropdown-item" data-color="#ff4d52">Rojo</button>
-              <button class="dropdown-item" data-color="#52ff4d">Verde</button>
+            <!-- Dropdown para seleccionar el color -->
+            <div class="dropdown" id="color-dropdown">
+              <button class="dropdown-toggle">Data color</button>
+              <div class="dropdown-menu">
+                <button class="dropdown-item" data-color="#4d52ff">Blue</button>
+                <button class="dropdown-item" data-color="#ff4d52">Red</button>
+                <button class="dropdown-item" data-color="#5bc0de">
+                  Light Blue
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <aside>asdfsfc</aside>
+    </main>
 
     <!-- * ------------------- Footer ------------------- -->
     <footer>

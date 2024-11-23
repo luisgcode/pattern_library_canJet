@@ -1,20 +1,17 @@
+/******************************************
+*******Styles for the Dashboard page*******
+******************************************/
 main {
-  border: 1px solid red;
   display: flex;
   justify-content: center;
 }
 
+/******************************************
+************Dashboard container************
+******************************************/
 .data-wrapp {
-  border: 5px solid rgb(0, 255, 68);
   max-width: 950px;
   margin: 0;
-}
-
-aside {
-  border: 5px solid rgb(43, 0, 255);
-  display: flex;
-  justify-content: center;
-  min-width: 300px;
 }
 
 .dasboard-ui-row {
@@ -35,25 +32,23 @@ aside {
   background: white;
 }
 
-/* just for small charts */
+/* Styles for the 3 different charts containers */
 .small {
   height: 200px;
 }
 
-/* just for large charts */
 .large {
   width: 100%;
   max-width: 850px;
 }
 
-/* just for medium charts */
 .medium {
   width: 100%;
   max-width: 415px;
   display: flex;
 }
 
-/* Estilo para el dropdown */
+/* Styles for the horizontal bar chart */
 #color-dropdown {
   position: absolute;
   left: 75%;
@@ -73,10 +68,7 @@ aside {
   transition: background-color 0.3s ease;
 }
 
-.dropdown-toggle:hover {
-  background-color: #3a3ecc;
-}
-
+/* Styles for the Line chart doubl value chart */
 .dropdown-menu {
   display: none; /* Oculto por defecto */
   position: absolute;
@@ -140,4 +132,13 @@ aside {
 /* Cambio de color de las opciones cuando se pasa el ratón */
 .data-dropdown option:hover {
   background-color: #f1f1f1;
+}
+
+/******************************************
+*************Requirement list*************
+******************************************/
+aside {
+  display: flex;
+  justify-content: center;
+  min-width: 300px;
 }

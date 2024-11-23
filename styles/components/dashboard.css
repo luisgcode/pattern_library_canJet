@@ -49,7 +49,6 @@ main {
   display: flex;
 }
 
-/* Styles for the horizontal bar chart */
 #color-dropdown {
   position: absolute;
   left: 75%;
@@ -69,17 +68,16 @@ main {
   transition: background-color 0.3s ease;
 }
 
-/* Styles for the Line chart doubl value chart */
 .dropdown-menu {
   display: none; /* Oculto por defecto */
   position: absolute;
   top: 100%; /* Aparece debajo del botón */
   right: 0;
-  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  color: black;
   padding: 5px 0;
 }
 
@@ -93,47 +91,31 @@ main {
   width: 100%;
 }
 
-.dropdown-item:hover {
-  background-color: #f0f0f0;
-}
-
-/* Mostrar el menú cuando se hace clic */
 .dropdown.active .dropdown-menu {
   display: block;
 }
 
+/* Styles for the Line chart double value chart */
 .data-dropdown {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 2px solid #ff4d52; /* Borde de color personalizado */
-  background-color: #fff;
-  color: #333;
-  outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  border: none;
+  background: #4d52ff;
+  padding: 1rem;
+  font-size: 14px;
+  border-radius: 5px;
   cursor: pointer;
+  outline: none;
 }
 
-/* Estilo cuando el select es enfocado */
-.data-dropdown:focus {
-  border-color: #ff4d52;
-  box-shadow: 0 0 5px rgba(255, 77, 82, 0.5);
-}
-
-/* Estilo de las opciones dentro del select */
 .data-dropdown option {
-  font-size: 16px;
-  padding: 10px;
+  font-size: 14px;
   background-color: #fff;
   color: #333;
   border: none;
   cursor: pointer;
+  outline: none;
 }
-
-/* Cambio de color de las opciones cuando se pasa el ratón */
-.data-dropdown option:hover {
-  background-color: #f1f1f1;
-}
+/* Styles for the horizontal bar chart */
 
 /******************************************
 *************Requirement list*************

@@ -17,7 +17,8 @@ const containerCircularGauge = d3.select("#circular-gauge-chart");
 const titleTextCircular = containerCircularGauge
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "14px")
+  .style("font-size", "16px")
+  .style("font-weight", "bold")
   .text(`Profit Margin: $${forecastCircular.toLocaleString("en-CA")} CAD`); // Actualizar título dinámico
 
 // Crear el SVG centrado donde se dibujará el gráfico

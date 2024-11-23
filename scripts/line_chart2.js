@@ -23,34 +23,33 @@ const datasets = {
   ],
 };
 
-// Initialize chart
+// Initialize chart with default data (passengers)
 let currentData = datasets.passengers;
 
 // Scales
 const x = d3
   .scaleTime()
   .range([marginLineChart.left, baseWidthLineChart - marginLineChart.right]);
-
 const y = d3
   .scaleLinear()
   .range([baseHeightLineChart - marginLineChart.bottom, marginLineChart.top]);
 
-// Select SVG
+// Select SVG element
 const svg = d3.select("#line-chart");
 
-// Line generator
+// Line generator function
 const line = d3
   .line()
   .x((d) => x(d.date))
   .y((d) => y(d.value));
 
-// Function to update chart
+// Function to update the chart with new data
 function updateChart(data) {
   // Update scales
   x.domain(d3.extent(data, (d) => d.date));
   y.domain([0, d3.max(data, (d) => d.value)]).nice();
 
-  // Remove existing axes and paths
+  // Clear previous chart elements
   svg.selectAll("*").remove();
 
   // Draw X axis
@@ -73,7 +72,7 @@ function updateChart(data) {
     .attr("transform", `translate(${marginLineChart.left},0)`)
     .call(d3.axisLeft(y).ticks(5).tickFormat(d3.format(",.0f")));
 
-  // Draw line with animation
+  // Draw the line with animation
   const path = svg
     .append("path")
     .datum(data)
@@ -82,7 +81,7 @@ function updateChart(data) {
     .attr("stroke-width", 3)
     .attr("d", line);
 
-  // Animation: Draw line
+  // Animate the drawing of the line
   const totalLength = path.node().getTotalLength();
   path
     .attr("stroke-dasharray", `${totalLength} ${totalLength}`)
@@ -115,20 +114,20 @@ function updateChart(data) {
       d3.select("#tooltip").style("opacity", 0);
     });
 
-  // Animation: Appear points
+  // Animate points to appear
   points
     .transition()
-    .delay((d, i) => i * 200) // Delay each point
+    .delay((d, i) => i * 200) // Delay each point's appearance
     .duration(500)
     .attr("r", 6);
 }
 
-// Event listener for dropdown
+// Event listener for dropdown menu to switch datasets
 document.getElementById("data-selector").addEventListener("change", (event) => {
   const selectedDataset = event.target.value;
   currentData = datasets[selectedDataset];
   updateChart(currentData);
 });
 
-// Initial render
+// Initial render of the chart
 updateChart(currentData);

@@ -1,46 +1,42 @@
 "use strict";
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// PIE CHART
 
-// Datos del gráfico
+// Pie Chart Data and Colors
 const dataPieChart = [
   { category: "Economy", value: 30 },
   { category: "Business", value: 50 },
   { category: "First Class", value: 20 },
 ];
 
-// Colores para las secciones
-const colorsPieChart = ["#5bc0de", "#ff4d52", "#4d52ff"]; // Azul, Rojo, Azul oscuro
+const colorsPieChart = ["#5bc0de", "#ff4d52", "#4d52ff"]; // Blue, Red, Dark Blue
 
-// Dimensiones y radio del gráfico
-const widthPieChart = 700; // Incrementar para espacio adicional
+// Pie Chart Dimensions and Radius
+const widthPieChart = 700;
 const heightPieChart = 400;
 const radiusPieChart = Math.min(widthPieChart, heightPieChart) / 2;
 
-// Seleccionar el SVG y agregar un grupo principal
+// Select SVG and append a main group for the chart
 const svgPieChart = d3
   .select("#pie-chart")
   .append("svg")
   .attr("width", widthPieChart)
   .attr("height", heightPieChart);
 
-// Crear un grupo para el gráfico de pastel
+// Create a group for the pie chart and center it
 const chartGroup = svgPieChart
   .append("g")
   .attr(
     "transform",
     `translate(${radiusPieChart + 170}, ${heightPieChart / 2})`
-  ); // Centrar el gráfico
+  );
 
-// Crear el generador de segmentos
+// Pie generator function and Arc for the pie segments
 const pie = d3.pie().value((d) => d.value);
-
 const arc = d3
   .arc()
-  .innerRadius(0) // Para gráfico de pastel, el radio interno es 0
-  .outerRadius(radiusPieChart - 20); // Ajustar el radio para que haya espacio
+  .innerRadius(0)
+  .outerRadius(radiusPieChart - 20);
 
-// Dibujar segmentos con animación
+// Draw pie segments with animation
 const arcs = chartGroup
   .selectAll("arc")
   .data(pie(dataPieChart))
@@ -50,22 +46,22 @@ const arcs = chartGroup
 
 arcs
   .append("path")
-  .attr("fill", (d, i) => colorsPieChart[i]) // Asignar color a cada sección
-  .attr("d", arc) // Dibujar arco
+  .attr("fill", (d, i) => colorsPieChart[i]) // Color for each segment
+  .attr("d", arc)
   .each(function (d) {
-    this._current = { startAngle: 0, endAngle: 0 }; // Estado inicial
-  })
-  .transition() // Aplicar animación
-  .duration(1000) // Duración de 1 segundo
+    this._current = { startAngle: 0, endAngle: 0 };
+  }) // Initial state for animation
+  .transition() // Animation transition
+  .duration(1000) // 1 second duration
   .attrTween("d", function (d) {
-    const interpolate = d3.interpolate(this._current, d); // Interpolar ángulos
-    this._current = interpolate(1); // Actualizar estado
+    const interpolate = d3.interpolate(this._current, d); // Interpolate the angles
+    this._current = interpolate(1); // Update state
     return function (t) {
-      return arc(interpolate(t)); // Animar arco
-    };
+      return arc(interpolate(t));
+    }; // Animate the arc
   });
 
-// Agregar etiquetas de porcentaje en cada segmento
+// Add percentage labels to each segment
 arcs
   .append("text")
   .text(
@@ -74,20 +70,22 @@ arcs
         1
       )}%`
   )
-  .attr("transform", (d) => `translate(${arc.centroid(d)})`) // Posicionar en el centro del arco
-  .attr("text-anchor", "middle") // Centrar el texto horizontalmente
-  .attr("class", "pie-chart-percentage");
+  .attr("transform", (d) => `translate(${arc.centroid(d)})`) // Position text at the center of each arc
+  .attr("text-anchor", "middle") // Center the text horizontally
+  .attr("class", "pie-chart-percentage")
+  .style("font-size", "14px")
+  .style("font-weight", "bold");
 
-// Crear un grupo separado para la leyenda
+// Create a separate group for the legend
 const legendGroup = svgPieChart
   .append("g")
-  .attr("transform", `translate(${radiusPieChart * 2 + 180}, 20)`); // Posición de la leyenda a la derecha
+  .attr("transform", `translate(${radiusPieChart * 2 + 180}, 20)`); // Position legend to the right
 
-// Crear las leyendas
+// Generate the legend
 dataPieChart.forEach((d, i) => {
   const legendRow = legendGroup
     .append("g")
-    .attr("transform", `translate(0, ${i * 25})`); // Espacio entre cada leyenda
+    .attr("transform", `translate(0, ${i * 25})`); // Space between each legend item
 
   legendRow
     .append("rect")
@@ -98,7 +96,9 @@ dataPieChart.forEach((d, i) => {
   legendRow
     .append("text")
     .attr("x", 25)
-    .attr("y", 14) // Ajustar posición del texto
+    .attr("y", 14) // Adjust text position
     .text(d.category)
-    .attr("class", "legendPieChart");
+    .attr("class", "legendPieChart")
+    .style("font-size", "14px")
+    .style("font-weight", "bold");
 });

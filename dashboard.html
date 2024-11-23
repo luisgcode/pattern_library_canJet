@@ -162,7 +162,7 @@
           </div>
         </div>
         <!-- ^ large hero chart -->
-        <div class="dasboard-ui-row">
+        <div class="dasboard-ui-row" style="position: relative">
           <div class="dashboard-chart-box large">
             <svg
               id="bar-chart-horizontal"
@@ -170,6 +170,22 @@
               viewBox="0 0 750 400"
               preserveAspectRatio="xMinYMin meet"
             ></svg>
+          </div>
+
+          <!-- Dropdown para seleccionar el color -->
+          <div class="dropdown" id="color-dropdown">
+            <button class="dropdown-toggle">Seleccionar color</button>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" data-color="#4d52ff">Azul</button>
+              <button class="dropdown-item" data-color="#ff4d52">Rojo</button>
+              <button class="dropdown-item" data-color="#52ff4d">Verde</button>
+            </div>
+          </div>
+        </div>
+        <!-- ^ large hero chart -->
+        <div class="dasboard-ui-row">
+          <div class="dashboard-chart-box large">
+            <div class="tooltip" id="tooltip"></div>
           </div>
         </div>
       </div>

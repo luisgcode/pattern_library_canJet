@@ -15,7 +15,8 @@ const containerValue = d3.select("#vertical-gauge-chart");
 const titleTextValue = containerValue
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "14px")
+  .style("font-size", "16px")
+  .style("font-weight", "bold")
   .text("Sales Performance"); // Título del gráfico
 
 // Crear el SVG donde se dibujará el gráfico

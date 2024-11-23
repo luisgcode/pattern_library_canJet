@@ -20,7 +20,8 @@ const containerGauge = d3.select("#gauge-chart");
 const titleTextGauge = containerGauge
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "14px")
+  .style("font-size", "16px")
+  .style("font-weight", "bold")
   .text(`Sales Forecast: $${forecastGauge.toLocaleString("en-CA")} CAD`); // Actualizar título dinámico
 
 // Crear el SVG centrado donde se dibujará el gráfico

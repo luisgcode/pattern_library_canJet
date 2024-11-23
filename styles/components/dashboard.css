@@ -147,11 +147,21 @@ aside {
 .requirement-wrapper {
   height: min-content;
   width: 100%;
-  padding: 2rem 1rem;
+  min-width: 330px;
+  padding: 2rem 3rem;
   background: white;
-  margin-top: 195px;
+  margin-top: 197px;
   position: sticky;
   border-radius: 15px;
   top: 50px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.037);
+  font-size: 1.2rem;
+}
+
+.requirement-nav {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
 }

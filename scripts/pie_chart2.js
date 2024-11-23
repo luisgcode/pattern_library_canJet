@@ -65,6 +65,19 @@ arcs
     };
   });
 
+// Agregar etiquetas de porcentaje en cada segmento
+arcs
+  .append("text")
+  .text(
+    (d) =>
+      `${((d.data.value / d3.sum(dataPieChart, (d) => d.value)) * 100).toFixed(
+        1
+      )}%`
+  )
+  .attr("transform", (d) => `translate(${arc.centroid(d)})`) // Posicionar en el centro del arco
+  .attr("text-anchor", "middle") // Centrar el texto horizontalmente
+  .attr("class", "pie-chart-percentage");
+
 // Crear un grupo separado para la leyenda
 const legendGroup = svgPieChart
   .append("g")

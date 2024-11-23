@@ -64,12 +64,27 @@ donutArcs
     };
   });
 
+// Agregar porcentaje dentro de cada arco
+donutArcs
+  .append("text")
+  .text(
+    (d) =>
+      `${(
+        (d.data.value / d3.sum(dataDonutChart, (d) => d.value)) *
+        100
+      ).toFixed(1)}%`
+  )
+  .attr("transform", (d) => `translate(${arcDonut.centroid(d)})`) // Posicionar en el centro del arco
+  .attr("text-anchor", "middle") // Alinear al centro
+  .attr("class", "donut-chart-percentage");
+
 // Leyenda
-const legendDonutChart = svgDonutChart.append("g").attr(
-  "transform",
-  `translate(${widthDonutChart / 2 + radiusDonutChart + 35}, 20
-    )`
-);
+const legendDonutChart = svgDonutChart
+  .append("g")
+  .attr(
+    "transform",
+    `translate(${widthDonutChart / 2 + radiusDonutChart + 35}, 20)`
+  );
 
 dataDonutChart.forEach((d, i) => {
   const legendRow = legendDonutChart

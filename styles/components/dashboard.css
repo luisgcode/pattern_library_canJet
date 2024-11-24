@@ -39,6 +39,7 @@ main {
   border-radius: 15px;
   padding: 2rem 1rem;
   background: white;
+  border: 1px solid rgba(128, 128, 128, 0.233);
   position: relative;
 }
 

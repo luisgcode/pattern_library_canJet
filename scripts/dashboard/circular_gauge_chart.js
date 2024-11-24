@@ -1,7 +1,7 @@
 "use strict";
 
 // Variables del gráfico circular
-let salesForecastCircular = 70; // Porcentaje de ventas actuales con respecto al objetivo
+let salesForecastCircular = 45; // Porcentaje de ventas actuales con respecto al objetivo
 let forecastCircular = 1000000; // Monto máximo de ventas proyectadas (en CAD)
 let currentSalesCircular = (salesForecastCircular / 100) * forecastCircular; // Calcula el monto actual de ventas basándose en el porcentaje
 
@@ -68,41 +68,66 @@ const progressCircular = svgCircular
   .attr("d", valueArcCircular)
   .attr("fill", "#ff4d52");
 
-// Agregar etiquetas de porcentaje y ventas actuales
+// Agregar etiquetas de porcentaje
 const percentageTextCircular = svgCircular
   .append("text")
   .attr("text-anchor", "middle")
   .attr("dy", "5px")
   .style("font-size", "14px")
-  .style("fill", "#333");
+  .style("fill", "#333")
+  .text(`${salesForecastCircular}%`);
 
-// Variable para almacenar el último ángulo de la aguja
-let lastAngleCircular = scaleCircular(salesForecastCircular);
+// Variable para alternar entre porcentaje y monto
+let showPercentage = true;
+
+// Agregar botón de alternancia y posicionarlo encima del gráfico
+containerCircularGauge
+  .insert("button", ":first-child") // Inserta el botón antes del primer hijo del contenedor
+  .text(" $ ")
+  .style("position", "absolute")
+  .style("font-size", "16px")
+  .style("text-decoration", "underline")
+  .style("cursor", "pointer")
+  .style("background", "none") // Elimina el fondo del botón
+  .style("border", "none") // Elimina el borde
+  .style("color", "#333") // Define el color del texto
+  .style("font-weight", "bold") // Opcional: hace el texto más visible
+  .style("top", "20px") // Ajusta la posición vertical del botón
+  .on("click", function () {
+    showPercentage = !showPercentage;
+    this.textContent = showPercentage ? " $ " : " % ";
+    updateCircularGaugeChart(salesForecastCircular, forecastCircular);
+  });
 
 // Función para actualizar el gráfico
 function updateCircularGaugeChart(salesForecastCircular, forecastCircular) {
   // Calcular el nuevo porcentaje y el monto de ventas actual
   const newSalesCircular = (salesForecastCircular / 100) * forecastCircular;
-  const newAngleCircular = scaleCircular(salesForecastCircular);
 
   // Actualizar el título con el monto total de forecast
   titleTextCircular.text(`Gross Revenue`);
+
+  // Actualizar los textos de porcentaje o monto según el estado
+  percentageTextCircular.text(
+    showPercentage
+      ? `${salesForecastCircular}%`
+      : `$${newSalesCircular.toLocaleString("en-CA")}  `
+  );
 
   // Actualizar el arco de progreso con animación
   progressCircular
     .transition()
     .duration(2000) // Duración de la animación
     .attrTween("d", function (d) {
-      const interpolate = d3.interpolate(d.endAngle, newAngleCircular); // Interpolación de la transición
+      const interpolate = d3.interpolate(
+        d.endAngle,
+        scaleCircular(salesForecastCircular)
+      ); // Interpolación de la transición
       return function (t) {
         d.endAngle = interpolate(t);
         return valueArcCircular(d);
       };
     });
-
-  // Actualizar los textos de porcentaje y ventas actuales
-  percentageTextCircular.text(`${salesForecastCircular}%`);
-  salesTextCircular.text(`$${newSalesCircular.toLocaleString("en-CA")} CAD`);
 }
 
 // Inicializar el gráfico circular con los valores iniciales con animación en la primera carga

@@ -103,11 +103,12 @@ function updateChart(data) {
     .attr("r", 0) // Start with radius 0
     .attr("fill", "#ff4d52")
     .on("mouseover", function (event, d) {
+      const [xPos, yPos] = [x(d.date), y(d.value)]; // Coordenadas del punto en el SVG
       const tooltip = d3.select("#tooltip");
       tooltip
         .style("opacity", 1)
-        .style("left", `${event.pageX + 10}px`)
-        .style("top", `${event.pageY - 20}px`)
+        .style("left", `${xPos + marginLineChart.left}px`) // Ajusta según el margen izquierdo
+        .style("top", `${yPos + marginLineChart.top}px`) // Ajusta según el margen superior
         .html(`Value: ${d.value.toLocaleString()}`);
     })
     .on("mouseout", function () {

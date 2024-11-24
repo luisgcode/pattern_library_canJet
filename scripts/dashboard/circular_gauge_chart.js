@@ -17,7 +17,7 @@ const containerCircularGauge = d3.select("#circular-gauge-chart");
 const titleTextCircular = containerCircularGauge
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("font-weight", "bold")
   .text(`Profit Margin: $${forecastCircular.toLocaleString("en-CA")} CAD`); // Actualizar título dinámico
 
@@ -73,7 +73,7 @@ const percentageTextCircular = svgCircular
   .append("text")
   .attr("text-anchor", "middle")
   .attr("dy", "5px")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("fill", "#333");
 
 // Variable para almacenar el último ángulo de la aguja

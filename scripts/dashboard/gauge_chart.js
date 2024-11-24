@@ -20,7 +20,7 @@ const containerGauge = d3.select("#gauge-chart");
 const titleTextGauge = containerGauge
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("font-weight", "bold")
   .text(`Sales Forecast: $${forecastGauge.toLocaleString("en-CA")} CAD`); // Actualizar título dinámico
 
@@ -80,14 +80,14 @@ const percentageTextGauge = svgGauge
   .append("text")
   .attr("text-anchor", "middle")
   .attr("dy", "-2em")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("fill", "#333");
 
 const salesTextGauge = svgGauge
   .append("text")
   .attr("text-anchor", "middle")
   .attr("dy", "1.5em")
-  .style("font-size", "12px")
+  .style("font-size", "14px")
   .style("fill", "#555");
 
 // Variable para almacenar el último ángulo de la aguja

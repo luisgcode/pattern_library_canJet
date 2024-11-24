@@ -2,9 +2,9 @@
 
 // Pie Chart Data and Colors
 const dataPieChart = [
-  { category: "Economy", value: 30 },
+  { category: "Economy", value: 25 },
   { category: "Business", value: 50 },
-  { category: "First Class", value: 20 },
+  { category: "First Class", value: 25 },
 ];
 
 const colorsPieChart = ["#5bc0de", "#ff4d52", "#4d52ff"]; // Blue, Red, Dark Blue
@@ -73,7 +73,7 @@ arcs
   .attr("transform", (d) => `translate(${arc.centroid(d)})`) // Position text at the center of each arc
   .attr("text-anchor", "middle") // Center the text horizontally
   .attr("class", "pie-chart-percentage")
-  .style("font-size", "14px")
+  .style("font-size", "18px")
   .style("font-weight", "bold");
 
 // Create a separate group for the legend
@@ -99,6 +99,6 @@ dataPieChart.forEach((d, i) => {
     .attr("y", 14) // Adjust text position
     .text(d.category)
     .attr("class", "legendPieChart")
-    .style("font-size", "14px")
+    .style("font-size", "18px")
     .style("font-weight", "bold");
 });

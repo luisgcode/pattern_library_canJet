@@ -15,7 +15,7 @@ const containerValue = d3.select("#vertical-gauge-chart");
 const titleTextValue = containerValue
   .append("div")
   .style("text-align", "center")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("font-weight", "bold")
   .text("Sales Performance"); // Título del gráfico
 
@@ -53,7 +53,7 @@ const percentageTextValue = svgValue
   .attr("x", widthValue / 2)
   .attr("y", heightValue / 2 + -4)
   .attr("text-anchor", "middle")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("fill", "#333")
   .text(`${salesForecastValue}%`);
 
@@ -63,7 +63,7 @@ const salesTextValue = svgValue
   .attr("x", widthValue / 2)
   .attr("y", heightValue / 2 + 25) // Aumentar el valor de Y para agregar espacio
   .attr("text-anchor", "middle")
-  .style("font-size", "16px")
+  .style("font-size", "14px")
   .style("fill", "#555")
   .text(`$${currentSalesValue.toLocaleString("en-CA")} CAD`);
 

@@ -114,20 +114,26 @@
           <div class="dasboard-ui-row">
             <!-- & Chart number 1 -->
             <div class="dashboard-chart-box small">
+              <span class="identifier"> #<b>C1</b></span>
+
               <div id="gauge-chart"></div>
             </div>
             <!-- & Chart number 2 -->
             <div class="dashboard-chart-box small">
+              <span class="identifier"> #<b>C2</b></span>
               <div id="circular-gauge-chart"></div>
             </div>
             <!-- & Chart number 3 -->
             <div class="dashboard-chart-box small">
+              <span class="identifier"> #<b>C3</b></span>
               <div id="vertical-gauge-chart"></div>
             </div>
           </div>
           <!-- ^ large hero chart -->
           <div class="dasboard-ui-row">
             <div class="dashboard-chart-box large">
+              <span class="identifier"> #<b>C4</b></span>
+
               <!-- Dropdown for selecting dataset -->
               <select id="data-selector" class="data-dropdown">
                 <option value="passengers">Number of passengers</option>
@@ -146,6 +152,7 @@
           <!-- ^ Medium hero chart -->
           <div class="dasboard-ui-row">
             <div class="dashboard-chart-box medium">
+              <span class="identifier"> #<b>C5</b></span>
               <svg
                 id="pie-chart"
                 class="graph-box"
@@ -154,6 +161,7 @@
               ></svg>
             </div>
             <div class="dashboard-chart-box medium">
+              <span class="identifier"> #<b>C6</b></span>
               <svg
                 id="donut-chart"
                 class="graph-box"
@@ -165,6 +173,7 @@
           <!-- ^ large hero chart -->
           <div class="dasboard-ui-row" style="position: relative">
             <div class="dashboard-chart-box large">
+              <span class="identifier"> #<b>C7</b></span>
               <svg
                 id="bar-chart-horizontal"
                 class="graph-box"
@@ -193,17 +202,17 @@
           <h5>Requirements:</h5>
 
           <ul class="requirement-nav">
-            <li>- Plain HTML, CSS and javaScript ✔️</li>
-            <li>- Reflected Pattern Library ✔️</li>
+            <li>• Plain HTML, CSS and javaScript ✔️</li>
+            <li>• Reflected Pattern Library ✔️</li>
 
-            <li>- At least 3 single value charts : <b> C1,C2,C3 ✔️</b></li>
+            <li>• At least 3 single value charts : <b> C1,C2,C3 ✔️</b></li>
             <li>
-              - One Chart can change data with either dropdown or textbox :
+              • One Chart can change data with either dropdown or textbox :
               <b>C4</b>
               ✔️
             </li>
-            <li>Has at least 3 single value charts</li>
-            <li>Has at least 3 single value charts</li>
+            <li>• Has 1 chart that has tooltips with data <b>C4</b> ✔️</li>
+            <li>• 1 button to update the chart style <b>C7</b> ✔️</li>
           </ul>
         </div>
       </aside>

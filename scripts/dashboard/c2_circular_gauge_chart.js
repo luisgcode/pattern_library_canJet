@@ -103,7 +103,7 @@ function updateCircularGaugeChart(salesForecastCircular, forecastCircular) {
   percentageTextCircular.text(
     showPercentage
       ? `${salesForecastCircular}%`
-      : `$${newSalesCircular.toLocaleString("en-CA")} CAD`
+      : `$${newSalesCircular.toLocaleString("en-CA")} `
   ); // Update text / Actualiza el texto
 
   // Animate the progress arc / Anima el arco de progreso

@@ -59,34 +59,30 @@ d3.csv(csvPath)
  * Gráfico de líneas con tooltips para mostrar distancias.
  */
 function createDistanceChart(data) {
-  const margin = { top: 60, right: 30, bottom: 50, left: 50 }; // Adjust top margin for title
-  const width = 800 - margin.left - margin.right;
+  const margin = { top: 60, right: 30, bottom: 50, left: 70 }; // Increased left margin for more space
+  const width = 1000 - margin.left - margin.right; // This is the width minus the margins
   const height = 400 - margin.top - margin.bottom;
 
-  // Create SVG container
-  // Crear el contenedor SVG
-  const svg = d3
-    .select(".dasboard-ui-row")
-    .append("div")
-    .attr("class", "chart-container")
+  // Create the SVG container inside the .line-chart div
+  const svgContainer = d3
+    .select(".line-chart")
     .append("svg")
+    .attr("id", "distance-chart") // Add an id for styling
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  // Add title
-  // Agregar título
-  svg
+  // Add title to the top-left corner
+  svgContainer
     .append("text")
-    .attr("x", width / 2)
-    .attr("y", -20)
-    .attr("text-anchor", "middle")
+    .attr("x", 0) // Position the title at the top-left (x = 0)
+    .attr("y", -20) // Position it slightly above the chart (adjust y as needed)
+    .attr("text-anchor", "start") // Align text to the left
     .attr("class", "chart-title")
     .text("Chart 1: Distance travelled by each customer");
 
   // Set scales
-  // Configurar escalas
   const x = d3
     .scaleBand()
     .domain(data.map((d) => d.id))
@@ -100,22 +96,36 @@ function createDistanceChart(data) {
     .range([height, 0]);
 
   // Add axes
-  // Agregar ejes
-  svg
+  svgContainer
     .append("g")
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x).tickValues(x.domain().filter((d, i) => !(i % 10))));
 
-  svg.append("g").call(d3.axisLeft(y));
+  svgContainer.append("g").call(d3.axisLeft(y));
+
+  // Add axis titles
+  svgContainer
+    .append("text")
+    .attr("x", width / 2) // Position it in the middle of the x-axis
+    .attr("y", height + 40) // Position it just below the x-axis
+    .attr("text-anchor", "middle") // Center align
+    .text("Customer ID");
+
+  svgContainer
+    .append("text")
+    .attr("transform", "rotate(-90)") // Rotate text to vertical
+    .attr("x", -height / 2) // Position vertically centered
+    .attr("y", -50) // Adjust as necessary
+    .attr("text-anchor", "middle") // Center align
+    .text("Flight Distance");
 
   // Create line
-  // Crear línea
   const line = d3
     .line()
     .x((d) => x(d.id) + x.bandwidth() / 2)
     .y((d) => y(d.flightDistance));
 
-  svg
+  svgContainer
     .append("path")
     .datum(data)
     .attr("fill", "none")
@@ -124,14 +134,15 @@ function createDistanceChart(data) {
     .attr("d", line);
 
   // Add tooltips
-  // Agregar tooltips
   const tooltip = d3
-    .select(".data-wrapp")
+    .select(".line-chart") // Selecciona el contenedor del gráfico directamente
     .append("div")
     .attr("class", "tooltip")
-    .style("opacity", 0);
+    .style("position", "absolute") // Asegura que el tooltip sea posicionado absolutamente
+    .style("opacity", 0)
+    .style("pointer-events", "none"); // Evita que el tooltip interfiera con el evento de ratón
 
-  svg
+  svgContainer
     .selectAll(".dot")
     .data(data)
     .enter()
@@ -143,10 +154,12 @@ function createDistanceChart(data) {
     .attr("fill", "#1f77b4")
     .on("mouseover", (event, d) => {
       tooltip.transition().duration(200).style("opacity", 1);
+
+      // Calcular la posición para que el tooltip aparezca en la parte superior derecha
       tooltip
         .html(`Customer ID: ${d.id}<br>Distance: ${d.flightDistance}`)
-        .style("left", `${event.pageX + 5}px`)
-        .style("top", `${event.pageY - 28}px`);
+        .style("left", `${event.pageX + 10}px`) // Posicionar a la derecha del punto
+        .style("top", `${event.pageY - 60}px`); // Posicionar arriba del punto
     })
     .on("mouseout", () => {
       tooltip.transition().duration(500).style("opacity", 0);

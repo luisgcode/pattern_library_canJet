@@ -1,1 +1,25 @@
- 
+/* Estilo para el contenedor del gráfico */
+.dasboard-ui-row-line-chart {
+  background-color: white; /* Fondo blanco */
+  border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
+  padding: 2rem 1rem; /* Padding de 1rem */
+  border-radius: 15px;
+  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
+  width: 1020px;
+}
+
+/* Estilo para el contenedor del gráfico en sí */
+.line-chart {
+  svg {
+    max-width: 1000px;
+  }
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  pointer-events: none; /* Impide que el tooltip interfiera con otros eventos */
+  font-size: 12px;
+}

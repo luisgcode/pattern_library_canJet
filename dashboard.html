@@ -109,126 +109,8 @@
       <!-- * ------------------- Dashboard section ------------------- -->
       <section class="data-wrapp container_utility">
         <h2 class="section_title_utility">Dashboard</h2>
-        <div class="dashboard-ui">
-          <!-- ^ the 3 charts on top -->
-          <div class="dasboard-ui-row">
-            <!-- & Chart number 1 -->
-            <div class="dashboard-chart-box small">
-              <span class="identifier"> #<b>C1</b></span>
-
-              <div id="gauge-chart"></div>
-            </div>
-            <!-- & Chart number 2 -->
-            <div class="dashboard-chart-box small">
-              <span class="identifier"> #<b>C2</b></span>
-              <div id="circular-gauge-chart"></div>
-            </div>
-            <!-- & Chart number 3 -->
-            <div class="dashboard-chart-box small">
-              <span class="identifier"> #<b>C3</b></span>
-              <div id="vertical-gauge-chart"></div>
-            </div>
-          </div>
-          <!-- ^ large hero chart -->
-          <div class="dasboard-ui-row">
-            <div class="dashboard-chart-box large">
-              <span class="identifier"> #<b>C4</b></span>
-
-              <!-- Dropdown for selecting dataset -->
-              <select id="data-selector" class="data-dropdown">
-                <option value="passengers">Number of passengers</option>
-                <option value="revenue">Revenue</option>
-              </select>
-              <!-- Chart SVG -->
-              <svg
-                id="line-chart"
-                class="graph-box"
-                viewBox="0 0 750 400"
-                preserveAspectRatio="xMinYMin meet"
-              ></svg>
-              <div class="tooltip" id="tooltip"></div>
-            </div>
-          </div>
-          <!-- ^ Medium hero chart -->
-          <div class="dasboard-ui-row">
-            <div class="dashboard-chart-box medium">
-              <span class="identifier"> #<b>C5</b></span>
-              <svg
-                id="pie-chart"
-                class="graph-box"
-                viewBox="0 0 750 400"
-                preserveAspectRatio="xMinYMin meet"
-              ></svg>
-            </div>
-            <div class="dashboard-chart-box medium">
-              <span class="identifier"> #<b>C6</b></span>
-              <svg
-                id="donut-chart"
-                class="graph-box"
-                viewBox="0 0 750 400"
-                preserveAspectRatio="xMinYMin meet"
-              ></svg>
-            </div>
-          </div>
-          <!-- ^ large hero chart -->
-          <div class="dasboard-ui-row" style="position: relative">
-            <div class="dashboard-chart-box large">
-              <span class="identifier"> #<b>C7</b></span>
-              <svg
-                id="bar-chart-horizontal"
-                class="graph-box"
-                viewBox="0 0 750 400"
-                preserveAspectRatio="xMinYMin meet"
-              ></svg>
-            </div>
-
-            <!-- Dropdown para seleccionar el color -->
-            <div class="dropdown" id="color-dropdown">
-              <button class="dropdown-toggle">Data color</button>
-              <div class="dropdown-menu">
-                <button class="dropdown-item" data-color="#4d52ff">Blue</button>
-                <button class="dropdown-item" data-color="#ff4d52">Red</button>
-                <button class="dropdown-item" data-color="#5bc0de">
-                  Light Blue
-                </button>
-              </div>
-            </div>
-          </div>
-          <!-- ^ large hero chart -->
-          <div class="dasboard-ui-row">
-            <div class="dashboard-chart-box large">
-              <span class="identifier"> #<b>C8</b></span>
-              <svg
-                id="line-chart-stacked"
-                class="graph-box"
-                viewBox="0 0 750 400"
-                preserveAspectRatio="xMinYMin meet"
-              ></svg>
-            </div>
-          </div>
-        </div>
+        <div class="dasboard-ui-row"></div>
       </section>
-      <!-- * ------------------- Aside section ------------------- -->
-      <aside>
-        <div class="requirement-wrapper">
-          <h5>Requirements:</h5>
-
-          <ul class="requirement-nav">
-            <li>• Plain HTML, CSS and javaScript ✔️</li>
-            <li>• Reflected Pattern Library ✔️</li>
-
-            <li>• At least 3 single value charts : <b> C1,C2,C3 ✔️</b></li>
-            <li>
-              • One chart can change data with either dropdown or textbox :
-              <b>C2, C4</b>
-              ✔️
-            </li>
-            <li>• Has 1 chart that has Tooltips with data <b>C4</b> ✔️</li>
-            <li>• 1 button to update the chart style <b>C7</b> ✔️</li>
-            <li>• 1 Interactive legend <b>C8</b> ✔️</li>
-          </ul>
-        </div>
-      </aside>
     </main>
 
     <!-- * ------------------- Footer ------------------- -->
@@ -243,13 +125,6 @@
       </div>
     </footer>
 
-    <script src="scripts/dashboard/c1_gauge_chart.js"></script>
-    <script src="scripts/dashboard/c2_circular_gauge_chart.js"></script>
-    <script src="scripts/dashboard/c3_vertical_gauge_chart.js"></script>
-    <script src="scripts/dashboard/c4_line_chart.js"></script>
-    <script src="scripts/dashboard/c5_pie_chart.js"></script>
-    <script src="scripts/dashboard/c6_donut_chart.js"></script>
-    <script src="scripts/dashboard/c7_bar_horizontal_chart.js"></script>
-    <script src="scripts/dashboard/c8_line_chart_stacked.js"></script>
+    <script src="scripts/dashboard/requirement_charts.js"></script>
   </body>
 </html>

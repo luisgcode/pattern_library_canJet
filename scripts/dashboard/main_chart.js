@@ -217,7 +217,7 @@ function createSatisfactoryLevelsChart(data) {
     "Ease of Online booking",
     "Gate location",
     "On-board service",
-    "Baggage Handling", // Asegúrate de que esté presente
+    "Baggage handling", // Asegúrate de que esté presente
   ];
 
   const categorySelector = d3
@@ -263,7 +263,11 @@ function createSatisfactoryLevelsChart(data) {
     const category = categorySelector.property("value");
 
     // Filtrar los datos según la categoría seleccionada
-    const ratingsData = data.map((d) => +d[category]);
+    const ratingsData = data.map((d) => {
+      const value = +d[category];
+      console.log(`Valor original: ${d[category]}, Convertido: ${value}`);
+      return value;
+    });
 
     // Depuración: Imprimir los datos de la categoría seleccionada
     console.log(`Datos para ${category}:`, ratingsData);

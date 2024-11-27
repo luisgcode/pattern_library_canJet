@@ -1,3 +1,5 @@
+/* ^ Chart 1 */
+
 /* Estilo para el contenedor del gráfico */
 .dasboard-ui-row-line-chart {
   background-color: white; /* Fondo blanco */
@@ -6,6 +8,7 @@
   border-radius: 15px;
   overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
   width: 1020px;
+  margin-bottom: 2rem;
 }
 
 /* Estilo para el contenedor del gráfico en sí */
@@ -22,4 +25,35 @@
   border-radius: 5px;
   pointer-events: none; /* Impide que el tooltip interfiera con otros eventos */
   font-size: 12px;
+}
+
+/* ^ Chart 2 */
+.dasboard-ui-row-pie-chart {
+  background-color: white; /* Fondo blanco */
+  border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
+  padding: 2rem 1rem; /* Padding de 1rem */
+  border-radius: 15px;
+  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
+  width: 1020px;
+  margin-bottom: 2rem;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+.chart-title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* ^ Chart 3  */
+.dashboard-ui-row-categories-chart {
+  background-color: white; /* Fondo blanco */
+  border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
+  padding: 2rem 1rem; /* Padding de 1rem */
+  border-radius: 15px;
+  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
+  width: 1020px;
+  margin-bottom: 2rem;
 }

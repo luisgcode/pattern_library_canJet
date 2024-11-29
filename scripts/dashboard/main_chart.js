@@ -130,7 +130,7 @@ function createDistanceChart(data) {
     .append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "#1f77b4")
+    .attr("stroke", "#4d52ff")
     .attr("stroke-width", 2)
     .attr("d", line);
 
@@ -152,7 +152,7 @@ function createDistanceChart(data) {
     .attr("cx", (d) => x(d.id) + x.bandwidth() / 2)
     .attr("cy", (d) => y(d.flightDistance))
     .attr("r", 5)
-    .attr("fill", "#1f77b4")
+    .attr("fill", "#4d52ff")
     .on("mouseover", (event, d) => {
       tooltip.transition().duration(200).style("opacity", 1);
       tooltip
@@ -176,7 +176,7 @@ function createSatisfactionPieChart(data) {
   const color = d3
     .scaleOrdinal()
     .domain(["satisfied", "neutral or dissatisfied"])
-    .range(["#66c2a5", "#fc8d62"]);
+    .range(["#ff4d52", "#4d52ff"]);
 
   const pie = d3
     .pie()
@@ -332,7 +332,7 @@ function createSatisfactoryLevelsChart(data) {
       .attr("y", (d) => y(d.count)) // Posicionar las barras en el eje Y según el número de usuarios
       .attr("width", x.bandwidth()) // Definir el ancho de las barras
       .attr("height", (d) => height - y(d.count)) // Definir la altura de las barras
-      .attr("fill", "#66c2a5");
+      .attr("fill", "#4d52ff");
   }
 
   // Llamar a la función para inicializar el gráfico con la primera categoría seleccionada
@@ -424,7 +424,7 @@ function createDelayVsConvenienceChart(data) {
         : y(d.convenience);
     })
     .attr("r", 3) // Reducir tamaño de los puntos
-    .attr("fill", "#fc8d62")
+    .attr("fill", "#4d52ff")
     .attr("opacity", 0.5) // Añadir transparencia
     .on("mouseover", (event, d) => {
       d3.select(".tooltip")
@@ -438,7 +438,9 @@ function createDelayVsConvenienceChart(data) {
     });
 }
 
-// Función para crear el gráfico de satisfacción promedio por clase de asiento
+/**
+ * Función para crear el gráfico de satisfacción promedio por clase de asiento
+ */
 function createAverageSatisfactionByClassChart(data) {
   // Agrupar los datos por clase de asiento
   const groupedData = Array.from(
@@ -506,7 +508,7 @@ function createAverageSatisfactionByClassChart(data) {
     .attr("width", x.bandwidth())
     .attr("y", (d) => y(d.value))
     .attr("height", (d) => height - y(d.value))
-    .attr("fill", "#69b3a2");
+    .attr("fill", "#4d52ff");
 }
 
 /**
@@ -547,7 +549,7 @@ function createDisloyalCustomersTicketPricesChart(formattedData) {
   const color = d3
     .scaleOrdinal()
     .domain([0, 1, 2, 3]) // Para apilar los precios de los boletos
-    .range(["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3"]);
+    .range(["#5bc0de", "#4d52ff", "#ff4d52", "#e78ac3"]);
 
   // Apilar los precios de los boletos de cada cliente
   const stack = d3

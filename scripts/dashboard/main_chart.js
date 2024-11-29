@@ -1,25 +1,37 @@
 "use strict";
 
-// === Cargar los datos del CSV ===
+// Cargar el CSV y procesar los datos
 let csvPath = "/scripts/dashboard/customer_satisfaction.csv";
 
-// Cargar el archivo CSV y procesar datos
 d3.csv(csvPath)
   .then((data) => {
     console.log("Data loaded successfully:", data);
 
-    // Formatear datos: convertir campos numéricos a números y incluir satisfaction
+    // Formatear los datos para incluir los precios de boletos
     const formattedData = data.map((d) => ({
       id: d.id,
+      class: d.Class,
+      averageSatisfaction: +d["Average Satisfaction"],
       flightDistance: +d["Flight Distance"],
       satisfaction: d.satisfaction,
+      customerType: d["Customer Type"],
+      ticketPrices: [
+        +d["1st Ticket Price"] || 0,
+        +d["2nd Ticket Price"] || 0,
+        +d["3rd Ticket Price"] || 0,
+        +d["4th Ticket Price"] || 0,
+      ].map((price) => Math.round(price * 100) / 100), // Redondear precios a 2 decimales
     }));
 
-    // Crear gráficos
+    // Crear gráficos existentes
     createDistanceChart(formattedData);
     createSatisfactionPieChart(formattedData);
     createSatisfactoryLevelsChart(data);
     createDelayVsConvenienceChart(data);
+    createAverageSatisfactionByClassChart(formattedData);
+
+    // Crear nuevo gráfico de clientes desleales
+    createDisloyalCustomersTicketPricesChart(formattedData);
   })
   .catch((error) => {
     console.error("Error loading the CSV file:", error);
@@ -50,6 +62,8 @@ function processSatisfactionData(data) {
     },
   ];
 }
+
+// Charts from here 👇🏼👇🏼👇🏼👇🏼👇🏼👇🏼
 
 /**
  * Crear gráfico de distancia recorrida por cada cliente.
@@ -197,7 +211,7 @@ function createSatisfactionPieChart(data) {
     .append("path")
     .attr("d", arc)
     .attr("fill", (d) => color(d.data.label))
-    .attr("stroke", "white")
+    .attr("stroke", "#fff")
     .style("stroke-width", "2px");
 
   arcs
@@ -205,7 +219,19 @@ function createSatisfactionPieChart(data) {
     .attr("transform", (d) => `translate(${arc.centroid(d)})`)
     .attr("dy", ".35em")
     .style("text-anchor", "middle")
+    .style("font-size", "14px")
+    .style("font-weight", "bold")
     .text((d) => `${d.data.label}: ${d.data.value}`);
+
+  // Título del gráfico
+  svg
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -radius - 15)
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("font-weight", "bold")
+    .text("Customer Satisfaction");
 }
 
 /**
@@ -421,4 +447,151 @@ function createDelayVsConvenienceChart(data) {
     .on("mouseout", () => {
       d3.select(".tooltip").style("opacity", 0);
     });
+}
+
+// Función para crear el gráfico de satisfacción promedio por clase de asiento
+function createAverageSatisfactionByClassChart(data) {
+  // Agrupar los datos por clase de asiento
+  const groupedData = Array.from(
+    d3.rollup(
+      data,
+      (v) => d3.mean(v, (d) => d.averageSatisfaction),
+      (d) => d.class
+    ),
+    ([key, value]) => ({ key, value })
+  );
+
+  // Ordenar los grupos por clase de asiento si es necesario
+  groupedData.sort((a, b) => a.key.localeCompare(b.key));
+
+  // Configuración del gráfico
+  const margin = { top: 20, right: 20, bottom: 40, left: 40 };
+  const width = 600 - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
+
+  // Seleccionar el contenedor del gráfico
+  const svg = d3
+    .select(".dashboard-ui-row-class-chart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Escalas para los ejes
+  const x = d3
+    .scaleBand()
+    .domain(groupedData.map((d) => d.key))
+    .range([0, width])
+    .padding(0.1);
+
+  const y = d3
+    .scaleLinear()
+    .domain([0, d3.max(groupedData, (d) => d.value)])
+    .nice()
+    .range([height, 0]);
+
+  // Ejes
+  svg
+    .append("g")
+    .selectAll(".x-axis")
+    .data(groupedData)
+    .enter()
+    .append("text")
+    .attr("class", "x-axis")
+    .attr("x", (d) => x(d.key) + x.bandwidth() / 2)
+    .attr("y", height + 30)
+    .attr("text-anchor", "middle")
+    .text((d) => d.key);
+
+  svg.append("g").call(d3.axisLeft(y).ticks(5));
+
+  // Barras para cada clase de asiento
+  svg
+    .selectAll(".bar")
+    .data(groupedData)
+    .enter()
+    .append("rect")
+    .attr("class", "bar")
+    .attr("x", (d) => x(d.key))
+    .attr("width", x.bandwidth())
+    .attr("y", (d) => y(d.value))
+    .attr("height", (d) => height - y(d.value))
+    .attr("fill", "#69b3a2");
+}
+
+/**
+ * Crear gráfico de clientes desleales basados en precios de boletos
+ */
+function createDisloyalCustomersTicketPricesChart(formattedData) {
+  const margin = { top: 50, right: 30, bottom: 100, left: 60 };
+  const width = 700 - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
+
+  // Crear el contenedor SVG
+  const svg = d3
+    .select(".dashboard-ui-row-stacked-chart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`);
+
+  // Filtrar solo los clientes desleales (según tu definición)
+  const disloyalCustomers = formattedData.filter(
+    (d) => d.customerType === "Disloyal Customer"
+  );
+
+  // Definir la escala x basada en los IDs de los clientes
+  const x = d3
+    .scaleBand()
+    .range([0, width])
+    .padding(0.1)
+    .domain(disloyalCustomers.map((d) => d.id));
+
+  // Definir la escala y con un dominio máximo (puede ajustarse según los datos)
+  const y = d3.scaleLinear().range([height, 0]).domain([0, 2000]);
+
+  // Definir la escala de colores para las barras apiladas
+  const color = d3
+    .scaleOrdinal()
+    .domain([0, 1, 2, 3]) // Para apilar los precios de los boletos
+    .range(["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3"]);
+
+  // Apilar los precios de los boletos de cada cliente
+  const stack = d3
+    .stack()
+    .keys([0, 1, 2, 3]) // Apilando los precios de los boletos (1er, 2do, 3er, 4to)
+    .value((d, key) => d.ticketPrices[key] || 0);
+
+  const stackedData = stack(disloyalCustomers);
+
+  // Agregar el eje x (ID de los clientes)
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x))
+    .selectAll("text")
+    .attr("transform", "rotate(-45)") // Rotar las etiquetas del eje x para mayor legibilidad
+    .style("text-anchor", "end");
+
+  // Agregar el eje y
+  svg.append("g").call(d3.axisLeft(y));
+
+  // Crear las barras apiladas
+  svg
+    .selectAll("g.stack")
+    .data(stackedData)
+    .enter()
+    .append("g")
+    .attr("class", "stack")
+    .attr("fill", (d, i) => color(i))
+    .selectAll("rect")
+    .data((d) => d)
+    .enter()
+    .append("rect")
+    .attr("x", (d) => x(d.data.id)) // Posición en el eje x según el ID del cliente
+    .attr("y", (d) => y(d[1])) // Posición en el eje y según el valor apilado
+    .attr("height", (d) => y(d[0]) - y(d[1])) // Altura según el valor apilado
+    .attr("width", x.bandwidth()); // Ancho de cada barra (según la escala x)
 }

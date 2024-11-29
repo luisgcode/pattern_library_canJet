@@ -5,8 +5,6 @@ let csvPath = "/scripts/dashboard/customer_satisfaction.csv";
 
 d3.csv(csvPath)
   .then((data) => {
-    console.log("Data loaded successfully:", data);
-
     // Formatear los datos para incluir los precios de boletos
     const formattedData = data.map((d) => ({
       id: d.id,
@@ -292,12 +290,9 @@ function createSatisfactoryLevelsChart(data) {
     // Filtrar los datos según la categoría seleccionada
     const ratingsData = data.map((d) => {
       const value = +d[category];
-      console.log(`Valor original: ${d[category]}, Convertido: ${value}`);
+
       return value;
     });
-
-    // Depuración: Imprimir los datos de la categoría seleccionada
-    console.log(`Datos para ${category}:`, ratingsData);
 
     // Filtrar valores NaN y asegurarse de que los ratings estén dentro del rango
     const validRatingsData = ratingsData.filter(
@@ -312,14 +307,8 @@ function createSatisfactoryLevelsChart(data) {
       };
     });
 
-    // Depuración: Verificar los conteos de los ratings
-    console.log(`Conteos para ${category}:`, ratingCounts);
-
     // Eliminar ratings con conteo 0
     const filteredRatingCounts = ratingCounts.filter((d) => d.count > 0);
-
-    // Depuración: Verificar los conteos filtrados
-    console.log(`Conteos filtrados para ${category}:`, filteredRatingCounts);
 
     // Ajustar dominio de las escalas
     x.domain(filteredRatingCounts.map((d) => d.rating)); // Usar solo los ratings con conteo > 0
@@ -537,10 +526,12 @@ function createDisloyalCustomersTicketPricesChart(formattedData) {
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  // Filtrar solo los clientes desleales (según tu definición)
-  const disloyalCustomers = formattedData.filter(
-    (d) => d.customerType === "Disloyal Customer"
-  );
+  // Filtrar solo los primeros 15 clientes desleales
+  const disloyalCustomers = formattedData
+    .filter((d) => d.customerType.toLowerCase() === "disloyal customer")
+    .slice(0, 15); // Limitar a los primeros 15
+
+  console.log("First 15 Disloyal Customers:", disloyalCustomers);
 
   // Definir la escala x basada en los IDs de los clientes
   const x = d3
@@ -549,8 +540,8 @@ function createDisloyalCustomersTicketPricesChart(formattedData) {
     .padding(0.1)
     .domain(disloyalCustomers.map((d) => d.id));
 
-  // Definir la escala y con un dominio máximo (puede ajustarse según los datos)
-  const y = d3.scaleLinear().range([height, 0]).domain([0, 2000]);
+  // Definir la escala y con un dominio fijo (puedes ajustarlo según tus datos)
+  const y = d3.scaleLinear().range([height, 0]).domain([0, 2000]); // Y está entre 0 y 2000
 
   // Definir la escala de colores para las barras apiladas
   const color = d3

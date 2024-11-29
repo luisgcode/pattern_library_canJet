@@ -19,6 +19,7 @@ d3.csv(csvPath)
     createDistanceChart(formattedData);
     createSatisfactionPieChart(formattedData);
     createSatisfactoryLevelsChart(data);
+    createDelayVsConvenienceChart(data);
   })
   .catch((error) => {
     console.error("Error loading the CSV file:", error);
@@ -321,4 +322,103 @@ function createSatisfactoryLevelsChart(data) {
 
   // Llamar a la función para inicializar el gráfico con la primera categoría seleccionada
   updateChart();
+}
+
+/**
+ * Crear gráfico de relación entre minutos totales de retraso y satisfacción.
+ */
+function createDelayVsConvenienceChart(data) {
+  const margin = { top: 50, right: 30, bottom: 70, left: 60 };
+  const width = 800 - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
+
+  // Crear contenedor SVG
+  const svg = d3
+    .select(".dashboard-ui-row-satisfaction-chart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left},${margin.top})`); // Use backticks here
+
+  // Filtrar y procesar datos relevantes
+  const filteredData = data
+    .filter((d) => {
+      const delayMinutes = +d["Total Departure and Arrival Delay in Minutes"];
+      const satisfaction = +d["Average Satisfaction"];
+      return !isNaN(delayMinutes) && !isNaN(satisfaction);
+    })
+    .map((d) => ({
+      delayMinutes: +d["Total Departure and Arrival Delay in Minutes"],
+      convenience: +d["Average Satisfaction"],
+    }));
+
+  // Definir escalas
+  const x = d3
+    .scaleLinear()
+    .domain([0, d3.max(filteredData, (d) => d.delayMinutes)])
+    .nice()
+    .range([0, width]);
+
+  const y = d3
+    .scaleLinear()
+    .domain([0, 5]) // Ajustar dominio para dar espacio
+    .nice()
+    .range([height, 0]);
+
+  // Añadir ejes
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${height})`) // Use backticks here
+    .call(d3.axisBottom(x));
+  svg.append("g").call(d3.axisLeft(y));
+
+  // Añadir etiquetas a los ejes
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", height + 40)
+    .attr("text-anchor", "middle")
+    .text("Total Delay Minutes");
+
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height / 2)
+    .attr("y", -40)
+    .attr("text-anchor", "middle")
+    .text("Average Satisfaction (0-5)");
+
+  // Añadir puntos al gráfico con jittering y transparencia
+  svg
+    .selectAll(".dot")
+    .data(filteredData)
+    .enter()
+    .append("circle")
+    .attr("class", "dot")
+    .attr("cx", (d) => {
+      // Añadir un pequeño jittering horizontal aleatorio sin salir de los límites
+      const jitter = (Math.random() - 0.5) * 20;
+      const xPos = x(d.delayMinutes) + jitter;
+      return Math.max(0, Math.min(xPos, width)); // Asegurarse de que el valor de x esté dentro del rango
+    })
+    .attr("cy", (d) => {
+      // Añadir un pequeño jittering vertical para puntos en 0
+      return d.convenience === 0
+        ? y(d.convenience) + (Math.random() - 0.5) * 10
+        : y(d.convenience);
+    })
+    .attr("r", 3) // Reducir tamaño de los puntos
+    .attr("fill", "#fc8d62")
+    .attr("opacity", 0.5) // Añadir transparencia
+    .on("mouseover", (event, d) => {
+      d3.select(".tooltip")
+        .style("opacity", 1)
+        .html(`Delay: ${d.delayMinutes} mins<br>Satisfaction: ${d.convenience}`) // Use backticks here
+        .style("left", `${event.pageX + 10}px`) // Use backticks here
+        .style("top", `${event.pageY - 40}px`); // Use backticks here
+    })
+    .on("mouseout", () => {
+      d3.select(".tooltip").style("opacity", 0);
+    });
 }

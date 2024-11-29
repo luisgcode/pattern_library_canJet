@@ -48,7 +48,9 @@
 }
 
 /* ^ Chart 3  */
-.dashboard-ui-row-categories-chart {
+.dashboard-ui-row-categories-chart,
+.dashboard-ui-row-satisfaction-chart,
+.dashboard-ui-row-class-chart {
   background-color: white; /* Fondo blanco */
   border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
   padding: 2rem 1rem; /* Padding de 1rem */

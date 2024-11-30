@@ -200,88 +200,127 @@ function createDistanceChart(data) {
  */
 function createSatisfactionPieChart(data) {
   // Set the width and height of the chart
-  // Establecer el ancho y la altura del gráfico
   const width = 450;
   const height = 250;
 
   // Calculate the radius of the pie chart
-  // Calcular el radio del gráfico de pastel
   const radius = Math.min(width, height) / 2;
 
   // Define the color scale for the chart segments
-  // Definir la escala de colores para los segmentos del gráfico
   const color = d3
-    .scaleOrdinal() // Create an ordinal color scale / Crear una escala de color ordinal
-    .domain(["satisfied", "neutral or dissatisfied"]) // Define the categories for the chart / Definir las categorías para el gráfico
-    .range(["#ff4d52", "#4d52ff"]); // Set the colors for each category / Establecer los colores para cada categoría
+    .scaleOrdinal()
+    .domain(["satisfied", "neutral or dissatisfied"])
+    .range(["#4d52ff", "#ff4d52"]);
 
   // Generate the pie layout for the chart
-  // Generar el diseño de pastel para el gráfico
   const pie = d3
-    .pie() // Create a pie layout / Crear un diseño de pastel
-    .value((d) => d.value) // Define the value for each segment / Definir el valor para cada segmento
-    .sort(null); // Disable sorting of the segments / Desactivar la ordenación de los segmentos
+    .pie()
+    .value((d) => d.value)
+    .sort(null);
 
   // Define the shape of the pie segments
-  // Definir la forma de los segmentos del gráfico de pastel
   const arc = d3
-    .arc() // Create an arc generator / Crear un generador de arcos
-    .innerRadius(0) // Set the inner radius to 0 (complete pie) / Establecer el radio interno a 0 (pastel completo)
-    .outerRadius(radius - 10); // Set the outer radius slightly smaller than the chart radius / Establecer el radio externo ligeramente menor al radio del gráfico
+    .arc()
+    .innerRadius(0)
+    .outerRadius(radius - 10);
 
   // Create the SVG container for the pie chart
-  // Crear el contenedor SVG para el gráfico de pastel
   const svg = d3
-    .select(".pie-chart") // Select the container element for the chart / Seleccionar el elemento contenedor del gráfico
-    .append("svg") // Append an SVG element / Agregar un elemento SVG
-    .attr("width", width) // Set the width of the SVG / Establecer el ancho del SVG
-    .attr("height", height) // Set the height of the SVG / Establecer la altura del SVG
-    .append("g") // Append a group element to center the chart / Agregar un elemento de grupo para centrar el gráfico
-    .attr("transform", `translate(${width / 2},${height / 2})`); // Position the group at the center of the SVG / Posicionar el grupo en el centro del SVG
+    .select(".pie-chart")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+    .attr("transform", `translate(${width / 2},${height / 2})`);
 
   // Process the satisfaction data to match the pie chart format
-  // Procesar los datos de satisfacción para que coincidan con el formato del gráfico de pastel
   const pieData = processSatisfactionData(data);
 
   // Create groups for each pie segment
-  // Crear grupos para cada segmento del gráfico de pastel
   const arcs = svg
-    .selectAll(".arc") // Select all arc elements / Seleccionar todos los elementos de arco
-    .data(pie(pieData)) // Bind the processed data to the pie layout / Vincular los datos procesados al diseño de pastel
-    .enter() // Create a new group for each data point / Crear un nuevo grupo para cada punto de datos
-    .append("g") // Append a group element / Agregar un elemento de grupo
-    .attr("class", "arc"); // Add a class for styling / Agregar una clase para el estilo
+    .selectAll(".arc")
+    .data(pie(pieData))
+    .enter()
+    .append("g")
+    .attr("class", "arc");
 
   // Add the pie segments (paths)
-  // Añadir los segmentos del gráfico de pastel (paths)
   arcs
-    .append("path") // Append a path for each segment / Agregar un camino para cada segmento
-    .attr("d", arc) // Define the path shape using the arc generator / Definir la forma del camino usando el generador de arcos
-    .attr("fill", (d) => color(d.data.label)) // Set the fill color based on the segment label / Establecer el color de relleno basado en la etiqueta del segmento
-    .attr("stroke", "#fff") // Add a white border to the segments / Añadir un borde blanco a los segmentos
-    .style("stroke-width", "2px"); // Set the border thickness / Establecer el grosor del borde
+    .append("path")
+    .attr("d", arc)
+    .attr("fill", (d) => color(d.data.label))
+    .attr("stroke", "#fff")
+    .style("stroke-width", "2px");
 
-  // Add labels to the pie segments
-  // Añadir etiquetas a los segmentos del gráfico de pastel
+  // Add labels inside the pie segments (percentages)
   arcs
-    .append("text") // Append a text element for each segment / Agregar un elemento de texto para cada segmento
-    .attr("transform", (d) => `translate(${arc.centroid(d)})`) // Position the text at the centroid of the segment / Posicionar el texto en el centro del segmento
-    .attr("dy", ".35em") // Adjust the vertical alignment of the text / Ajustar la alineación vertical del texto
-    .style("text-anchor", "middle") // Center-align the text / Alinear el texto al centro
-    .style("font-size", "14px") // Set the font size for the labels / Establecer el tamaño de fuente para las etiquetas
-    .style("font-weight", "bold") // Set the font weight for the labels / Establecer el peso de fuente para las etiquetas
-    .text((d) => `${d.data.label}: ${d.data.value}`); // Display the label and value / Mostrar la etiqueta y el valor
+    .append("text")
+    .attr("transform", (d) => `translate(${arc.centroid(d)})`)
+    .attr("dy", ".35em")
+    .style("text-anchor", "middle")
+    .style("font-size", "14px")
+    .style("font-weight", "bold")
+    .text((d) => {
+      const percentage = (
+        (d.data.value / d3.sum(pieData.map((d) => d.value))) *
+        100
+      ).toFixed(1);
+      return `${percentage}%`; // Display percentage inside the segments
+    });
+
+  // Add labels outside the pie chart (voting counts)
+  arcs
+    .append("text")
+    .attr("transform", (d) => {
+      const angle = (d.startAngle + d.endAngle) / 2; // Calculate the angle for the label
+      const x = (radius + 20) * Math.cos(angle); // Position the text on the x-axis
+      const y = (radius + 20) * Math.sin(angle); // Position the text on the y-axis
+      return `translate(${x},${y})`;
+    })
+    .style("text-anchor", "middle")
+    .style("font-size", "12px")
+    .style("font-weight", "normal")
+    .text((d) => d.data.value); // Display the number of votes (quantity of people)
 
   // Add a title to the pie chart
-  // Añadir un título al gráfico de pastel
   svg
-    .append("text") // Append a text element for the title / Agregar un elemento de texto para el título
-    .attr("x", 0) // Center the title horizontally / Centrar el título horizontalmente
-    .attr("y", -radius - 15) // Position the title above the chart / Posicionar el título encima del gráfico
-    .attr("text-anchor", "middle") // Center-align the text / Alinear el texto al centro
-    .style("font-size", "16px") // Set the font size for the title / Establecer el tamaño de fuente para el título
-    .style("font-weight", "bold") // Set the font weight for the title / Establecer el peso de fuente para el título
-    .text("Customer Satisfaction"); // Set the title text / Establecer el texto del título
+    .append("text")
+    .attr("x", 0)
+    .attr("y", -radius - 15)
+    .attr("text-anchor", "middle")
+    .style("font-size", "16px")
+    .style("font-weight", "bold")
+    .text("Customer Satisfaction");
+
+  // Add the legend outside the pie chart
+  const legend = d3
+    .select(".legend-container")
+    .selectAll(".legend-item")
+    .data([
+      { label: "Satisfied", color: "#4d52ff" },
+      { label: "Neutral or Dissatisfied", color: "#ff4d52" },
+    ])
+    .enter()
+    .append("div")
+    .attr("class", "legend-item");
+
+  // Create colored squares and text for each legend item
+  legend
+    .append("svg")
+    .attr("width", 15)
+    .attr("height", 15)
+    .append("rect")
+    .attr("width", 15)
+    .attr("height", 15)
+    .attr("fill", (d) => d.color);
+
+  legend
+    .append("text")
+    .attr("x", 20)
+    .attr("y", 12)
+    .style("font-size", "14px")
+    .style("font-weight", "normal")
+    .text((d) => d.label);
 }
 
 /**
@@ -291,19 +330,29 @@ function createSatisfactionPieChart(data) {
 function createSatisfactoryLevelsChart(data) {
   // Define the categories available for selection / Define las categorías disponibles para la selección
   const categories = [
-    "Checkin service", // Category for check-in service / Categoría para el servicio de check-in
-    "Ease of Online booking", // Category for online booking / Categoría para la reserva en línea
-    "Gate location", // Category for gate location / Categoría para la ubicación de la puerta
-    "On-board service", // Category for on-board service / Categoría para el servicio a bordo
-    "Baggage handling", // Ensure baggage handling is included / Asegúrate de incluir el manejo de equipaje
+    "Checkin service",
+    "Ease of Online booking",
+    "Gate location",
+    "On-board service",
+    "Baggage handling",
   ];
 
   // Create a dropdown selector for categories / Crear un selector desplegable para las categorías
   const categorySelector = d3
-    .select(".dashboard-ui-row-categories-chart") // Select the container / Seleccionar el contenedor
+    .select(".bar-chart") // Select the container / Seleccionar el contenedor
     .append("select") // Add a dropdown menu / Agregar un menú desplegable
     .attr("id", "category-selector") // Assign an ID to the selector / Asignar un ID al selector
+    .style("position", "absolute") // Set absolute positioning for the selector / Establecer posicionamiento absoluto para el selector
+    .style("top", "10px") // Set distance from top / Establecer distancia desde la parte superior
+    .style("right", "240px") // Set distance from the right / Establecer distancia desde la parte derecha
     .style("margin-bottom", "10px") // Add spacing below the dropdown / Agregar espacio debajo del desplegable
+    .style("padding", "10px 20px") // Add padding for better click area / Agregar relleno para un área de clic más grande
+    .style("border-radius", "5px") // Rounded corners / Bordes redondeados
+
+    .style("background-color", "#fff") // White background for the dropdown / Fondo blanco para el desplegable
+    .style("color", "#4d52ff") // Set text color to blue / Establecer el color del texto a azul
+    .style("font-size", "16px") // Set a modern font size / Establecer un tamaño de fuente moderno
+    .style("cursor", "pointer") // Make the cursor pointer when hovering over the dropdown / Hacer que el cursor sea un puntero al pasar sobre el desplegable
     .on("change", updateChart); // Update chart on selection change / Actualizar el gráfico al cambiar la selección
 
   // Add each category as an option in the dropdown / Agregar cada categoría como opción en el desplegable
@@ -312,13 +361,13 @@ function createSatisfactoryLevelsChart(data) {
   });
 
   // Set chart dimensions and margins / Configurar dimensiones y márgenes del gráfico
-  const margin = { top: 50, right: 30, bottom: 70, left: 60 }; // Define margins / Definir márgenes
-  const width = 600 - margin.left - margin.right; // Calculate chart width / Calcular ancho del gráfico
-  const height = 400 - margin.top - margin.bottom; // Calculate chart height / Calcular altura del gráfico
+  const margin = { top: 50, right: 30, bottom: 70, left: 40 }; // Reduced the left margin to move the chart left
+  const width = 600 - margin.left - margin.right;
+  const height = 400 - margin.top - margin.bottom;
 
   // Create an SVG element for the chart / Crear un elemento SVG para el gráfico
   const svg = d3
-    .select(".dashboard-ui-row-categories-chart") // Select container / Seleccionar contenedor
+    .select(".bar-chart") // Select container / Seleccionar contenedor
     .append("svg") // Append SVG element / Agregar elemento SVG
     .attr("width", width + margin.left + margin.right) // Set SVG width / Establecer ancho del SVG
     .attr("height", height + margin.top + margin.bottom) // Set SVG height / Establecer altura del SVG
@@ -326,62 +375,62 @@ function createSatisfactoryLevelsChart(data) {
     .attr("transform", `translate(${margin.left},${margin.top})`); // Translate group for margins / Trasladar grupo según los márgenes
 
   // Define scales for the chart / Definir escalas para el gráfico
-  const x = d3.scaleBand().range([0, width]).padding(0.1); // Define X scale (categories) / Definir escala X (categorías)
-  const y = d3.scaleLinear().range([height, 0]); // Define Y scale (values) / Definir escala Y (valores)
+  const x = d3.scaleBand().range([0, width]).padding(0.1);
+  const y = d3.scaleLinear().range([height, 0]);
 
   // Add X-axis to the chart / Agregar eje X al gráfico
   const xAxis = svg
-    .append("g") // Append group element for X-axis / Agregar un grupo para el eje X
-    .attr("transform", `translate(0,${height})`) // Position at bottom / Posicionar en la parte inferior
-    .call(d3.axisBottom(x)); // Use the bottom axis generator / Usar generador de eje inferior
+    .append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(x));
 
   // Add Y-axis to the chart / Agregar eje Y al gráfico
-  const yAxis = svg.append("g").call(d3.axisLeft(y)); // Use left axis generator / Usar generador de eje izquierdo
+  const yAxis = svg.append("g").call(d3.axisLeft(y));
 
   // Function to update the chart based on selected category / Función para actualizar el gráfico según la categoría seleccionada
   function updateChart() {
     const category = categorySelector.property("value"); // Get the selected category / Obtener la categoría seleccionada
 
     // Map data to extract ratings for the selected category / Mapear datos para extraer calificaciones de la categoría seleccionada
-    const ratingsData = data.map((d) => +d[category]); // Convert values to numbers / Convertir valores a números
+    const ratingsData = data.map((d) => +d[category]);
 
     // Filter out invalid ratings and ensure values are within range / Filtrar calificaciones inválidas y asegurar valores dentro del rango
     const validRatingsData = ratingsData.filter(
-      (d) => !isNaN(d) && d >= 0 && d <= 5 // Remove NaN and out-of-range values / Eliminar NaN y valores fuera de rango
+      (d) => !isNaN(d) && d >= 0 && d <= 5
     );
 
     // Count occurrences of each rating (0-5) / Contar ocurrencias de cada calificación (0-5)
     const ratingCounts = [0, 1, 2, 3, 4, 5].map((rating) => ({
-      rating, // Assign the rating value / Asignar el valor de la calificación
-      count: validRatingsData.filter((d) => d === rating).length, // Count occurrences / Contar ocurrencias
+      rating,
+      count: validRatingsData.filter((d) => d === rating).length,
     }));
 
     // Remove ratings with zero counts / Eliminar calificaciones con conteo cero
-    const filteredRatingCounts = ratingCounts.filter((d) => d.count > 0); // Keep only relevant ratings / Mantener solo calificaciones relevantes
+    const filteredRatingCounts = ratingCounts.filter((d) => d.count > 0);
 
     // Update scales based on filtered data / Actualizar escalas según los datos filtrados
-    x.domain(filteredRatingCounts.map((d) => d.rating)); // Update X scale domain / Actualizar dominio de escala X
-    y.domain([0, d3.max(filteredRatingCounts, (d) => d.count)]); // Update Y scale domain / Actualizar dominio de escala Y
+    x.domain(filteredRatingCounts.map((d) => d.rating));
+    y.domain([0, d3.max(filteredRatingCounts, (d) => d.count)]);
 
     // Update X and Y axes / Actualizar ejes X e Y
-    xAxis.call(d3.axisBottom(x)); // Redraw X-axis / Redibujar eje X
-    yAxis.call(d3.axisLeft(y)); // Redraw Y-axis / Redibujar eje Y
+    xAxis.call(d3.axisBottom(x));
+    yAxis.call(d3.axisLeft(y));
 
     // Remove old bars / Eliminar barras antiguas
-    svg.selectAll(".bar").remove(); // Select and remove previous bars / Seleccionar y eliminar barras anteriores
+    svg.selectAll(".bar").remove();
 
     // Add new bars for the chart / Agregar nuevas barras al gráfico
     svg
-      .selectAll(".bar") // Select bars / Seleccionar barras
-      .data(filteredRatingCounts) // Bind data / Vincular datos
-      .enter() // Enter new elements / Ingresar nuevos elementos
-      .append("rect") // Add rectangle elements / Agregar elementos rectángulo
-      .attr("class", "bar") // Assign a class / Asignar una clase
-      .attr("x", (d) => x(d.rating)) // Position bars on X-axis / Posicionar barras en el eje X
-      .attr("y", (d) => y(d.count)) // Position bars on Y-axis / Posicionar barras en el eje Y
-      .attr("width", x.bandwidth()) // Set bar width / Establecer ancho de las barras
-      .attr("height", (d) => height - y(d.count)) // Set bar height / Establecer altura de las barras
-      .attr("fill", "#4d52ff"); // Set bar color / Establecer color de las barras
+      .selectAll(".bar")
+      .data(filteredRatingCounts)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", (d) => x(d.rating))
+      .attr("y", (d) => y(d.count))
+      .attr("width", x.bandwidth())
+      .attr("height", (d) => height - y(d.count))
+      .attr("fill", "#4d52ff");
   }
 
   // Initialize chart with default category / Inicializar gráfico con categoría predeterminada

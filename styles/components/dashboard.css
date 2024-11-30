@@ -1,21 +1,16 @@
-/* ^ Chart 1 */
-
-/* Estilo para el contenedor del gráfico */
-.dasboard-ui-row-line-chart {
+/* ^ Styles for all charts */
+.dashboard-row {
   background-color: white; /* Fondo blanco */
   border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
   padding: 2rem 1rem; /* Padding de 1rem */
   border-radius: 15px;
-  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
-  width: 1020px;
   margin-bottom: 2rem;
+  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
 }
 
-/* Estilo para el contenedor del gráfico en sí */
-.line-chart {
-  svg {
-    max-width: 1000px;
-  }
+.chart-title {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .tooltip {
@@ -27,36 +22,44 @@
   font-size: 12px;
 }
 
-/* ^ Chart 2 */
-.dasboard-ui-row-pie-chart {
-  background-color: white; /* Fondo blanco */
-  border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
-  padding: 2rem 1rem; /* Padding de 1rem */
-  border-radius: 15px;
-  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
-  width: 1020px;
-  margin-bottom: 2rem;
+/* * Chart 1 styles */
+.line-chart {
+  svg {
+    max-width: 1000px;
+  }
 }
 
-.arc path {
-  stroke: #fff;
+/* * Chart 2 styles */
+.legend-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 50px; /* Añadimos un margen para separarla del gráfico */
+  padding-top: 20px;
 }
 
-.chart-title {
-  font-weight: bold;
-  font-size: 16px;
+.legend-container .legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-/* ^ Chart 3  */
-.dashboard-ui-row-categories-chart,
-.dashboard-ui-row-satisfaction-chart,
-.dashboard-ui-row-class-chart,
-.dashboard-ui-row-stacked-chart {
-  background-color: white; /* Fondo blanco */
-  border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
-  padding: 2rem 1rem; /* Padding de 1rem */
-  border-radius: 15px;
-  overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
-  width: 1020px;
-  margin-bottom: 2rem;
+.legend-container .legend-item rect {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
 }
+
+.legend-container .legend-item text {
+  font-size: 14px;
+  font-weight: normal;
+}
+/* * Chart 3 styles */
+.bar-chart {
+  position: relative;
+  width: 100%; /* Ensure it takes full width */
+  height: 100%; /* Or define a specific height */
+}
+/* * Chart 4 styles */
+/* * Chart 5 styles */
+/* * Chart 6 styles */

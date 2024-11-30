@@ -285,8 +285,8 @@ function createSatisfactionPieChart(data) {
 }
 
 /**
- * Chart 3:
- * Gráfico 3: Chart 3 Crear gráfico de niveles de satisfacción por categoría
+ * Chart 3: Create a chart displaying satisfaction levels by category
+ * Gráfico 3: Crear un gráfico que muestra los niveles de satisfacción por categoría
  */
 function createSatisfactoryLevelsChart(data) {
   // Define the categories available for selection / Define las categorías disponibles para la selección
@@ -389,83 +389,138 @@ function createSatisfactoryLevelsChart(data) {
 }
 
 /**
-// ^ * Chart 4 Crear gráfico de relación entre minutos totales de retraso y satisfacción.
+ * Grafico: 4 Crear gráfico de relación entre minutos totales de retraso y satisfacción.
+ * Chart: 4 Create a chart to visualize the relationship between total delay minutes and satisfaction.
  */
 function createDelayVsConvenienceChart(data) {
+  // Define margins for the chart layout
+  // Definir márgenes para el diseño del gráfico
   const margin = { top: 50, right: 30, bottom: 70, left: 60 };
-  const width = 800 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+  const width = 800 - margin.left - margin.right; // Set the chart width
+  // Definir el ancho del gráfico
+  const height = 400 - margin.top - margin.bottom; // Set the chart height
+  // Definir la altura del gráfico
 
-  // Crear contenedor SVG
+  // Create the SVG container for the chart
+  // Crear el contenedor SVG para el gráfico
   const svg = d3
-    .select(".dashboard-ui-row-satisfaction-chart")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .select(".dashboard-ui-row-satisfaction-chart") // Select the container for the chart
+    // Seleccionar el contenedor para el gráfico
+    .append("svg") // Add an SVG element to the container
+    // Añadir un elemento SVG al contenedor
+    .attr("width", width + margin.left + margin.right) // Set the total width including margins
+    // Establecer el ancho total, incluyendo los márgenes
+    .attr("height", height + margin.top + margin.bottom) // Set the total height including margins
+    // Establecer la altura total, incluyendo los márgenes
+    .append("g") // Add a group element inside the SVG
+    // Añadir un elemento de grupo dentro del SVG
+    .attr("transform", `translate(${margin.left},${margin.top})`); // Adjust position based on margins
+  // Ajustar la posición basada en los márgenes
 
-  // Filtrar y procesar datos relevantes
+  // Filter and process the relevant data
+  // Filtrar y procesar los datos relevantes
   const filteredData = data
     .filter((d) => {
-      const delayMinutes = +d["Total Departure and Arrival Delay in Minutes"];
-      const satisfaction = +d["Average Satisfaction"];
-      return !isNaN(delayMinutes) && !isNaN(satisfaction);
+      const delayMinutes = +d["Total Departure and Arrival Delay in Minutes"]; // Convert delay data to numeric
+      // Convertir los datos de retraso a numéricos
+      const satisfaction = +d["Average Satisfaction"]; // Convert satisfaction data to numeric
+      // Convertir los datos de satisfacción a numéricos
+      return !isNaN(delayMinutes) && !isNaN(satisfaction); // Keep only valid numerical data
+      // Mantener solo datos numéricos válidos
     })
     .map((d) => ({
-      delayMinutes: +d["Total Departure and Arrival Delay in Minutes"],
-      convenience: +d["Average Satisfaction"],
+      delayMinutes: +d["Total Departure and Arrival Delay in Minutes"], // Map delay minutes to new property
+      // Mapear minutos de retraso a una nueva propiedad
+      convenience: +d["Average Satisfaction"], // Map satisfaction to new property
+      // Mapear satisfacción a una nueva propiedad
     }));
 
-  // Definir escalas
+  // Define scales for the chart
+  // Definir escalas para el gráfico
   const x = d3
-    .scaleLinear()
-    .domain([0, d3.max(filteredData, (d) => d.delayMinutes)])
-    .nice()
-    .range([0, width]);
+    .scaleLinear() // Create a linear scale for x-axis (delay minutes)
+    // Crear una escala lineal para el eje x (minutos de retraso)
+    .domain([0, d3.max(filteredData, (d) => d.delayMinutes)]) // Set domain based on data range
+    // Establecer el dominio basado en el rango de los datos
+    .nice() // Adjust the domain to nice rounded values
+    // Ajustar el dominio a valores redondeados
+    .range([0, width]); // Map the domain to the chart width
+  // Mapear el dominio al ancho del gráfico
 
   const y = d3
-    .scaleLinear()
-    .domain([0, 5]) // Ajustar dominio para dar espacio
-    .nice()
-    .range([height, 0]);
+    .scaleLinear() // Create a linear scale for y-axis (satisfaction)
+    // Crear una escala lineal para el eje y (satisfacción)
+    .domain([0, 5]) // Set a fixed domain from 0 to 5
+    // Establecer un dominio fijo de 0 a 5
+    .nice() // Adjust the domain to nice rounded values
+    // Ajustar el dominio a valores redondeados
+    .range([height, 0]); // Map the domain to the chart height (inverted)
+  // Mapear el dominio a la altura del gráfico (invertido)
 
-  // Añadir grid lines horizontales
+  // Add horizontal grid lines
+  // Añadir líneas de cuadrícula horizontales
   svg
-    .append("g")
-    .attr("class", "grid")
-    .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
-    .call((g) => g.selectAll(".domain").remove()) // Eliminar el borde del dominio
+    .append("g") // Add a group for the grid lines
+    // Añadir un grupo para las líneas de cuadrícula
+    .attr("class", "grid") // Assign a class for styling
+    // Asignar una clase para estilizar
+    .call(d3.axisLeft(y).tickSize(-width).tickFormat("")) // Generate grid lines using the y-axis
+    // Generar líneas de cuadrícula usando el eje y
+    .call((g) => g.selectAll(".domain").remove()) // Remove the axis domain line
+    // Eliminar la línea del dominio del eje
     .call(
       (g) =>
         g
-          .selectAll(".tick line")
-          .attr("stroke", "#e0e0e0") // Color gris claro para las líneas de grid
-          .attr("stroke-dasharray", "2,2") // Líneas discontinuas
+          .selectAll(".tick line") // Select the grid lines
+          // Seleccionar las líneas de cuadrícula
+          .attr("stroke", "#e0e0e0") // Set a light gray color for the grid lines
+          // Establecer un color gris claro para las líneas de cuadrícula
+          .attr("stroke-dasharray", "2,2") // Make the lines dashed
+      // Hacer que las líneas sean discontinuas
     );
 
-  // Añadir ejes
+  // Add axes to the chart
+  // Añadir ejes al gráfico
   svg
-    .append("g")
-    .attr("transform", `translate(0,${height})`)
-    .call(d3.axisBottom(x));
-  svg.append("g").call(d3.axisLeft(y));
+    .append("g") // Add a group for the x-axis
+    // Añadir un grupo para el eje x
+    .attr("transform", `translate(0,${height})`) // Position the x-axis at the bottom
+    // Posicionar el eje x en la parte inferior
+    .call(d3.axisBottom(x)); // Render the x-axis
+  // Renderizar el eje x
+  svg
+    .append("g") // Add a group for the y-axis
+    // Añadir un grupo para el eje y
+    .call(d3.axisLeft(y)); // Render the y-axis
+  // Renderizar el eje y
 
+  // Add axis labels
   // Añadir etiquetas a los ejes
   svg
-    .append("text")
-    .attr("x", width / 2)
-    .attr("y", height + 40)
-    .attr("text-anchor", "middle")
-    .text("Total Delay Minutes");
+    .append("text") // Add a text element for the x-axis label
+    // Añadir un elemento de texto para la etiqueta del eje x
+    .attr("x", width / 2) // Center the label horizontally
+    // Centrar la etiqueta horizontalmente
+    .attr("y", height + 40) // Position the label below the axis
+    // Posicionar la etiqueta debajo del eje
+    .attr("text-anchor", "middle") // Align text to the middle
+    // Alinear el texto al centro
+    .text("Total Delay Minutes"); // Set the x-axis label text
+  // Establecer el texto de la etiqueta del eje x
 
   svg
-    .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("x", -height / 2)
-    .attr("y", -40)
-    .attr("text-anchor", "middle")
-    .text("Average Satisfaction (0-5)");
+    .append("text") // Add a text element for the y-axis label
+    // Añadir un elemento de texto para la etiqueta del eje y
+    .attr("transform", "rotate(-90)") // Rotate the label vertically
+    // Rotar la etiqueta verticalmente
+    .attr("x", -height / 2) // Center the label vertically
+    // Centrar la etiqueta verticalmente
+    .attr("y", -40) // Position the label to the left of the axis
+    // Posicionar la etiqueta a la izquierda del eje
+    .attr("text-anchor", "middle") // Align text to the middle
+    // Alinear el texto al centro
+    .text("Average Satisfaction (0-5)"); // Set the y-axis label text
+  // Establecer el texto de la etiqueta del eje y
 
   // Añadir puntos al gráfico con jittering y transparencia
   svg
@@ -486,7 +541,7 @@ function createDelayVsConvenienceChart(data) {
         ? y(d.convenience) + (Math.random() - 0.5) * 10
         : y(d.convenience);
     })
-    .attr("r", 3) // Reducir tamaño de los puntos
+    .attr("r", 4) // Reducir tamaño de los puntos
     .attr("fill", "#4d52ff")
     .attr("opacity", 0.5) // Añadir transparencia
     .on("mouseover", (event, d) => {
@@ -502,87 +557,92 @@ function createDelayVsConvenienceChart(data) {
 }
 
 /**
-// ^ * Chart 5 Función para crear el gráfico de satisfacción promedio por clase de asiento
+ * Chart 5: Función para crear el gráfico de satisfacción promedio por clase de asiento
+ * Chart 5:
  */
 function createAverageSatisfactionByClassChart(data) {
-  // Agrupar los datos por clase de asiento
+  // Agrupar los datos por clase de asiento / Group the data by seat class
   const groupedData = Array.from(
     d3.rollup(
       data,
-      (v) => d3.mean(v, (d) => d.averageSatisfaction),
-      (d) => d.class
+      (v) => d3.mean(v, (d) => d.averageSatisfaction), // Calcular la satisfacción promedio por clase / Calculate the average satisfaction by class
+      (d) => d.class // Agrupar por la clase de asiento / Group by seat class
     ),
-    ([key, value]) => ({ key, value })
+    ([key, value]) => ({ key, value }) // Convertir el resultado a un formato más accesible / Convert the result to a more accessible format
   );
 
-  // Ordenar los grupos por clase de asiento si es necesario
+  // Ordenar los grupos por clase de asiento si es necesario / Sort the groups by seat class if needed
   groupedData.sort((a, b) => a.key.localeCompare(b.key));
 
-  // Configuración del gráfico
-  const margin = { top: 20, right: 20, bottom: 40, left: 40 };
-  const width = 600 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+  // Configuración del gráfico / Chart configuration
+  const margin = { top: 20, right: 20, bottom: 40, left: 40 }; // Márgenes del gráfico / Chart margins
+  const width = 600 - margin.left - margin.right; // Ancho del gráfico / Chart width
+  const height = 400 - margin.top - margin.bottom; // Altura del gráfico / Chart height
 
-  // Seleccionar el contenedor del gráfico
+  // Seleccionar el contenedor del gráfico / Select the chart container
   const svg = d3
-    .select(".dashboard-ui-row-class-chart")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .select(".dashboard-ui-row-class-chart") // Seleccionar el elemento donde se añadirá el gráfico / Select the element where the chart will be added
+    .append("svg") // Añadir un contenedor SVG / Append an SVG container
+    .attr("width", width + margin.left + margin.right) // Establecer el ancho total del gráfico (con márgenes) / Set the total width of the chart (with margins)
+    .attr("height", height + margin.top + margin.bottom) // Establecer la altura total del gráfico (con márgenes) / Set the total height of the chart (with margins)
+    .append("g") // Añadir un grupo para el contenido del gráfico / Append a group for the chart content
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Trasladar el grupo para tener en cuenta los márgenes / Translate the group to account for the margins
 
-  // Escalas para los ejes
+  // Escalas para los ejes / Scales for the axes
   const x = d3
-    .scaleBand()
-    .domain(groupedData.map((d) => d.key))
-    .range([0, width])
-    .padding(0.1);
+    .scaleBand() // Escala de bandas para el eje X / Band scale for the X axis
+    .domain(groupedData.map((d) => d.key)) // Definir el dominio (las clases de asiento) / Define the domain (seat classes)
+    .range([0, width]) // Definir el rango del eje X (ancho del gráfico) / Define the range of the X axis (chart width)
+    .padding(0.1); // Espaciado entre las barras / Padding between bars
 
   const y = d3
-    .scaleLinear()
-    .domain([0, d3.max(groupedData, (d) => d.value)])
-    .nice()
-    .range([height, 0]);
+    .scaleLinear() // Escala lineal para el eje Y / Linear scale for the Y axis
+    .domain([0, d3.max(groupedData, (d) => d.value)]) // Definir el dominio (valor máximo de satisfacción) / Define the domain (maximum satisfaction value)
+    .nice() // Ajustar el dominio a valores enteros / Adjust the domain to nice integer values
+    .range([height, 0]); // Definir el rango del eje Y (altura del gráfico) / Define the range of the Y axis (chart height)
 
-  // Ejes
+  // Ejes / Axes
   svg
-    .append("g")
-    .selectAll(".x-axis")
-    .data(groupedData)
+    .append("g") // Añadir un grupo para los ejes / Append a group for the axes
+    .selectAll(".x-axis") // Seleccionar los elementos del eje X / Select X axis elements
+    .data(groupedData) // Vincular los datos a los elementos / Bind the data to the elements
     .enter()
-    .append("text")
-    .attr("class", "x-axis")
-    .attr("x", (d) => x(d.key) + x.bandwidth() / 2)
-    .attr("y", height + 30)
-    .attr("text-anchor", "middle")
-    .text((d) => d.key);
+    .append("text") // Añadir texto para cada clase de asiento / Append text for each seat class
+    .attr("class", "x-axis") // Establecer la clase para los textos del eje X / Set the class for the X axis text
+    .attr("x", (d) => x(d.key) + x.bandwidth() / 2) // Establecer la posición en X del texto / Set the X position of the text
+    .attr("y", height + 30) // Establecer la posición en Y del texto / Set the Y position of the text
+    .attr("text-anchor", "middle") // Alinear el texto al centro / Align the text to the center
+    .text((d) => d.key); // Establecer el texto como la clase de asiento / Set the text to the seat class name
 
-  svg.append("g").call(d3.axisLeft(y).ticks(5));
+  svg.append("g").call(d3.axisLeft(y).ticks(5)); // Añadir el eje Y al gráfico / Append the Y axis to the chart
 
-  // Barras para cada clase de asiento
+  // Barras para cada clase de asiento / Bars for each seat class
   svg
-    .selectAll(".bar")
-    .data(groupedData)
+    .selectAll(".bar") // Seleccionar todos los elementos de barra / Select all bar elements
+    .data(groupedData) // Vincular los datos a las barras / Bind the data to the bars
     .enter()
-    .append("rect")
-    .attr("class", "bar")
-    .attr("x", (d) => x(d.key))
-    .attr("width", x.bandwidth())
-    .attr("y", (d) => y(d.value))
-    .attr("height", (d) => height - y(d.value))
-    .attr("fill", "#4d52ff");
+    .append("rect") // Añadir un rectángulo (barra) por cada clase / Append a rectangle (bar) for each class
+    .attr("class", "bar") // Establecer la clase para las barras / Set the class for the bars
+    .attr("x", (d) => x(d.key)) // Establecer la posición en X de la barra / Set the X position of the bar
+    .attr("width", x.bandwidth()) // Establecer el ancho de la barra / Set the width of the bar
+    .attr("y", (d) => y(d.value)) // Establecer la posición en Y de la barra / Set the Y position of the bar
+    .attr("height", (d) => height - y(d.value)) // Establecer la altura de la barra / Set the height of the bar
+    .attr("fill", "#4d52ff"); // Establecer el color de la barra / Set the color of the bar
 }
 
 /**
-// ^ * Chart 6 Crear gráfico de clientes desleales basados en precios de boletos
+ * Chart 6 Crear gráfico de clientes desleales basados en precios de boletos
+ * Chart 6 Create chart for disloyal customers based on ticket prices
  */
 function createDisloyalCustomersTicketPricesChart(formattedData) {
+  // Definir márgenes y dimensiones del gráfico
+  // Define the margins and dimensions of the chart
   const margin = { top: 50, right: 30, bottom: 100, left: 60 };
   const width = 700 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
   // Crear el contenedor SVG
+  // Create the SVG container
   const svg = d3
     .select(".dashboard-ui-row-stacked-chart")
     .append("svg")
@@ -592,76 +652,85 @@ function createDisloyalCustomersTicketPricesChart(formattedData) {
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
   // Filtrar solo los primeros 15 clientes desleales
+  // Filter only the first 15 disloyal customers
   const disloyalCustomers = formattedData
     .filter((d) => d.customerType.toLowerCase() === "disloyal customer")
-    .slice(0, 15); // Limitar a los primeros 15
+    .slice(0, 15); // Limitar a los primeros 15 / Limit to the first 15
 
   console.log("First 15 Disloyal Customers:", disloyalCustomers);
 
   // Definir la escala x basada en los IDs de los clientes
+  // Define the x scale based on customer IDs
   const x = d3
     .scaleBand()
     .range([0, width])
     .padding(0.1)
     .domain(disloyalCustomers.map((d) => d.id));
 
-  // Definir la escala y con un dominio fijo (puedes ajustarlo según tus datos)
-  const y = d3.scaleLinear().range([height, 0]).domain([0, 2000]); // Y está entre 0 y 2000
+  // Definir la escala y con un dominio fijo
+  // Define the y scale with a fixed domain
+  const y = d3.scaleLinear().range([height, 0]).domain([0, 2000]); // Y está entre 0 y 2000 / Y is between 0 and 2000
 
-  // Añadir grid lines horizontales
+  // Añadir líneas de la cuadrícula horizontal
+  // Add horizontal grid lines
   svg
     .append("g")
     .attr("class", "grid")
-    .call(d3.axisLeft(y).tickSize(-width).tickFormat(""))
-    .call((g) => g.selectAll(".domain").remove()) // Eliminar el borde del dominio
+    .call(d3.axisLeft(y).tickSize(-width).tickFormat("")) // Llamar a la función de la cuadrícula / Call grid function
+    .call((g) => g.selectAll(".domain").remove()) // Eliminar el borde del dominio / Remove domain border
     .call(
       (g) =>
         g
           .selectAll(".tick line")
-          .attr("stroke", "#e0e0e0") // Color gris claro para las líneas de grid
-          .attr("stroke-dasharray", "2,2") // Líneas discontinuas
+          .attr("stroke", "#e0e0e0") // Color gris claro para las líneas de la cuadrícula / Light gray color for grid lines
+          .attr("stroke-dasharray", "2,2") // Líneas discontinuas / Dashed lines
     );
 
   // Definir la escala de colores para las barras apiladas
+  // Define the color scale for the stacked bars
   const color = d3
     .scaleOrdinal()
-    .domain([0, 1, 2, 3]) // Para apilar los precios de los boletos
-    .range(["#5bc0de", "#4d52ff", "#ff4d52", "#e78ac3"]);
+    .domain([0, 1, 2, 3]) // Para apilar los precios de los boletos / For stacking ticket prices
+    .range(["#5bc0de", "#4d52ff", "#ff4d52", "#e78ac3"]); // Colores para cada segmento / Colors for each segment
 
   // Apilar los precios de los boletos de cada cliente
+  // Stack ticket prices for each customer
   const stack = d3
     .stack()
-    .keys([0, 1, 2, 3]) // Apilando los precios de los boletos (1er, 2do, 3er, 4to)
-    .value((d, key) => d.ticketPrices[key] || 0);
+    .keys([0, 1, 2, 3]) // Apilando los precios de los boletos (1er, 2do, 3er, 4to) / Stacking ticket prices (1st, 2nd, 3rd, 4th)
+    .value((d, key) => d.ticketPrices[key] || 0); // Asignar un valor de 0 si no existe el precio / Assign 0 if price does not exist
 
-  const stackedData = stack(disloyalCustomers);
+  const stackedData = stack(disloyalCustomers); // Apilar los datos / Stack the data
 
   // Agregar el eje x (ID de los clientes)
+  // Add the x axis (Customer IDs)
   svg
     .append("g")
     .attr("transform", `translate(0,${height})`)
     .call(d3.axisBottom(x))
     .selectAll("text")
-    .attr("transform", "rotate(-45)") // Rotar las etiquetas del eje x para mayor legibilidad
+    .attr("transform", "rotate(-45)") // Rotar las etiquetas del eje x para mayor legibilidad / Rotate x axis labels for better readability
     .style("text-anchor", "end");
 
   // Agregar el eje y
+  // Add the y axis
   svg.append("g").call(d3.axisLeft(y));
 
   // Crear las barras apiladas
+  // Create the stacked bars
   svg
     .selectAll("g.stack")
     .data(stackedData)
     .enter()
     .append("g")
     .attr("class", "stack")
-    .attr("fill", (d, i) => color(i))
+    .attr("fill", (d, i) => color(i)) // Asignar color a cada pila / Assign color to each stack
     .selectAll("rect")
     .data((d) => d)
     .enter()
     .append("rect")
-    .attr("x", (d) => x(d.data.id)) // Posición en el eje x según el ID del cliente
-    .attr("y", (d) => y(d[1])) // Posición en el eje y según el valor apilado
-    .attr("height", (d) => y(d[0]) - y(d[1])) // Altura según el valor apilado
-    .attr("width", x.bandwidth()); // Ancho de cada barra (según la escala x)
+    .attr("x", (d) => x(d.data.id)) // Posición en el eje x según el ID del cliente / Position on the x axis based on customer ID
+    .attr("y", (d) => y(d[1])) // Posición en el eje y según el valor apilado / Position on the y axis based on stacked value
+    .attr("height", (d) => y(d[0]) - y(d[1])) // Altura según el valor apilado / Height based on the stacked value
+    .attr("width", x.bandwidth()); // Ancho de cada barra según la escala x / Width of each bar based on the x scale
 }

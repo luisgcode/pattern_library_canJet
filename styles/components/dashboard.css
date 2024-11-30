@@ -52,7 +52,7 @@
 
 .legend-container .legend-item text {
   font-size: 14px;
-  font-weight: normal;
+  margin-left: 5px;
 }
 /* * Chart 3 styles */
 .bar-chart {

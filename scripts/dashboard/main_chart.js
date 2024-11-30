@@ -200,7 +200,7 @@ function createDistanceChart(data) {
  */
 function createSatisfactionPieChart(data) {
   // Set the width and height of the chart
-  const width = 450;
+  const width = 500;
   const height = 250;
 
   // Calculate the radius of the pie chart
@@ -231,7 +231,7 @@ function createSatisfactionPieChart(data) {
     .attr("width", width)
     .attr("height", height)
     .append("g")
-    .attr("transform", `translate(${width / 2},${height / 2})`);
+    .attr("transform", `translate(${width / 3},${height / 2})`);
 
   // Process the satisfaction data to match the pie chart format
   const pieData = processSatisfactionData(data);
@@ -343,9 +343,9 @@ function createSatisfactoryLevelsChart(data) {
     .append("select") // Add a dropdown menu / Agregar un menú desplegable
     .attr("id", "category-selector") // Assign an ID to the selector / Asignar un ID al selector
     .style("position", "absolute") // Set absolute positioning for the selector / Establecer posicionamiento absoluto para el selector
-    .style("top", "10px") // Set distance from top / Establecer distancia desde la parte superior
-    .style("right", "240px") // Set distance from the right / Establecer distancia desde la parte derecha
-    .style("margin-bottom", "10px") // Add spacing below the dropdown / Agregar espacio debajo del desplegable
+    .style("bottom", "10px") // Set distance from top / Establecer distancia desde la parte superior
+    .style("left", "40px") // Set distance from the right / Establecer distancia desde la parte derecha
+    .style("margin-bottom", "-15px") // Add spacing below the dropdown / Agregar espacio debajo del desplegable
     .style("padding", "10px 20px") // Add padding for better click area / Agregar relleno para un área de clic más grande
     .style("border-radius", "5px") // Rounded corners / Bordes redondeados
 

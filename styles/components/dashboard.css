@@ -59,6 +59,19 @@
   position: relative;
   width: 100%; /* Ensure it takes full width */
   height: 100%; /* Or define a specific height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#category-selector {
+  margin-top: 1rem;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.106);
+  border: none;
+  outline: none;
 }
 /* * Chart 4 styles */
 /* * Chart 5 styles */

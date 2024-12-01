@@ -14,7 +14,6 @@ html {
   align-items: center;
   padding: 10px 20px;
   background-color: #333;
-  color: white;
 }
 
 .logo {
@@ -42,16 +41,16 @@ html {
 }
 
 .sidebar {
-  width: 250px;
-  background-color: #333;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: auto;
+  background-color: #ffffff;
   padding: 20px;
-  justify-content: space-between;
+  align-items: center;
   transition: transform 0.3s ease;
   position: fixed;
+  display: flex;
+  gap: 5rem;
+  margin-top: 1rem;
+  flex-direction: column;
   right: 0;
   top: 0;
   height: 100%;
@@ -79,13 +78,13 @@ html {
 
 .sidebar-menu li {
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .sidebar-menu a {
-  color: white;
   text-decoration: none;
   display: flex;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   width: 100%;
@@ -94,10 +93,6 @@ html {
 
 .sidebar-menu a:hover {
   background-color: #575757;
-}
-
-.icon {
-  margin-right: 10px;
 }
 
 .sidebar-footer {
@@ -154,4 +149,8 @@ html {
   .close-btn {
     display: none;
   }
+}
+
+.icon-menu {
+  color: #d9d9d9;
 }

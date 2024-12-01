@@ -8,11 +8,11 @@ import {
   createAverageSatisfactionByClassChart,
   createDisloyalCustomersTicketPricesChart,
   createStackedBarChart,
-} from './chart.js';
-('use strict');
+} from "./chart.js";
+("use strict");
 
 // Load the CSV file / Cargar el archivo CSV
-let csvPath = '/scripts/dashboard/customer_satisfaction.csv';
+let csvPath = "/scripts/dashboard/customer_satisfaction.csv";
 
 // Fetch data from the CSV file / Obtener los datos del archivo CSV
 d3.csv(csvPath)
@@ -21,17 +21,17 @@ d3.csv(csvPath)
     const formattedData = data.map((d) => ({
       id: d.id, // Unique identifier / Identificador único
       class: d.Class, // Flight class / Clase de vuelo
-      averageSatisfaction: +d['Average Satisfaction'], // Convert average satisfaction to a number / Convertir la satisfacción promedio a número
-      flightDistance: +d['Flight Distance'], // Convert flight distance to a number / Convertir la distancia de vuelo a número
+      averageSatisfaction: +d["Average Satisfaction"], // Convert average satisfaction to a number / Convertir la satisfacción promedio a número
+      flightDistance: +d["Flight Distance"], // Convert flight distance to a number / Convertir la distancia de vuelo a número
       satisfaction: d.satisfaction, // Satisfaction level / Nivel de satisfacción
-      customerType: d['Customer Type'], // Type of customer (e.g., Loyal or Disloyal) / Tipo de cliente (por ejemplo, Leal o Desleal)
+      customerType: d["Customer Type"], // Type of customer (e.g., Loyal or Disloyal) / Tipo de cliente (por ejemplo, Leal o Desleal)
       ticketPrices: [
-        +d['1st Ticket Price'] || 0, // Price of the first ticket / Precio del primer boleto
-        +d['2nd Ticket Price'] || 0, // Price of the second ticket / Precio del segundo boleto
-        +d['3rd Ticket Price'] || 0, // Price of the third ticket / Precio del tercer boleto
-        +d['4th Ticket Price'] || 0, // Price of the fourth ticket / Precio del cuarto boleto
+        +d["1st Ticket Price"] || 0, // Price of the first ticket / Precio del primer boleto
+        +d["2nd Ticket Price"] || 0, // Price of the second ticket / Precio del segundo boleto
+        +d["3rd Ticket Price"] || 0, // Price of the third ticket / Precio del tercer boleto
+        +d["4th Ticket Price"] || 0, // Price of the fourth ticket / Precio del cuarto boleto
       ].map((price) => Math.round(price * 100) / 100), // Round ticket prices to 2 decimal places / Redondear precios de boletos a 2 decimales
-      delayInMinutes: d['Total Departure and Arrival Delay in Minutes'],
+      delayInMinutes: d["Total Departure and Arrival Delay in Minutes"],
     }));
 
     // Generate existing charts / Generar gráficos existentes
@@ -50,5 +50,5 @@ d3.csv(csvPath)
   })
   .catch((error) => {
     // Log error if the CSV file cannot be loaded / Registrar error si no se puede cargar el archivo CSV
-    console.error('Error loading the CSV file:', error);
+    console.error("Error loading the CSV file:", error);
   });

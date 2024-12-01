@@ -63,49 +63,52 @@
 
     <meta name="keywords" content="London Ontario" />
   </head>
-  <body>
-    <header>
-      <div class="header-wrapp">
-        <div class="logo">
-          <img
-            src="https://luisgcode.github.io/pattern_library_canJet/assets/images/logos/logo.png"
-            alt="Company logo"
-          />
-        </div>
-
-        <nav>
-          <ul class="nav-links">
-            <li>
-              <a href="index.html">Pattern Library</a>
-            </li>
-          </ul>
-        </nav>
-        <!-- Botón de menú hamburguesa -->
-        <div class="menu-toggle" id="mobile-menu">&#9776;</div>
-        <!-- Menú móvil -->
-        <div class="mobile-nav">
-          <ul>
-            <li>
-              <a href="#colors">Colors</a>
-            </li>
-            <li>
-              <a href="#layout">Layout</a>
-            </li>
-            <li>
-              <a href="#typography">Typography</a>
-            </li>
-            <li>
-              <a href="#visualization">Data visualization</a>
-            </li>
-            <li>
-              <a href="#components">Components</a>
-            </li>
-          </ul>
+  <body class="dashboard">
+    <div class="header" id="header">
+      <img
+        src="https://luisgcode.github.io/pattern_library_canJet/assets/images/logos/logo.png"
+        alt="Company Logo"
+        class="logo"
+      />
+      <div class="hamburger-menu" id="hamburger-menu">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img
+          src="https://luisgcode.github.io/pattern_library_canJet/assets/images/logos/logo.png"
+          alt="Company Logo"
+          class="logo"
+        />
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="index.html"><span class="icon">🏠</span> Pattern Library</a>
+        </li>
+        <li>
+          <a href="#"><span class="icon">📊</span> Analytics</a>
+        </li>
+        <li>
+          <a href="#"><span class="icon">📁</span> Files</a>
+        </li>
+        <li>
+          <a href="#"><span class="icon">⚙️</span> Settings</a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <p>&copy; 2024 Can Jet</p>
+        <p>Made with 💗 By: &nbsp;</p>
+        <div class="group">
+          <small>Luis Guaiquirian</small>
+          <small>Edgar Gomez</small>
+          <small>Jose Prado</small>
+          <small>Andres Sanchez</small>
+          <small>Ramses Verdayes</small>
         </div>
       </div>
-    </header>
-
-    <main>
+    </div>
+    <main class="main-content" id="main-content">
       <!-- * ------------------- Dashboard section ------------------- -->
       <section class="container_utility">
         <h2 class="section_title_utility">Dashboard</h2>

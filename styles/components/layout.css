@@ -47,11 +47,42 @@ td {
   border-bottom: 1px solid rgba(128, 128, 128, 0.345);
 }
 
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  overflow-y: hidden;
+}
+
+.dashboard .container_utility {
+  max-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+.dashboard footer {
+  display: none;
+}
+
 /* Estilos adicionales para responsividad */
 @media (max-width: 600px) {
   .breakpoints-table {
     display: block;
     overflow-x: auto;
     font-size: 1.2rem;
+  }
+
+  .dashboard {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .dashboard .container_utility {
+    max-height: none;
+    max-width: 100%;
+    overflow-y: hidden;
+  }
+
+  .dashboard footer {
+    display: block;
   }
 }

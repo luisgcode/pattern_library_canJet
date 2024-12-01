@@ -23,12 +23,12 @@ export function createAverageSatisfactionByClassChart(data) {
 
   // Seleccionar el contenedor del gráfico / Select the chart container
   const svg = d3
-    .select('.dashboard-ui-row-class-chart') // Seleccionar el elemento donde se añadirá el gráfico / Select the element where the chart will be added
-    .append('svg') // Añadir un contenedor SVG / Append an SVG container
-    .attr('width', width + margin.left + margin.right) // Establecer el ancho total del gráfico (con márgenes) / Set the total width of the chart (with margins)
-    .attr('height', height + margin.top + margin.bottom) // Establecer la altura total del gráfico (con márgenes) / Set the total height of the chart (with margins)
-    .append('g') // Añadir un grupo para el contenido del gráfico / Append a group for the chart content
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')'); // Trasladar el grupo para tener en cuenta los márgenes / Translate the group to account for the margins
+    .select(".bar-chart-small") // Seleccionar el elemento donde se añadirá el gráfico / Select the element where the chart will be added
+    .append("svg") // Añadir un contenedor SVG / Append an SVG container
+    .attr("width", width + margin.left + margin.right) // Establecer el ancho total del gráfico (con márgenes) / Set the total width of the chart (with margins)
+    .attr("height", height + margin.top + margin.bottom) // Establecer la altura total del gráfico (con márgenes) / Set the total height of the chart (with margins)
+    .append("g") // Añadir un grupo para el contenido del gráfico / Append a group for the chart content
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")"); // Trasladar el grupo para tener en cuenta los márgenes / Translate the group to account for the margins
 
   // Escalas para los ejes / Scales for the axes
   const x = d3
@@ -45,29 +45,29 @@ export function createAverageSatisfactionByClassChart(data) {
 
   // Ejes / Axes
   svg
-    .append('g') // Añadir un grupo para los ejes / Append a group for the axes
-    .selectAll('.x-axis') // Seleccionar los elementos del eje X / Select X axis elements
+    .append("g") // Añadir un grupo para los ejes / Append a group for the axes
+    .selectAll(".x-axis") // Seleccionar los elementos del eje X / Select X axis elements
     .data(groupedData) // Vincular los datos a los elementos / Bind the data to the elements
     .enter()
-    .append('text') // Añadir texto para cada clase de asiento / Append text for each seat class
-    .attr('class', 'x-axis') // Establecer la clase para los textos del eje X / Set the class for the X axis text
-    .attr('x', (d) => x(d.key) + x.bandwidth() / 2) // Establecer la posición en X del texto / Set the X position of the text
-    .attr('y', height + 30) // Establecer la posición en Y del texto / Set the Y position of the text
-    .attr('text-anchor', 'middle') // Alinear el texto al centro / Align the text to the center
+    .append("text") // Añadir texto para cada clase de asiento / Append text for each seat class
+    .attr("class", "x-axis") // Establecer la clase para los textos del eje X / Set the class for the X axis text
+    .attr("x", (d) => x(d.key) + x.bandwidth() / 2) // Establecer la posición en X del texto / Set the X position of the text
+    .attr("y", height + 30) // Establecer la posición en Y del texto / Set the Y position of the text
+    .attr("text-anchor", "middle") // Alinear el texto al centro / Align the text to the center
     .text((d) => d.key); // Establecer el texto como la clase de asiento / Set the text to the seat class name
 
-  svg.append('g').call(d3.axisLeft(y).ticks(5)); // Añadir el eje Y al gráfico / Append the Y axis to the chart
+  svg.append("g").call(d3.axisLeft(y).ticks(5)); // Añadir el eje Y al gráfico / Append the Y axis to the chart
 
   // Barras para cada clase de asiento / Bars for each seat class
   svg
-    .selectAll('.bar') // Seleccionar todos los elementos de barra / Select all bar elements
+    .selectAll(".bar") // Seleccionar todos los elementos de barra / Select all bar elements
     .data(groupedData) // Vincular los datos a las barras / Bind the data to the bars
     .enter()
-    .append('rect') // Añadir un rectángulo (barra) por cada clase / Append a rectangle (bar) for each class
-    .attr('class', 'bar') // Establecer la clase para las barras / Set the class for the bars
-    .attr('x', (d) => x(d.key)) // Establecer la posición en X de la barra / Set the X position of the bar
-    .attr('width', x.bandwidth()) // Establecer el ancho de la barra / Set the width of the bar
-    .attr('y', (d) => y(d.value)) // Establecer la posición en Y de la barra / Set the Y position of the bar
-    .attr('height', (d) => height - y(d.value)) // Establecer la altura de la barra / Set the height of the bar
-    .attr('fill', '#4d52ff'); // Establecer el color de la barra / Set the color of the bar
+    .append("rect") // Añadir un rectángulo (barra) por cada clase / Append a rectangle (bar) for each class
+    .attr("class", "bar") // Establecer la clase para las barras / Set the class for the bars
+    .attr("x", (d) => x(d.key)) // Establecer la posición en X de la barra / Set the X position of the bar
+    .attr("width", x.bandwidth()) // Establecer el ancho de la barra / Set the width of the bar
+    .attr("y", (d) => y(d.value)) // Establecer la posición en Y de la barra / Set the Y position of the bar
+    .attr("height", (d) => height - y(d.value)) // Establecer la altura de la barra / Set the height of the bar
+    .attr("fill", "#4d52ff"); // Establecer el color de la barra / Set the color of the bar
 }

@@ -1,8 +1,28 @@
 .container_utility {
+  background-color: bisque;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1280px;
   padding: 5rem 3rem;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.container_utility.visible {
+  opacity: 1;
+}
+
+.container_utility--colored {
+  background-color: var(--brand-light);
+}
+.content-wrapper {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 24px;
+}
+.container_utility--colored .content-wrapper {
+  background-color: bisque;
+  border-radius: 24px;
+  box-shadow: 10px 10px 33px 0px rgba(0, 0, 0, 0.75);
 }
 
 .section_title_utility {

@@ -54,7 +54,7 @@
       sizes="16x16"
       href="assets/images/icons/favicon-16x16.png"
     />
-    <link rel="manifest" href="images/icons/site.webmanifest" />
+    <link rel="manifest" href="/assets/images/icons/site.webmanifest" />
 
     <meta
       name="description"
@@ -125,7 +125,8 @@
           </p>
           <!-- the actual graph for chart 2 -->
           <div class="pie-chart"></div>
-          <div class="legend-container"></div> <!-- Contenedor para la leyenda -->
+          <div class="legend-container"></div>
+          <!-- Contenedor para la leyenda -->
         </div>
         <!-- ^ Chart box 3 -->
         <div class="dashboard-row">
@@ -133,16 +134,15 @@
             Chart 3: Number of Satisfactory levels by category.
           </p>
           <!-- the actual graph for chart 3 -->
-           <div class="bar-chart"></div>
+          <div class="bar-chart"></div>
         </div>
         <!-- ^ Chart box 4 -->
         <div class="dashboard-row">
           <p class="chart-title">
             Chart 4: Relationship of Total Delay minutes and Departure/arrival
             time convenient satisfactory.
-          </p> 
+          </p>
           <!-- the actual graph for chart 4 -->
-        </p> 
         </div>
         <!-- ^ Chart box 5 -->
         <div class="dashboard-row">
@@ -157,6 +157,28 @@
             Chart 6: The first 15 Disloyal Customers’ 4(or less) Ticket Prices.
           </p>
           <!-- the actual graph for chart 6 -->
+        </div>
+        <!-- ^ Chart box 7 -->
+        <div class="dashboard-row">
+          <p class="chart-title">Chart 7: Number of Loyal customers.</p>
+          <!-- the actual graph for chart 7 -->
+          <div class="donut-chart"></div>
+        </div>
+        <!-- ^ Chart box 8 -->
+        <div class="dashboard-row">
+          <p class="chart-title">Chart 8: Total number of flight distance.</p>
+          <!-- the actual graph for chart 7 -->
+          <div class="flight-distance"></div>
+        </div>
+        <!-- ^ Chart box 9 -->
+        <div class="dashboard-row">
+          <p class="chart-title">
+            Chart 9: Number of customers who did not experience any departure or
+            arrival delays
+          </p>
+          <!-- the actual graph for chart 9 -->
+
+          <div class="no-delay-customers"></div>
         </div>
       </section>
     </main>
@@ -173,6 +195,6 @@
       </div>
     </footer>
 
-    <script src="scripts/dashboard/main_chart.js"></script>
+    <script type="module" src="/scripts/dashboard/main_chart.js"></script>
   </body>
 </html>

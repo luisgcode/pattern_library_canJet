@@ -1,0 +1,9 @@
+export { createFlightDistanceChart } from './charts/8-flightDistanceChart.js';
+export { createLoyalCustomerChart } from './charts/7-loyalCustomerChart.js';
+export { createDistanceChart } from './charts/1-distanceChart.js';
+export { createSatisfactionPieChart } from './charts/2-satisfactionChart.js';
+export { createSatisfactoryLevelsChart } from './charts/3-satisfactionByCategory.JS';
+export { createDelayVsConvenienceChart } from './charts/4-delayVsConvenienceChart.js';
+export { createAverageSatisfactionByClassChart } from './charts/5-averageSatisfaction.js';
+export { createDisloyalCustomersTicketPricesChart } from './charts/6-disloyalCustomers.js';
+export { createStackedBarChart } from './charts/9-stackedBarChart.js';

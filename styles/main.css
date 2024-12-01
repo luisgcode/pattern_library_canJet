@@ -47,7 +47,7 @@ img:not([alt]) {
 }
 
 /*empty alt attribute*/
-img[alt=''] {
+img[alt=""] {
   outline-offset: 1.5rem;
   outline: 0.5rem solid blue;
 }
@@ -65,7 +65,7 @@ figure {
 }
 
 .parallax {
-  background-image: url('../assets/images/sky.png');
+  background-image: url("../assets/images/sky.png");
   height: 200px;
   background-attachment: fixed;
   background-position: center;

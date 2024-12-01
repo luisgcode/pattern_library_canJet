@@ -12,8 +12,6 @@
 @import url(components/visualization.css);
 @import url(components/nagivation.css);
 
-@import url(components/charts/line_chart.css);
-
 @import url(layout/footer.css);
 @import url(layout/header.css);
 
@@ -49,7 +47,7 @@ img:not([alt]) {
 }
 
 /*empty alt attribute*/
-img[alt=""] {
+img[alt=''] {
   outline-offset: 1.5rem;
   outline: 0.5rem solid blue;
 }

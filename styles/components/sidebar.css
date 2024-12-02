@@ -96,8 +96,10 @@ html {
 }
 
 .sidebar-footer {
-  text-align: center;
-  margin-top: auto;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  position: fixed;
+  bottom: 25px;
 }
 
 .main-content {

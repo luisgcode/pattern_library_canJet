@@ -57,22 +57,72 @@
 /* * Chart 3 styles */
 .bar-chart {
   position: relative;
-  width: 100%; /* Ensure it takes full width */
-  height: 100%; /* Or define a specific height */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-#category-selector {
-  margin-top: 1rem;
-  border-radius: 5px;
-  padding: 5px 10px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.106);
-  border: none;
-  outline: none;
+.chart-3-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
 }
-/* * Chart 4 styles */
+
+.chart-3-controls label {
+  font-weight: bold;
+  color: #333;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+#category-selector {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+#category-selector:focus {
+  outline: none;
+  border-color: #4d52ff;
+  background-color: #f1faff;
+}
+
+/* * Chart 4 styles */ /* Estilo general para la sección de controles debajo del gráfico */
+.chart-4-controls {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  width: max-content;
+}
+
+/* Estilos del label para el dropdown */
+.chart-4-controls label {
+  font-weight: bold;
+  color: #333;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+/* Estilos del dropdown */
+#color-dropdown {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+}
+
+#color-dropdown:focus {
+  outline: none;
+  border-color: #4d52ff;
+  background-color: #f1faff;
+}
+
 /* * Chart 5 styles */
 /* * Chart 6 styles */

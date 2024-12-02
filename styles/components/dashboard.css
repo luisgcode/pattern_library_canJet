@@ -4,8 +4,9 @@
   border: 1px solid rgba(0, 0, 0, 0.093); /* Borde de 1px negro */
   padding: 2rem 1rem; /* Padding de 1rem */
   border-radius: 15px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   overflow-x: auto; /* Habilita desplazamiento horizontal si el gráfico es más grande que el contenedor */
+  max-width: 1050px;
 }
 
 .chart-title {
@@ -126,3 +127,16 @@
 
 /* * Chart 5 styles */
 /* * Chart 6 styles */
+
+/* Dobule charts */
+.dashboard-row-double {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-row-double {
+    display: flex;
+    flex-direction: column;
+  }
+}

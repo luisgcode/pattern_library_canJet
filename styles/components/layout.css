@@ -83,6 +83,6 @@ td {
   }
 
   .dashboard footer {
-    display: block;
+    display: flex;
   }
 }

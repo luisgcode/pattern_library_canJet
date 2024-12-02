@@ -14,6 +14,20 @@ export function createDistanceChart(data) {
     .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
+  // Create a tooltip div with the specified styles
+  const tooltip = d3
+    .select(".line-chart")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0)
+    .style("position", "absolute")
+    .style("background-color", "rgba(0, 0, 0, 0.7)")
+    .style("color", "#fff")
+    .style("padding", "8px")
+    .style("border-radius", "5px")
+    .style("pointer-events", "none")
+    .style("font-size", "12px");
+
   // Define scales for the axes
   const x = d3
     .scaleBand()
@@ -92,7 +106,7 @@ export function createDistanceChart(data) {
     .ease(d3.easeCubicInOut) // Easing function
     .attr("stroke-dashoffset", 0)
     .on("end", () => {
-      // Add animated dots after the line animation completes
+      // Add animated dots with tooltip functionality
       svgContainer
         .selectAll(".dot")
         .data(data)
@@ -103,6 +117,29 @@ export function createDistanceChart(data) {
         .attr("cy", (d) => y(d.flightDistance))
         .attr("r", 0) // Start with radius 0
         .attr("fill", "#4d52ff")
+        .on("mouseover", function (event, d) {
+          // Increase dot size on hover
+          d3.select(this).transition().duration(200).attr("r", 8);
+
+          // Show tooltip
+          tooltip.transition().duration(200).style("opacity", 0.9);
+
+          tooltip
+            .html(
+              `Client ID: ${d.id}<br/>Distance: ${d.flightDistance.toFixed(
+                2
+              )} km`
+            )
+            .style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY - 28}px`);
+        })
+        .on("mouseout", function () {
+          // Restore original dot size
+          d3.select(this).transition().duration(200).attr("r", 5);
+
+          // Hide tooltip
+          tooltip.transition().duration(500).style("opacity", 0);
+        })
         .transition()
         .duration(500) // Animation duration for the dots
         .attr("r", 5); // Final radius of the dots

@@ -5,7 +5,7 @@
 export function createDisloyalCustomersTicketPricesChart(formattedData) {
   // Definir márgenes y dimensiones del gráfico
   // Define the margins and dimensions of the chart
-  const margin = { top: 50, right: 30, bottom: 100, left: 60 };
+  const margin = { top: 50, right: 30, bottom: 50, left: 100 }; // Aumentar el margen izquierdo / Increase the left margin
   const width = 700 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
@@ -17,7 +17,7 @@ export function createDisloyalCustomersTicketPricesChart(formattedData) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", `translate(${margin.left - 35},${margin.top})`); // Mover 20px hacia la izquierda
 
   // Filtrar solo los primeros 15 clientes desleales
   // Filter only the first 15 disloyal customers
@@ -84,9 +84,25 @@ export function createDisloyalCustomersTicketPricesChart(formattedData) {
   // Add the y axis
   svg.append("g").call(d3.axisLeft(y));
 
+  // Título del eje X
+  svg
+    .append("text")
+    .attr("transform", `translate(${width / 2},${height + margin.bottom - 10})`)
+    .style("text-anchor", "middle")
+    .text("Client ID"); // Título del eje X / X Axis Title
+
+  // Título del eje Y
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", "-45px")
+    .attr("x", 0 - height / 2)
+    .style("text-anchor", "middle")
+    .text("Ticket Price"); // Título del eje Y / Y Axis Title
+
   // Crear las barras apiladas
   // Create the stacked bars
-  svg
+  const bars = svg
     .selectAll("g.stack")
     .data(stackedData)
     .enter()
@@ -100,5 +116,10 @@ export function createDisloyalCustomersTicketPricesChart(formattedData) {
     .attr("x", (d) => x(d.data.id)) // Posición en el eje x según el ID del cliente / Position on the x axis based on customer ID
     .attr("y", (d) => y(d[1])) // Posición en el eje y según el valor apilado / Position on the y axis based on stacked value
     .attr("height", (d) => y(d[0]) - y(d[1])) // Altura según el valor apilado / Height based on the stacked value
-    .attr("width", x.bandwidth()); // Ancho de cada barra según la escala x / Width of each bar based on the x scale
+    .attr("width", x.bandwidth()) // Ancho de cada barra según la escala x / Width of each bar based on the x scale
+    .attr("opacity", 0) // Iniciar con opacidad 0 para la animación / Start with opacity 0 for animation
+    .transition()
+    .duration(800)
+    .attr("opacity", 1) // Cambiar la opacidad a 1 después de la transición / Change opacity to 1 after transition
+    .ease(d3.easeBounceOut); // Efecto de rebote para la animación / Bounce effect for animation
 }

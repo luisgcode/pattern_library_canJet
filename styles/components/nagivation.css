@@ -31,7 +31,7 @@
   right: 70px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-
+  z-index: 9;
   ul li {
     margin: 2rem 0;
   }
@@ -41,7 +41,7 @@
   display: none;
   cursor: pointer;
   font-size: 3rem;
-  color: var(--brand);
+  color: #d9d9d9;
 }
 
 /* Estilos para pantallas pequeñas */

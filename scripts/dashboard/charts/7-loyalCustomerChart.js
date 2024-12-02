@@ -56,15 +56,29 @@ export function createLoyalCustomerChart(data) {
     .append("g")
     .attr("class", "arc");
 
-  // Add the donut segments (paths)
+  // Add the donut segments (paths) with animation
   arcs
     .append("path")
-    .attr("d", arc)
+    .attr(
+      "d",
+      d3
+        .arc()
+        .innerRadius(radius - 50)
+        .outerRadius(radius - 10)
+    )
     .attr("fill", (d) => color(d.data.label))
     .attr("stroke", "#fff")
-    .style("stroke-width", "2px");
+    .style("stroke-width", "2px")
+    .transition() // Add transition
+    .duration(1000) // Animation duration in milliseconds
+    .attrTween("d", function (d) {
+      var interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+      return function (t) {
+        return arc(interpolate(t));
+      };
+    });
 
-  // Add labels inside the donut segments (counts)
+  // Add labels inside the donut segments (counts) with fade-in animation
   arcs
     .append("text")
     .attr("transform", (d) => `translate(${arc.centroid(d)})`)
@@ -72,7 +86,12 @@ export function createLoyalCustomerChart(data) {
     .style("text-anchor", "middle")
     .style("font-size", "14px")
     .style("font-weight", "bold")
-    .text((d) => d.data.value);
+    .style("opacity", 0) // Start with opacity 0
+    .text((d) => d.data.value)
+    .transition() // Add transition
+    .delay(1000) // Delay the text appearance
+    .duration(500) // Fade-in duration
+    .style("opacity", 1); // Fade to full opacity
 
   // Add a title to the donut chart
   svg
